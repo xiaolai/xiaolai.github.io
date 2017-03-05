@@ -1,0 +1,668 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="learning, coding, writing, 学习, 编程, 写作, xiaolai, 笑来" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="其实你已经学了不少东西了…… Atom 编辑器、HTML、CSS、git…… 学到的东西得用起来，不然不划算，是不是？
+先给浏览器安装一个插件：Stylish，它支持各种浏览器，Safari, Chrome, Firefox 等等。
+用它来做什么呢？它可以让你“粗暴地”定制你所浏览的网站的样式…… 比如，这些天我在翻 vuejs —— 一个特别有趣的前端框架；可问题在于，它的页面字体设置得太小（尤">
+<meta property="og:type" content="article">
+<meta property="og:title" content="随学随用实例：Stylish —— 浏览器插件">
+<meta property="og:url" content="http://lixiaolai.com/2016/07/07/makecs-using-while-learning/index.html">
+<meta property="og:site_name" content="{am}xiaolai">
+<meta property="og:description" content="其实你已经学了不少东西了…… Atom 编辑器、HTML、CSS、git…… 学到的东西得用起来，不然不划算，是不是？
+先给浏览器安装一个插件：Stylish，它支持各种浏览器，Safari, Chrome, Firefox 等等。
+用它来做什么呢？它可以让你“粗暴地”定制你所浏览的网站的样式…… 比如，这些天我在翻 vuejs —— 一个特别有趣的前端框架；可问题在于，它的页面字体设置得太小（尤">
+<meta property="og:image" content="http://lixiaolai.com/images/stylish.png">
+<meta property="og:image" content="http://lixiaolai.com/images/stylish-menu.png">
+<meta property="og:image" content="http://lixiaolai.com/images/stylish-stylish.png">
+<meta property="og:updated_time" content="2017-03-02T14:24:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="随学随用实例：Stylish —— 浏览器插件">
+<meta name="twitter:description" content="其实你已经学了不少东西了…… Atom 编辑器、HTML、CSS、git…… 学到的东西得用起来，不然不划算，是不是？
+先给浏览器安装一个插件：Stylish，它支持各种浏览器，Safari, Chrome, Firefox 等等。
+用它来做什么呢？它可以让你“粗暴地”定制你所浏览的网站的样式…… 比如，这些天我在翻 vuejs —— 一个特别有趣的前端框架；可问题在于，它的页面字体设置得太小（尤">
+<meta name="twitter:image" content="http://lixiaolai.com/images/stylish.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 随学随用实例：Stylish —— 浏览器插件 | {am}xiaolai </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">{am}xiaolai</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">an ever-growing brain</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                随学随用实例：Stylish —— 浏览器插件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-07T00:00:00+08:00" content="2016-07-07">
+              2016-07-07
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/07/makecs-using-while-learning/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/07/makecs-using-while-learning/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>其实你已经学了不少东西了…… Atom 编辑器、HTML、CSS、git…… 学到的东西得用起来，不然不划算，是不是？</p>
+<p>先给浏览器安装一个插件：<code>Stylish</code>，它支持各种浏览器，Safari, Chrome, Firefox 等等。</p>
+<p>用它来做什么呢？它可以让你“粗暴地”定制你所浏览的网站的样式…… 比如，这些天我在翻 <a href="https://vuejs.org/" target="_blank" rel="external">vuejs</a> —— 一个特别有趣的前端框架；可问题在于，它的页面字体设置得太小（尤其是在 iMac 的大屏幕上看的时候），乃至于读起来很费劲…… 那怎么办？用 Stylish 呗。</p>
+<blockquote>
+<p>以下示例中，我是用的是 Google Chrome，其它的浏览器可能有细节上的不同……</p>
+</blockquote>
+<p>安装 Stylish 之后，浏览器上地址栏边上应该有个小按钮：</p>
+<p><img src="http://lixiaolai.com/images/stylish.png" alt=""></p>
+<p>打开需要定制的网页之后，点那个按钮，可以开始定制此处的样式：</p>
+<p><img src="http://lixiaolai.com/images/stylish-menu.png" alt=""></p>
+<blockquote>
+<ol>
+<li>在左侧顶部的输入框里给设定的样式随便取个名字： Vue_Readable；</li>
+<li>在其下面勾选Enabled；</li>
+<li>右侧底部，“Applies to” 添加了两条：<ul>
+<li>URLs on the domain: vuejs.org</li>
+<li>URLs on the domain: vuejs.org.cn</li>
+</ul>
+</li>
+<li>然后在代码框里输入以下代码即可：</li>
+</ol>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">  font-size: 20px;</div><div class="line">  font-family: &apos;Open Sans&apos;；</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然你还可以定制其它的部分。粗暴的方式就是，不管什么元素，发现改了不管用的话就加上 <code>!important</code>……</p>
+<blockquote>
+<p>我打赌你一定会忍不住不停地给你常去的网站写 Stylish 定制 CSS…… 别太上瘾了，别浪费太多时间。</p>
+</blockquote>
+<p>动动脑子，你会发现你甚至可以修改 Stylish 自身的编辑页面 —— 比如，我还是同样嫌它字体太小，代码输入区域显示的行数太少……</p>
+<blockquote>
+<ol>
+<li>在浏览器显示 Stylish 编辑器的时候，再点击 Stylish 按钮，</li>
+<li>在左侧顶部的输入框里给设定的样式随便取个名字，比如：<code>Stylish</code>；</li>
+<li>在其下面勾选<code>Enabled</code>；</li>
+<li>右侧底部，“Applies to” 添加一条：<ul>
+<li>URLs matching the regexp: <code>chrome-extension.*edit\.html.*</code></li>
+</ul>
+</li>
+<li>然后在代码框里输入以下代码即可：</li>
+</ol>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.CodeMirror &#123;</div><div class="line">  font-family: &apos;Courier New&apos;;</div><div class="line">  font-size: 18px;</div><div class="line">  height: 600px !important;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>等等，“你怎么知道要改的是 .CodeMirror 元素？” —— <a href="http://lixiaolai.com/2016/06/25/makecs-html-css/">之前的教程</a>里用过的啊， 用组合键 ⌥⌘I 能在浏览器中呼出 Inspector, 自己找呗……</p>
+<p>然后，你的 Stylish 编辑页面大抵上就是这样的了：</p>
+<p><img src="http://lixiaolai.com/images/stylish-stylish.png" alt=""></p>
+<p>总之就是，<strong>学会哪怕一点点东西，你就可以做很多你自己以前完全没办法做的事情，若是不停地学呢？</strong></p>
+<blockquote>
+<p>人们各自就是活在同一个世界的不同版本之中，各自相距天壤。</p>
+</blockquote>
+<p>哪怕是昨天的你和现在的你，也可能如此。</p>
+<p>另外，这才折腾几下啊？这才学了多点东西啊？可你就是能明显地、深刻滴感觉到一个事实：</p>
+<blockquote>
+<p>你和那些没折腾过的人在这方面完全无法沟通了…… 因为你们已经不在一个频道上了。</p>
+</blockquote>
+<p>更残酷一点的说法是：</p>
+<blockquote>
+<p><strong>今天的你</strong> 和 <strong>一个月前的你</strong> 若是两个人的话，那么你们俩就是完全无法沟通的……</p>
+</blockquote>
+<p>你明白学习的作用了吧？学习的好处和不学习的坏处，实在是太明显太残酷了。按照脑科学家们的说法，经过接二连三的折腾，你的大脑结构都已经发生了不可逆的变化……</p>
+<p>哦，对了，你已经第二次看到正则表达式了（<code>chrome-extension.*edit\.html.*</code>），估计挺好奇的罢？自己找教程去看，<code>Regular Expression</code>…… 先撞撞墙，也不是什么坏事儿。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/05/makecs-git-basics/" rel="next" title="工程师的时光穿梭机 —— git">
+                <i class="fa fa-chevron-left"></i> 工程师的时光穿梭机 —— git
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/19/makecs-regular-expression/" rel="prev" title="正则表达式极简“入门”">
+                正则表达式极简“入门” <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/xiaolai.jpg"
+               alt="xiaolai" />
+          <p class="site-author-name" itemprop="name">xiaolai</p>
+          <p class="site-description motion-element" itemprop="description">学习是一种生活方式</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xiaolai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/xiaolai" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaolai</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'xiaolaigithub';
+      var disqus_identifier = '2016/07/07/makecs-using-while-learning/';
+      var disqus_title = '随学随用实例：Stylish —— 浏览器插件';
+      var disqus_url = 'http://lixiaolai.com/2016/07/07/makecs-using-while-learning/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

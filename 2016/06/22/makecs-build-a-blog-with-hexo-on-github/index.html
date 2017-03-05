@@ -1,0 +1,746 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="learning, coding, writing, 学习, 编程, 写作, xiaolai, 笑来" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在开始之前就说过，必须去注册一个 Github 帐号…… 以下假定你已经注册好了。
+想学什么，可以先假装已经会了什么…… 听起来很没道理，但你试试就知道了……
+
+习得任何技能的最根本技巧，就是一句话而已：马上开始像那些已经精通这个技能的人一样生活。
+
+这是很重要的方法论，它会让你无视很多障碍，跨越很多障碍，甚至那些障碍对你来说就好像完全不存在一样。心理学家告诉我们，当你不开心的时候，假装开心，做出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Hexo 为自己在 Github 上建一个静态 Blog 站点">
+<meta property="og:url" content="http://lixiaolai.com/2016/06/22/makecs-build-a-blog-with-hexo-on-github/index.html">
+<meta property="og:site_name" content="{am}xiaolai">
+<meta property="og:description" content="在开始之前就说过，必须去注册一个 Github 帐号…… 以下假定你已经注册好了。
+想学什么，可以先假装已经会了什么…… 听起来很没道理，但你试试就知道了……
+
+习得任何技能的最根本技巧，就是一句话而已：马上开始像那些已经精通这个技能的人一样生活。
+
+这是很重要的方法论，它会让你无视很多障碍，跨越很多障碍，甚至那些障碍对你来说就好像完全不存在一样。心理学家告诉我们，当你不开心的时候，假装开心，做出">
+<meta property="og:updated_time" content="2017-03-02T14:06:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 Hexo 为自己在 Github 上建一个静态 Blog 站点">
+<meta name="twitter:description" content="在开始之前就说过，必须去注册一个 Github 帐号…… 以下假定你已经注册好了。
+想学什么，可以先假装已经会了什么…… 听起来很没道理，但你试试就知道了……
+
+习得任何技能的最根本技巧，就是一句话而已：马上开始像那些已经精通这个技能的人一样生活。
+
+这是很重要的方法论，它会让你无视很多障碍，跨越很多障碍，甚至那些障碍对你来说就好像完全不存在一样。心理学家告诉我们，当你不开心的时候，假装开心，做出">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 使用 Hexo 为自己在 Github 上建一个静态 Blog 站点 | {am}xiaolai </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">{am}xiaolai</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">an ever-growing brain</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用 Hexo 为自己在 Github 上建一个静态 Blog 站点
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-22T00:00:00+08:00" content="2016-06-22">
+              2016-06-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/22/makecs-build-a-blog-with-hexo-on-github/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/22/makecs-build-a-blog-with-hexo-on-github/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在开始之前就说过，必须去注册一个 Github 帐号…… 以下假定你已经注册好了。</p>
+<p>想学什么，可以先假装已经会了什么…… 听起来很没道理，但你试试就知道了……</p>
+<blockquote>
+<p>习得任何技能的最根本技巧，就是一句话而已：<strong>马上开始像那些已经精通这个技能的人一样生活。</strong></p>
+</blockquote>
+<p>这是很重要的方法论，它会让你无视很多障碍，跨越很多障碍，甚至那些障碍对你来说就好像完全不存在一样。心理学家告诉我们，当你不开心的时候，假装开心，做出笑脸，过一会儿就没那么不开心了，甚至真的开心起来…… 这个原理其实可以用在很多地方，比如，某项技能你不会，但你想会，那就从假装会了这个技能开始，然后当真去做、去学，没多久就真的会了…… 我小时候学吉他也是这样，买来吉他其实是不会的啊，但也不知道为什么就是有欲望坐在那里乱弹一气，就好像会了一样 —— 可真的没多一会儿就开始渐渐调整自己，让手的拨动多少有点节奏…… 竟然比之前好听多了！</p>
+<p>我们只不过注册了一个 Github 帐号而已，还装得不够像…… 让我们费一点周折，装得更像一点罢。</p>
+<p>我从来都是这样的，装就装得真像 —— 这样后来就真的是了。你看，我有个网站：<a href="http://xiaolai.github.io/" target="_blank" rel="external">xiaolai.github.io</a>，你不妨打开看一看。接下来，你就跟着我一步一步地给自己搭建一个跟工程师们用的一样的个人网站。</p>
+<p>这个过程其实不太费劲的，甚至很简单，相信我。但在这个过程中你也一定会七七八八学很多东西…… 你会感觉时间一晃就过去了 —— 因为你会在这个过程中一不小心就进入所谓的 “flow”（心流）。学习从来不是杀时间的方式，恰恰相反，学习是“时间加速器”，它会让时间一晃而过，却又与此同时增加了时间质量与密度 —— 你不可能没有感受的！</p>
+<p>在这个过程中，我们会熟悉起来的东西包括</p>
+<blockquote>
+<ul>
+<li>命令行工具的使用</li>
+<li>Atom 的使用</li>
+<li>如何书写 Markdown 文档</li>
+</ul>
+</blockquote>
+<p>开始罢。</p>
+<h2 id="1-初步搭建"><a href="#1-初步搭建" class="headerlink" title="1. 初步搭建"></a>1. 初步搭建</h2><h3 id="1-1-在-Github-上创建一个-Repo"><a href="#1-1-在-Github-上创建一个-Repo" class="headerlink" title="1.1. 在 Github 上创建一个 Repo"></a>1.1. 在 Github 上创建一个 Repo</h3><p>在浏览器中登录 <a href="https://githu.com/" target="_blank" rel="external">Github</a>，创建一个 Repo，名称格式为 yourname.github.io。比如，我个人的 Github 账户用户名是 <code>xiaolai</code>，所以，我的这个 Repo 的名称就是 <code>xiaolai.github.io</code>。这个特殊的 Repo 有个审核过程，所以，创建完了之后，直接干下一步去……</p>
+<h3 id="1-2-确认本地已经安装好-git-和-npm"><a href="#1-2-确认本地已经安装好-git-和-npm" class="headerlink" title="1.2. 确认本地已经安装好 git 和 npm"></a>1.2. 确认本地已经安装好 git 和 npm</h3><p>在 Terminal 里（或者 iTerm 里）输入以下命令确认 git 与 npm 已经安装妥当（<a href="http://lixiaolai.com/2016/06/22/makecs-build-a-blog-with-hexo-on-github/01.basic-dev-env-setup.md">第一章</a>完成了的话，这些已经安装好了，若是没完成，请退回完成再回来重新继续……）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git --version</div><div class="line">npm --version</div></pre></td></tr></table></figure>
+<h3 id="1-3-安装-hexo"><a href="#1-3-安装-hexo" class="headerlink" title="1.3. 安装 hexo"></a>1.3. 安装 hexo</h3><p>在 Terminal 中继续输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install hexo -g</div><div class="line">npm install hexo-cli -g</div></pre></td></tr></table></figure>
+<h3 id="1-4-创建本地工作目录"><a href="#1-4-创建本地工作目录" class="headerlink" title="1.4. 创建本地工作目录"></a>1.4. 创建本地工作目录</h3><p>去 Github 把你的 Repo 的 git 地址拷贝出来。</p>
+<blockquote>
+<ul>
+<li>我的是 <a href="https://github.com/xiaolai/xiaolai.github.io.git" target="_blank" rel="external">https://github.com/xiaolai/xiaolai.github.io.git</a></li>
+<li>你的是 <a href="https://github.com/yourname/yourname.github.io.git" target="_blank" rel="external">https://github.com/yourname/yourname.github.io.git</a> （其中，yourname 应该换乘你的 Github 用户名）。</li>
+</ul>
+</blockquote>
+<p>然后在 Terminal 面板里输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~/Public</div><div class="line">git clone https://github.com/yourname/yourname.github.io.git</div></pre></td></tr></table></figure>
+<h3 id="1-5-初始化你的本地站点"><a href="#1-5-初始化你的本地站点" class="headerlink" title="1.5. 初始化你的本地站点"></a>1.5. 初始化你的本地站点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo init yourname.github.io</div><div class="line">cd yourname.github.io</div><div class="line">npm install hexo-deployer-git --save</div><div class="line">hexo generate</div><div class="line">hexo server</div></pre></td></tr></table></figure>
+<p>这些完成之后，你就可以打开浏览器，在地址栏里输入： <code>localhost:4000</code>，在本地先看看网站是什么样子了。</p>
+<p><strong>1.6. 部署到 Github 上</strong></p>
+<p>回到命令行下，输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">atom .</div></pre></td></tr></table></figure>
+<p>Atom 就会打开 <code>yourname.github.io</code> 这个文件夹…… 在计算机世界里，. 是个特殊字符，代表“所有的”（以后你会越来越了解的），所以，atom . 的意思相当于“用 Atom 这个程序打开当前目录内的所有文件”……</p>
+<p>在 Atom 的左侧面板中，选择 <code>_config.yml</code> 文件，找到 <code>deploy</code> 哪一部分，改成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/yourname/yourname.github.io.git</div></pre></td></tr></table></figure>
+<p>注意，把 <code>yourname</code> 改成你的 <code>Github</code> 用户名。</p>
+<p>现在是最后一步了，在 Terminal 里依次输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo deploy</div><div class="line">open yourname.github.io</div></pre></td></tr></table></figure>
+<h3 id="1-7-阶段性成果"><a href="#1-7-阶段性成果" class="headerlink" title="1.7. 阶段性成果"></a>1.7. 阶段性成果</h3><p>稍等一下，你就可以看到默认浏览器被打开，且已经浏览到 yourname.github.io 这个网址了……（嗯…… 工程师们打开浏览流程的姿势都不太一样…… 对了，试试 <code>open .</code> 会发生什么？）</p>
+<p>简单吧？！</p>
+<p>不一定很简单 —— 对新手因为上面的过程中，每一个尽管相当简单的步骤，都可能出现各种莫名其妙的错误（比如，不小心使用了中文输入法的点字符“。”等等）…… 保持耐心，反复来过就好。</p>
+<p>不妨再说一遍，因为这是工程师必备的素质（其实是任何人在任何领域都应该必备的素质）：</p>
+<p><strong>保持耐心，反复来过，直至成功。</strong></p>
+<h2 id="2-继续折腾"><a href="#2-继续折腾" class="headerlink" title="2. 继续折腾"></a>2. 继续折腾</h2><p>没完事儿呢…… 这才刚刚开始，你现在有了个个性化域名，有了个所有人都可通过它访问的站点，然后就要做起码两件事儿了：</p>
+<blockquote>
+<ul>
+<li>学会在本地使用 Markdown 书写文章，而后发布到网上；</li>
+<li>把站点装扮得更好看一些。</li>
+</ul>
+</blockquote>
+<p>当然，这之前，我们还要学会做更多的事情，包括很多非常细琐的东西。反正我们不着急。</p>
+<h3 id="2-1-给-Atom-安装一个命令行面板"><a href="#2-1-给-Atom-安装一个命令行面板" class="headerlink" title="2.1 给 Atom 安装一个命令行面板"></a>2.1 给 Atom 安装一个命令行面板</h3><p>有一个 Atom Package，可以在 Atom 里调用 Terminal 面板，叫 <a href="https://atom.io/packages/platformio-ide-terminal" target="_blank" rel="external">platformio-ide-terminal</a> 不妨装上玩玩。我是怎么想到找这个东西的呢？很简单，经常需要从 Atom 切换到 Terminal / iTerm …… 工程师们肯定也一样觉得麻烦，所以，估计他们已经有了解决方案…… 于是，到 Google 里搜索了一下：</p>
+<blockquote>
+<p>terminal in Atom</p>
+</blockquote>
+<p>果然有这种东西…… 希望你现在已经对命令行有一定了解了，没有的话，回去第一章再看看你找到的那个 Cheatsheet 罢，边看边练。</p>
+<p>这是学习过程中必须学会的思考模式（Mindset）和行为模式（Action Pattern）：</p>
+<blockquote>
+<ol>
+<li>随时准备深入了解某个小领域</li>
+<li>借助地球上最强大的人工智能（Google）找到学习资源</li>
+<li>给自己一小段时间刻意练习</li>
+<li>不怕死记硬背，更要善于死记硬背，通过短时间内的大量重复，把那些别人看起来枯燥的东西迅速变成自己“内建的技能” —— 通过刻意练习将其熟练到“想都不用想就能用的地步”……</li>
+<li>给自己定个“最后期限”，比如一小时之内一定做到把这些命令谙熟于心…… 绝对不能“过些天就想不起来了”，否则，那就是思考监管的“只因为学习习惯不好造成的永久性愚蠢”。</li>
+</ol>
+</blockquote>
+<p>再提醒一遍，别忘了给自己洗脑：“<strong>只搜索、只阅读英文文档</strong>”，有中文的也不能看，就是不能看……</p>
+<p><strong>还有就是，每次脑子里闪出“呀，好麻烦！”这个念头的时候，就要知道自己脑子脏了，该洗了。</strong> 无论干什么都挺麻烦的，怕麻烦的人什么都做不成，躲避麻烦的唯一正确方式就是“不怕麻烦，逐一完成”，否则就会反复麻烦一辈子又一辈子（甚至会遗传，不耐心的父母必然养出不耐心的孩子）。凡事道理都是一样的，我有一句口头禅：“偷懒的唯一方式就是不偷懒……” 也还是一样的道理。</p>
+<h3 id="2-2-为-Atom-安装-markdown-相关-Packages"><a href="#2-2-为-Atom-安装-markdown-相关-Packages" class="headerlink" title="2.2 为 Atom 安装 markdown 相关 Packages"></a>2.2 为 Atom 安装 markdown 相关 Packages</h3><p>Markdown 是程序员们最喜欢用的书写工具，是一种简化版的文字标记方式，你的 yourname.github.io 站点上的文章，就得用这种方式书写。怎么用、怎么写？Google github markdown 就知道了，别忘了在搜索一遍 github markdown cheatsheet，嗯，这个基本上用不着刻意练习 —— 因为它太简单，另外也因为反正你以后天天用。</p>
+<p>点击 Preference 的左侧倒数第二项 <code>+ install</code>，在搜索框中输入 <code>markdown</code>，依次安装一下几个 Package：</p>
+<blockquote>
+<ul>
+<li>markdown-scroll-sync</li>
+<li>linter-markdown</li>
+<li>markdown-writer</li>
+<li>markdown-toc</li>
+<li>markdown-pdf</li>
+<li>markdown-preview</li>
+</ul>
+</blockquote>
+<p>设置一遍 markdown-writer，你就知道应该如何设置其它的 Package 了。还是进入 <code>Preference</code>，在左侧选择 <code>Packages</code>，在右侧找到 <code>markdown-writer</code>，点击 <code>Settings</code> 按钮…… 然后在里面上下翻一翻。在 <code>Site Engine</code> 里，竟然直接有个 <code>Hexo</code> 选项…… 真好！勾选罢！</p>
+<p>另外，如果快捷键 <code>⌘b</code>、<code>⌘i</code> 之类的不起作用，那么可以把以下代码拷贝粘贴到 <code>keymap.cson</code> 文件中（在 <code>Preference</code> 中点击左侧第二项 <code>Keybindings</code>，即可打开这个文件），随后用 ⌘s 保存之后重新启动 Atom 即可（或者在 <code>Command Palette</code> 里使用 <code>Windows: Reload</code> 命令）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"># for markdown-writer</div><div class="line">&quot;.platform-darwin atom-text-editor:not([mini])&quot;:</div><div class="line">  &quot;shift-cmd-K&quot;: &quot;markdown-writer:insert-link&quot;</div><div class="line">  &quot;shift-cmd-I&quot;: &quot;markdown-writer:insert-image&quot;</div><div class="line">  &quot;cmd-i&quot;:       &quot;markdown-writer:toggle-italic-text&quot;</div><div class="line">  &quot;cmd-b&quot;:       &quot;markdown-writer:toggle-bold-text&quot;</div><div class="line">  &quot;cmd-&apos;&quot;:       &quot;markdown-writer:toggle-code-text&quot;</div><div class="line">  &quot;cmd-k&quot;:       &quot;markdown-writer:toggle-keystroke-text&quot;</div><div class="line">  &quot;cmd-h&quot;:       &quot;markdown-writer:toggle-strikethrough-text&quot;</div><div class="line">  &apos;cmd-&gt;&apos;:       &quot;markdown-writer:toggle-blockquote&quot;</div><div class="line">  &apos;cmd-&quot;&apos;:       &quot;markdown-writer:toggle-codeblock-text&quot;</div><div class="line">  &quot;ctrl-alt-1&quot;:  &quot;markdown-writer:toggle-h1&quot;</div><div class="line">  &quot;ctrl-alt-2&quot;:  &quot;markdown-writer:toggle-h2&quot;</div><div class="line">  &quot;ctrl-alt-3&quot;:  &quot;markdown-writer:toggle-h3&quot;</div><div class="line">  &quot;ctrl-alt-4&quot;:  &quot;markdown-writer:toggle-h4&quot;</div><div class="line">  &quot;ctrl-alt-5&quot;:  &quot;markdown-writer:toggle-h5&quot;</div><div class="line">  &quot;shift-cmd-O&quot;: &quot;markdown-writer:toggle-ol&quot;</div><div class="line">  &quot;shift-cmd-U&quot;: &quot;markdown-writer:toggle-ul&quot;</div><div class="line">  &quot;cmd-j cmd-p&quot;: &quot;markdown-writer:jump-to-previous-heading&quot;</div><div class="line">  &quot;cmd-j cmd-n&quot;: &quot;markdown-writer:jump-to-next-heading&quot;</div><div class="line">  &quot;cmd-j cmd-d&quot;: &quot;markdown-writer:jump-to-reference-definition&quot;</div><div class="line">  &quot;cmd-j cmd-t&quot;: &quot;markdown-writer:jump-to-next-table-cell&quot;</div></pre></td></tr></table></figure>
+<p><strong>注意</strong></p>
+<p>在 Atom 里，<code>⌘k</code> 默认被设置成了一些双组合键的第一个，比如，你按过一次 <code>⌘k</code> 之后再按右方向键 <code>→</code> 的话，你当前的输入区域就会在一个新生成的右侧面板（Right Pance）上打开一份…… 所以，你想输入这样的文字之时：</p>
+<blockquote>
+<p><kbd>k</kbd></p>
+</blockquote>
+<p>你的按键顺序是这样的（最后一个 <code>⎋</code> 是键盘最左上角的 <code>esc</code> 键盘）</p>
+<blockquote>
+<p>k，⇧←，⌘k，⎋</p>
+</blockquote>
+<h3 id="2-3-学习使用-markdown-书写文章并发布"><a href="#2-3-学习使用-markdown-书写文章并发布" class="headerlink" title="2.3 学习使用 markdown 书写文章并发布"></a>2.3 学习使用 markdown 书写文章并发布</h3><p>这次我们走另外一个路径。关掉所有程序，重新来过。用 Spotlight 打开 Terminal，输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd ~/Public/yourname.github.io</div></pre></td></tr></table></figure>
+<p>输入方法是这样的：输入 <code>cd ~/Pu</code> 之后，就按一下 <code>⇥</code>（Tab 键），应该能自动补全为 <code>cd ~/Public/</code>，接着再输入 <code>yourname</code>…… 其实可能输入前两个字符的时候已经可以用 <code>⇥</code> 完成自动补全了。补全之后，就可以直接按 <code>⏎</code> （回车键）进入你的目标目录了。</p>
+<p>然后再输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">atom .</div></pre></td></tr></table></figure>
+<p>进而用 Atom 打开当前目录中的所有文件。</p>
+<p>在右侧的面板里展开 <code>source</code> 目录，进一步再展开 <code>_posts</code> 目录，点击 <code>hello-world.md</code> 文件，正文编辑器里所显示的就是你现在能在网站上看得到的 <code>hello-world</code> 的源文件了。</p>
+<p>随便在那里面写任何内容，用一下你已经习得的 markdown 标记，玩玩。由于已经安装了 markdown-preview，所以在书写 Markdown 文档的时候，随时可以用 <code>⇧⌃m</code> 呼出预览，甚至可以实时更新预览。（不过，预览的时候和最终发布的时候看起来稍微不一样，自己体会一下……）</p>
+<p>然后就可以在 Terminal 面板中用 hexo generate生成静态 html 文件，用 <code>hexo server</code> 本地查看（在浏览器中用这个地址：<code>localhost:4000</code>），或用 <code>hexo deploy</code> 发布到 <code>yourname.github.io</code> 上去……</p>
+<p>以后你想发表博客文章的时候，无非就是在 source 目录中创建新的 .md 文件，而后 <code>hexo generate</code>，之后再 <code>hexo deploy</code>.</p>
+<h3 id="2-4-一旦发现需要重复的工作……"><a href="#2-4-一旦发现需要重复的工作……" class="headerlink" title="2.4 一旦发现需要重复的工作……"></a>2.4 一旦发现需要重复的工作……</h3><p>—— 就要马上想办法要么 1)<strong>自动化</strong>，要么 2) <strong>减少工作量</strong>。这是工程师的思考行动方式，在工程师的世界里，懒惰有另外一种用处，是积极的用处：它是用来刺激寻找提高效率的手段。普通人懒起来就什么都不干了；工程师懒起来就使劲琢磨：</p>
+<blockquote>
+<p>“怎么做才能将来不用做或者起码少做却可以实际上干更多呢？”</p>
+</blockquote>
+<p>注意：“<strong>实际上干更多</strong>”才是重点！</p>
+<p>反复地敲 <code>hexo generate</code>、<code>hexo server</code>、<code>hexo deploy</code> 好累啊！怎么办？我们可以给命令行里反复输入的命令编制缩写……</p>
+<p>命令行下输入，其实就是用 Atom 打开 <code>~/.aliases</code> 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">atom ~/.aliases</div></pre></td></tr></table></figure>
+<p>在该文件下输入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias hgs=&quot;hexo g&amp;&amp;hexo s&quot;</div><div class="line">alias hgd=&quot;hexo g&amp;&amp;hexo d&quot;</div></pre></td></tr></table></figure>
+<p>重新启动 Terminal 之后，只要输入 hgs 就是生成内容之后在 <code>localhost:4000</code> 里预览，输入 hgd 就是部署到服务器上……</p>
+<p>能这么做的原因在于之前在<a href="http://lixiaolai.com/2016/06/22/makecs-build-a-blog-with-hexo-on-github/01.basic-dev-env-setup.md">配置开发环境</a>的时候输入过这么三个命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">https://raw.githubusercontent.com/donnemartin/dev-setup/master/.bash_profile</div><div class="line">curl -O https://raw.githubusercontent.com/donnemartin/dev-setup/master/.bash_prompt</div><div class="line">curl -O https://raw.githubusercontent.com/donnemartin/dev-setup/master/.aliases</div></pre></td></tr></table></figure>
+<p><code>.bash_profile</code> 文件里引用了 <code>.bash_prompt</code> 和 <code>.aliases</code>，每次启动 Terminal 的时候，它都会引用 <code>.bash_profile</code> 里的设置，所以，以后你就可以把所有你需要的缩写都放到 <code>.aliases</code> 文件里去。</p>
+<p>比如我这个懒蛋就用来好几个这样的缩写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">alias -=&quot;cd -&quot;</div><div class="line">alias ~=&quot;cd ~&quot;</div><div class="line">alias ..=&quot;cd ..&quot;</div><div class="line">alias ...=&quot;cd ../..&quot;</div><div class="line">alias ....=&quot;cd ../../..&quot;</div><div class="line">alias bp=&quot;atom ~/.bash_profile&quot;</div><div class="line">alias bpr=&quot;source ~/.bash_profile&quot;</div></pre></td></tr></table></figure>
+<p>所以，我需要修改 <code>~/.bash_profile</code> 文件的时候，就在 Terminal 里输入 <code>bp</code>，修改完了之后，保存好，然后在 Terminal 里输入 <code>bpr</code> 就行了，不用为了更改生效而重启 Terminal。</p>
+<p><strong>任务</strong></p>
+<p>接下来你要做的是，以后经常写文章发表在网上 —— 衡量标准倒是有一个：</p>
+<blockquote>
+<p>尽量只写对别人有用的文章……</p>
+</blockquote>
+<p>毕竟这是发表在网上的基本意义之一。</p>
+<p>在接下来的时间里，若是有空，就给自己的 Blog 换个模板；加上评论，加上搜索，加上统计，加上…… 反正，在 Google 上随便一搜，每个任务都有很多教程 —— 自力更生好了。</p>
+<p>等将来弄明白了 html/jade、css/less/sass/ 之类的东西之后，也可以自己不断深入定制…… 现在就先在使用中把 <a href="https://help.github.com/categories/writing-on-github/" target="_blank" rel="external">(github flavored) Markdown</a> 彻底熟悉了罢。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/17/makecs-atom-advanced/" rel="next" title="Atom 编辑器进阶">
+                <i class="fa fa-chevron-left"></i> Atom 编辑器进阶
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/25/makecs-html-css/" rel="prev" title="快速学习 HTML 和 CSS">
+                快速学习 HTML 和 CSS <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/xiaolai.jpg"
+               alt="xiaolai" />
+          <p class="site-author-name" itemprop="name">xiaolai</p>
+          <p class="site-description motion-element" itemprop="description">学习是一种生活方式</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xiaolai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/xiaolai" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-初步搭建"><span class="nav-text">1. 初步搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-在-Github-上创建一个-Repo"><span class="nav-text">1.1. 在 Github 上创建一个 Repo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-确认本地已经安装好-git-和-npm"><span class="nav-text">1.2. 确认本地已经安装好 git 和 npm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-安装-hexo"><span class="nav-text">1.3. 安装 hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-创建本地工作目录"><span class="nav-text">1.4. 创建本地工作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-初始化你的本地站点"><span class="nav-text">1.5. 初始化你的本地站点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-阶段性成果"><span class="nav-text">1.7. 阶段性成果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-继续折腾"><span class="nav-text">2. 继续折腾</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-给-Atom-安装一个命令行面板"><span class="nav-text">2.1 给 Atom 安装一个命令行面板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-为-Atom-安装-markdown-相关-Packages"><span class="nav-text">2.2 为 Atom 安装 markdown 相关 Packages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-学习使用-markdown-书写文章并发布"><span class="nav-text">2.3 学习使用 markdown 书写文章并发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-一旦发现需要重复的工作……"><span class="nav-text">2.4 一旦发现需要重复的工作……</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaolai</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'xiaolaigithub';
+      var disqus_identifier = '2016/06/22/makecs-build-a-blog-with-hexo-on-github/';
+      var disqus_title = '使用 Hexo 为自己在 Github 上建一个静态 Blog 站点';
+      var disqus_url = 'http://lixiaolai.com/2016/06/22/makecs-build-a-blog-with-hexo-on-github/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
