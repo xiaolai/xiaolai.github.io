@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>附录：如何使用 Sphinx-doc 写书？ &mdash; 通过学习编程学习学习 0.1 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="genindex.html"/>
+        <link rel="search" title="搜索" href="search.html"/>
+    <link rel="top" title="通过学习编程学习学习 0.1 文档" href="index.html"/>
+        <link rel="next" title="附录：SublimeText 编辑器" href="editors_and_ides/sublimetext.html"/>
+        <link rel="prev" title="第二章：你的第一个程序" href="first_program.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 通过学习编程学习学习
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setting_up.html">第一章：准备工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first_program.html">第二章：你的第一个程序</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">附录：如何使用 Sphinx-doc 写书？</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">1. 简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">2. 安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">3. 创建文库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">4. 自动编译</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">5. 安装模板</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sublimetext">6. SublimeText 编辑器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">7. 学习 RestructuredText 的最好方法</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="editors_and_ides/sublimetext.html">附录：SublimeText 编辑器</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">通过学习编程学习学习</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>附录：如何使用 Sphinx-doc 写书？</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/appendix_sphinx_tutorial.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sphinx-doc">
+<h1>附录：如何使用 Sphinx-doc 写书？<a class="headerlink" href="#sphinx-doc" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>1. 简介<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>当前这本书就是用 <a class="reference external" href="http://www.sphinx-doc.org">Sphinx-doc(官方网站)</a> 写的，采用的是 <a class="reference external" href="https://readthedocs.org">readthedocs.org</a> 提供的模板，<cite>Sphinx-doc</cite> 最初是用来创建 Python 文档的工具，现在被广泛用作科学技术写作工具。它支持各种版本的输出：HTML，LaTeX，ePub，PDF 等等；它可以很方便地制作交互引用（cross-reference; 不仅在当前文档，也包括网上其它用 <cite>Sphinx-doc</cite> 制作的文档）；可以自动生成索引；加上相应插件之后，会有更多功能，比如，将程序代码执行结果输出到文档…… 越来越多的软件开发者在使用 <cite>Sphinx-doc</cite> 编写自己所写软件的文档 —— 有兴趣的话，你现在就可以去 <a class="reference external" href="https://readthedocs.org">readthedocs.org</a> 看看……</p>
+<p>使用 <cite>Sphinx-doc</cite> 写教程实在是太适合不过了…… 比如，它支持  LaTeX，所以可以轻松写出很复杂的公式：</p>
+<div class="math">
+\[W^{3\beta}_{\delta_1 \rho_1 \sigma_2} = U^{3\beta}_{\delta_1 \rho_1} + \frac{1}{8 \pi 2} \int^{\alpha_2}_{\alpha_2} d \alpha^\prime_2 \left[\frac{ U^{2\beta}_{\delta_1 \rho_1} - \alpha^\prime_2U^{1\beta}_{\rho_1 \sigma_2} }{U^{0\beta}_{\rho_1 \sigma_2}}\right]\]</div>
+<p>尤其是，稍加配置之后，它可以帮作者把程序的输出结果直接镶进文本 —— 仅此一点就已经太好不过了！比如：</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">command</span><span class="o">-</span><span class="n">output</span><span class="p">::</span> <span class="n">python</span> <span class="o">-</span><span class="n">V</span>
+</pre></div>
+</div>
+<p>会被显示为：</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>$ python -V
+Python 3.6.3 :: Anaconda custom (x86_64)
+</pre></div>
+</div>
+<p>再比如，<cite>Sphinx-doc</cite> 创建的文档也可以从程序文件中获得结果：</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">plot</span><span class="p">::</span> <span class="n">code</span><span class="o">/</span><span class="n">contour3d_demo</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>会被显示为：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">axes3d</span><span class="o">.</span><span class="n">get_test_data</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">cset</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">extend3d</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cset</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="./code/contour3d_demo.py">Source code</a>, <a class="reference external" href="./code/contour3d_demo.png">png</a>, <a class="reference external" href="./code/contour3d_demo.hires.png">hires.png</a>, <a class="reference external" href="./code/contour3d_demo.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="_images/contour3d_demo.png" src="_images/contour3d_demo.png" />
+</div>
+<p><cite>Sphinx-doc</cite> 使用 <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html">RestructuredText</a>  (RST) 格式文本（相当于稍微复杂一点的 Markdown），RestructuredText 与 Markdown 类似，也是一种格式化文档标记系统，只不过，它稍微更复杂一点点，能够完成的功能却多出不少，学起来也不是很难。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id4">
+<h2>2. 安装<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>安装 <cite>Sphinx-doc</cite> 之前，最好已经安装过 Python 的 Anaconda 发行版（Python 3.6 版本，2017）。Anaconda 会把很多相关的库都安装好，很省心。而后就简单了，打开 Terminal 执行以下命令即可：</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ pip install Sphinx
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>3. 创建文库<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>创建一个工作目录，而后，执行以下命令：</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ sphinx-quickstart
+</pre></div>
+</div>
+<p>一路按照默认安装即可，反正，随后可以通过 <cite>source</cite> 目录中的 <cite>conf.py</cite> 修改其中的设置。安装完成之后，就可以在项目工作目录中执行以下命令，编译文档：</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ make html
+</pre></div>
+</div>
+<p>随后，可以用浏览器打开 <cite>build</cite> 目录中的 HTML 文档查看编译结果……</p>
+</div>
+<div class="section" id="id6">
+<h2>4. 自动编译<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>每次手动刷新浏览器查看编译结果还是挺麻烦的…… 有个自动编译插件可以安装：</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ pip install sphinx-autobuild
+</pre></div>
+</div>
+<p>而后，在项目跟目录下打开 Terminal，执行以下命令：</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ sphinx-autobuild --open-browser &lt;source-dir&gt; &lt;build-dir&gt;
+</pre></div>
+</div>
+<p>为了提高效率，我在用户根目录下的 <cite>.bash_profile</cite> 文件中加了一行：</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">sab</span><span class="o">=</span><span class="s1">&#39;sphinx-autobuild --open-browser source build&#39;</span>
+</pre></div>
+</div>
+<p>以后只需要在 Terminal 中输入 <code class="docutils literal"><span class="pre">sab</span> <span class="pre">⏎</span></code> 即可。此后，每次在编辑器中保存 <cite>rst</cite> 文件的时候，这个插件就会执行自动编译，而后刷新浏览器…… 相当方便。</p>
+</div>
+<div class="section" id="id7">
+<h2>5. 安装模板<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>为了可以将来自定义模板，最好把模板安装在项目根目录中的 <cite>/source/_themes/</cite> 目录下（没有的话就创建一个）。比如，当前项目所使用的模板，是 <cite>readdoc</cite> 的模板，字体大小稍加修正。</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">xiaolai</span><span class="o">/</span><span class="n">sphinx_rtd_theme</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>而后将其中的 <cite>sphinx_rtd_theme</cite> 目录拷贝到 <cite>/source/_themes/</cite> 之中。</p>
+<p>在 <cite>conf.py</cite> 里添加以下内容：</p>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s2">&quot;sphinx_rtd_theme&quot;</span>
+<span class="n">html_theme_path</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_themes&quot;</span><span class="p">,</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sublimetext">
+<h2>6. SublimeText 编辑器<a class="headerlink" href="#sublimetext" title="永久链接至标题">¶</a></h2>
+<p>编辑 ReStructuredText，我选择的是 SublimeText，在我看来相对是最方便的。有相应的插件可供使用，自己也可以很方便地设置很多必要的 Snippets，提高输入编辑效率。</p>
+<p>可以在 SublimeText 中安装以下两个插件：</p>
+<blockquote class="epigraph">
+<div><ol class="arabic simple">
+<li>Restructured Text (RST) Snippets</li>
+<li>RestructuredText Improved</li>
+</ol>
+</div></blockquote>
+<p>其中，Restructured Text (RST) Snippets 插件里的 auto completion 有一些需要补充的地方，也有一些需要修改的地方，比如，它在转换 <code class="docutils literal"><span class="pre">h1</span></code> 标记的时候，由于标记字符是按照英文字母计算的，所以经常会在编译的时候被警告很多次：</p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">...(WARNING/2)</span> <span class="pre">Title</span> <span class="pre">underline</span> <span class="pre">too</span> <span class="pre">short.</span></code></div></blockquote>
+<p>所以，还不如直接加上一个四十个字符长度的下划线呢……</p>
+<p>snippets 的补充</p>
+</div>
+<div class="section" id="id8">
+<h2>7. 学习 RestructuredText 的最好方法<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>下载 <cite>Sphinx-doc</cite> 的文档，随时在里面查找实际的例子……</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">sphinx</span><span class="o">-</span><span class="n">doc</span><span class="o">/</span><span class="n">sphinx</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>插入程序输出结果</p>
+<p>显示 matplotlib 结果</p>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span>      <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;sphinx.ext.doctest&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;sphinx.ext.intersphinx&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;sphinx.ext.todo&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;sphinx.ext.coverage&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;sphinx.ext.mathjax&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;sphinx.ext.ifconfig&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;sphinx.ext.viewcode&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;sphinx.ext.githubpages&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;sphinx.ext.graphviz&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;matplotlib.sphinxext.only_directives&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;matplotlib.sphinxext.plot_directive&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;IPython.sphinxext.ipython_directive&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;IPython.sphinxext.ipython_console_highlighting&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;sphinx.ext.inheritance_diagram&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;numpydoc&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;sphinxcontrib.programoutput&#39;</span><span class="p">]</span>
+
+
+
+
+
+<span class="n">pip</span> <span class="n">install</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">plantuml</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="editors_and_ides/sublimetext.html" class="btn btn-neutral float-right" title="附录：SublimeText 编辑器" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="first_program.html" class="btn btn-neutral" title="第二章：你的第一个程序" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, 李笑来.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            LANGUAGE:'zh_CN',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
