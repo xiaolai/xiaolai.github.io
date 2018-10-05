@@ -84,24 +84,19 @@
 
 
 
-<meta name="description" content="工程师们整天与各种文件打交道，而且处理的都还是那种“弄错了哪怕一个字符都不行的文件”。
-比如，文件弄丢了就很可怕，所以在过去存储不稳定的时代，“备份”一直是工程师们最小心也最头疼的工作内容之一，因为存储不稳定意味着说，有些文件“突然之间就读不出来了”…… 这太可怕了。
-更可怕的是另外一种“坏掉的文件” —— 就是那种被自己搞乱了的文件，一会儿改改这里，一会儿改改那里，到最后出了问题之后完全搞不清楚">
+<meta name="description" content="工程师们整天与各种文件打交道，而且处理的都还是那种“弄错了哪怕一个字符都不行的文件”。 比如，文件弄丢了就很可怕，所以在过去存储不稳定的时代，“备份”一直是工程师们最小心也最头疼的工作内容之一，因为存储不稳定意味着说，有些文件“突然之间就读不出来了”…… 这太可怕了。 更可怕的是另外一种“坏掉的文件” —— 就是那种被自己搞乱了的文件，一会儿改改这里，一会儿改改那里，到最后出了问题之后完全搞不清楚">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工程师的时光穿梭机 —— git">
 <meta property="og:url" content="http://lixiaolai.com/2016/07/05/makecs-git-basics/index.html">
 <meta property="og:site_name" content="{am}xiaolai">
-<meta property="og:description" content="工程师们整天与各种文件打交道，而且处理的都还是那种“弄错了哪怕一个字符都不行的文件”。
-比如，文件弄丢了就很可怕，所以在过去存储不稳定的时代，“备份”一直是工程师们最小心也最头疼的工作内容之一，因为存储不稳定意味着说，有些文件“突然之间就读不出来了”…… 这太可怕了。
-更可怕的是另外一种“坏掉的文件” —— 就是那种被自己搞乱了的文件，一会儿改改这里，一会儿改改那里，到最后出了问题之后完全搞不清楚">
+<meta property="og:description" content="工程师们整天与各种文件打交道，而且处理的都还是那种“弄错了哪怕一个字符都不行的文件”。 比如，文件弄丢了就很可怕，所以在过去存储不稳定的时代，“备份”一直是工程师们最小心也最头疼的工作内容之一，因为存储不稳定意味着说，有些文件“突然之间就读不出来了”…… 这太可怕了。 更可怕的是另外一种“坏掉的文件” —— 就是那种被自己搞乱了的文件，一会儿改改这里，一会儿改改那里，到最后出了问题之后完全搞不清楚">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://lixiaolai.com/images/tp2-comparison.png">
 <meta property="og:image" content="http://lixiaolai.com/images/sublimetext-regex-button.png">
 <meta property="og:updated_time" content="2017-03-02T14:13:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工程师的时光穿梭机 —— git">
-<meta name="twitter:description" content="工程师们整天与各种文件打交道，而且处理的都还是那种“弄错了哪怕一个字符都不行的文件”。
-比如，文件弄丢了就很可怕，所以在过去存储不稳定的时代，“备份”一直是工程师们最小心也最头疼的工作内容之一，因为存储不稳定意味着说，有些文件“突然之间就读不出来了”…… 这太可怕了。
-更可怕的是另外一种“坏掉的文件” —— 就是那种被自己搞乱了的文件，一会儿改改这里，一会儿改改那里，到最后出了问题之后完全搞不清楚">
+<meta name="twitter:description" content="工程师们整天与各种文件打交道，而且处理的都还是那种“弄错了哪怕一个字符都不行的文件”。 比如，文件弄丢了就很可怕，所以在过去存储不稳定的时代，“备份”一直是工程师们最小心也最头疼的工作内容之一，因为存储不稳定意味着说，有些文件“突然之间就读不出来了”…… 这太可怕了。 更可怕的是另外一种“坏掉的文件” —— 就是那种被自己搞乱了的文件，一会儿改改这里，一会儿改改那里，到最后出了问题之后完全搞不清楚">
 <meta name="twitter:image" content="http://lixiaolai.com/images/tp2-comparison.png">
 
 
@@ -300,7 +295,7 @@
 </blockquote>
 <p>所以，在这里，我没准备上来就讲解 git 是什么，它的原理是什么，它的命令都有哪些，使用的时候需要注意什么…… 事实上，这种教程几乎遍地都是 —— 因为它太重要了么，所以网上随便一搜，就有一大堆经典教程（当然，教程那么多，并没有降低初学者的难度）……</p>
 <p>以下就是一个实际工作过程，你要做的就是“一步一步跟下来”，做完之后，还要再重复跟很多很多次…… 其中涉及到的 git 命令，就算不理解也没关系，反正要让你的手指头熟悉他们，反复敲 —— 就好像我们小时候抄课文一样（那时候我们也其实常常并不真的理解课文内容）—— 直到我们居然可以做到“死记硬背”为止。</p>
-<p>这些操作的目标是把一本免费公开在网上的编程书，<strong>Think Python</strong> <em>2ed</em> —— 非常经典的一本书，很多重要的基础概念，可以说它讲的是最好的 —— 把这本书的样式重新组织一下，以便阅读的时候“赏心悦目”；下图左边是<a href="http://greenteapress.com/thinkpython2/html/thinkpython2002.html#sec6" target="_blank" rel="external">它原本的显示样式</a>，右边是重新设计过后的显示样式：</p>
+<p>这些操作的目标是把一本免费公开在网上的编程书，<strong>Think Python</strong> <em>2ed</em> —— 非常经典的一本书，很多重要的基础概念，可以说它讲的是最好的 —— 把这本书的样式重新组织一下，以便阅读的时候“赏心悦目”；下图左边是<a href="http://greenteapress.com/thinkpython2/html/thinkpython2002.html#sec6" target="_blank" rel="noopener">它原本的显示样式</a>，右边是重新设计过后的显示样式：</p>
 <p><img src="http://lixiaolai.com/images/tp2-comparison.png" alt=""></p>
 <p>这算是“热身运动”，这个热身运动做完之后，你再去读读网上的那些经典教程，就会发现，嗯，还真的不是很难……</p>
 <p>在这个过程中，很多的命令，你完全不知道怎么回事儿 —— 这并不重要，你就照做就好（而且刚刚说过，还要照做很多很多遍）。甚至，在这篇教程里，你要用的编辑器不是之前你费劲熟悉过的 Atom，而是 Sublimetext，这即意味着说，你可能还要事先把玩一下这个新的编辑器。再比如，你可能中间要用到“正则表达式”（事实上，你都不知道那些表达式在哪里），所以，在 Find/Replace 的过程中，也许会因为你并没有按下那个小按钮而得不到正确的结果……</p>
@@ -322,7 +317,7 @@
 <hr>
 <p>具体的实操过程我放在 github 上了：</p>
 <blockquote>
-<p><a href="https://github.com/xiaolai/git-basics-tutorial" target="_blank" rel="external">https://github.com/xiaolai/git-basics-tutorial</a></p>
+<p><a href="https://github.com/xiaolai/git-basics-tutorial" target="_blank" rel="noopener">https://github.com/xiaolai/git-basics-tutorial</a></p>
 </blockquote>
 <p>你反复折腾若干遍之后，可以直接读这个教程了：</p>
 <blockquote>
@@ -438,7 +433,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -509,7 +504,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -84,34 +84,17 @@
 
 
 
-<meta name="description" content="作者：Ivan Kuznetsov
-中文翻译：李笑来
-原文链接：https://jeiwan.cc/posts/building-blockchain-in-go-part-1/
-
-
-
-第一部分：基础原型简介区块链是二十一世纪最具革命性的技术之一，它正在不断成熟，它的诸多潜力正在逐步实现中。本质上来看，区块链只不过是一个分布式的数据库。之所以区块链独特，是因为它并不是一个私有数据库，而是一个公">
+<meta name="description" content="作者：Ivan Kuznetsov 中文翻译：李笑来 原文链接：https://jeiwan.cc/posts/building-blockchain-in-go-part-1/    第一部分：基础原型简介区块链是二十一世纪最具革命性的技术之一，它正在不断成熟，它的诸多潜力正在逐步实现中。本质上来看，区块链只不过是一个分布式的数据库。之所以区块链独特，是因为它并不是一个私有数据库，而是一个公">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Go 语言打造区块链（一）">
 <meta property="og:url" content="http://lixiaolai.com/2017/09/28/building-blockchain-in-go-part-1/index.html">
 <meta property="og:site_name" content="{am}xiaolai">
-<meta property="og:description" content="作者：Ivan Kuznetsov
-中文翻译：李笑来
-原文链接：https://jeiwan.cc/posts/building-blockchain-in-go-part-1/
-
-
-
-第一部分：基础原型简介区块链是二十一世纪最具革命性的技术之一，它正在不断成熟，它的诸多潜力正在逐步实现中。本质上来看，区块链只不过是一个分布式的数据库。之所以区块链独特，是因为它并不是一个私有数据库，而是一个公">
+<meta property="og:description" content="作者：Ivan Kuznetsov 中文翻译：李笑来 原文链接：https://jeiwan.cc/posts/building-blockchain-in-go-part-1/    第一部分：基础原型简介区块链是二十一世纪最具革命性的技术之一，它正在不断成熟，它的诸多潜力正在逐步实现中。本质上来看，区块链只不过是一个分布式的数据库。之所以区块链独特，是因为它并不是一个私有数据库，而是一个公">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-28T09:03:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Go 语言打造区块链（一）">
-<meta name="twitter:description" content="作者：Ivan Kuznetsov
-中文翻译：李笑来
-原文链接：https://jeiwan.cc/posts/building-blockchain-in-go-part-1/
-
-
-
-第一部分：基础原型简介区块链是二十一世纪最具革命性的技术之一，它正在不断成熟，它的诸多潜力正在逐步实现中。本质上来看，区块链只不过是一个分布式的数据库。之所以区块链独特，是因为它并不是一个私有数据库，而是一个公">
+<meta name="twitter:description" content="作者：Ivan Kuznetsov 中文翻译：李笑来 原文链接：https://jeiwan.cc/posts/building-blockchain-in-go-part-1/    第一部分：基础原型简介区块链是二十一世纪最具革命性的技术之一，它正在不断成熟，它的诸多潜力正在逐步实现中。本质上来看，区块链只不过是一个分布式的数据库。之所以区块链独特，是因为它并不是一个私有数据库，而是一个公">
 
 
 
@@ -300,36 +283,36 @@
 <ul>
 <li>作者：Ivan Kuznetsov</li>
 <li>中文翻译：李笑来</li>
-<li>原文链接：<a href="https://jeiwan.cc/posts/building-blockchain-in-go-part-1/" target="_blank" rel="external">https://jeiwan.cc/posts/building-blockchain-in-go-part-1/</a></li>
+<li>原文链接：<a href="https://jeiwan.cc/posts/building-blockchain-in-go-part-1/" target="_blank" rel="noopener">https://jeiwan.cc/posts/building-blockchain-in-go-part-1/</a></li>
 </ul>
 </blockquote>
 <hr>
 <h1 id="第一部分：基础原型"><a href="#第一部分：基础原型" class="headerlink" title="第一部分：基础原型"></a>第一部分：基础原型</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>区块链是二十一世纪最具革命性的技术之一，它正在不断成熟，它的诸多潜力正在逐步实现中。本质上来看，区块链只不过是一个分布式的数据库。之所以区块链独特，是因为它并不是一个私有数据库，而是一个公开的数据库，即，每一个使用它的人拥有这个数据库的全部或者至少一部分。任何一个新的数据记录，只能在多数数据库持有者（维护者）的多数同意之后被加入数据库。正因如此，区块链使得加密货币以及智能合约成为可能。</p>
 <p>在这个系列文章中，我们将打造一个简化版本的加密货币，它将基于一个简化版本的区块链实现。</p>
 <h2 id="区块（Block）"><a href="#区块（Block）" class="headerlink" title="区块（Block）"></a>区块（Block）</h2><p>让我们先从区块开始。在区块链里，价值信息存储在区块之中。比如，比特币的区块存储交易记录，而交易记录是任何加密货币的核心。除此之外，区块里还包含有技术信息，比如它的版本号，当前的时间戳，以及上一个区块的哈希（Hash）。</p>
-<p>在这篇文章中，我们所实现的并不是像比特币那样完整的区块链，而是一个简化版本的区块链，它只含有最基本的核心信息。差不多是这样：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Block <span class="keyword">struct</span> &#123;</div><div class="line">  Timestamp   <span class="keyword">int64</span></div><div class="line">  Data      []<span class="keyword">byte</span></div><div class="line">  PrevBlockHash []<span class="keyword">byte</span></div><div class="line">  Hash      []<span class="keyword">byte</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在这篇文章中，我们所实现的并不是像比特币那样完整的区块链，而是一个简化版本的区块链，它只含有最基本的核心信息。差不多是这样：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Block <span class="keyword">struct</span> &#123;</span><br><span class="line">  Timestamp   <span class="keyword">int64</span></span><br><span class="line">  Data      []<span class="keyword">byte</span></span><br><span class="line">  PrevBlockHash []<span class="keyword">byte</span></span><br><span class="line">  Hash      []<span class="keyword">byte</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>在这里，<code>Timestamp</code>是当前的时间戳（即，区块被创建的时间），<code>Data</code>是区块中包含的价值信息，<code>PrevBlockHash</code> 存储的是上一个区块的哈希，而<code>Hash</code> 保存的是当前区块的哈希。在比特币的标配中，<code>Timestamp</code>、<code>PrevBlockHash</code>、<code>Hash</code>是区块的头部数据（Block headers），构成一个单独的数据结构；而交易记录（<code>Transactions</code>，在我们这个版本中就是 <code>Data</code>），是另外一个单独的数据结构。而我们在这里为了简化，把数据结构混在了一起。</p>
 <p>那我们如何计算哈希呢？计算哈希的方式是区块链的重要特征之一，也正是这个特性使得区块链如此安全。关键在于，计算哈希是一个计算起来很困难的工作，它需要时间，哪怕是在很快的计算机上（这就是为什么人们要买比 CPU 计算能力更强悍 GPU 甚至专门的 ASIC 芯片做矿机的 原因）。这是故意如此设计的，这么做的结果是，往区块链（数据库）里添加新的区块（数据）有一定的困难，以此保证一旦新的数据被加入，往后很难篡改。以后的文章里会进一步讨论并实现这个机制。</p>
 <p>现在呢，我们只需要罢区块里的各个字段关联起来，并在此基础上计算出一个 SHA-256 哈希。让我们调用一下 <code>SetHash</code>这个方法：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Block)</span> <span class="title">SetHash</span><span class="params">()</span></span> &#123;</div><div class="line">  timestamp := []<span class="keyword">byte</span>(strconv.FormatInt(b.Timestamp, <span class="number">10</span>))</div><div class="line">  headers := bytes.Join([][]<span class="keyword">byte</span>&#123;b.PrevBlockHash, b.Data, timestamp&#125;, []<span class="keyword">byte</span>&#123;&#125;)</div><div class="line">  hash := sha256.Sum256(headers)</div><div class="line"></div><div class="line">  b.Hash = hash[:]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Block)</span> <span class="title">SetHash</span><span class="params">()</span></span> &#123;</span><br><span class="line">  timestamp := []<span class="keyword">byte</span>(strconv.FormatInt(b.Timestamp, <span class="number">10</span>))</span><br><span class="line">  headers := bytes.Join([][]<span class="keyword">byte</span>&#123;b.PrevBlockHash, b.Data, timestamp&#125;, []<span class="keyword">byte</span>&#123;&#125;)</span><br><span class="line">  hash := sha256.Sum256(headers)</span><br><span class="line"></span><br><span class="line">  b.Hash = hash[:]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>接下来，依据 Golang 的常用方式，我们将实现一个函数，以便更简单地创建区块：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewBlock</span><span class="params">(data <span class="keyword">string</span>, prevBlockHash []<span class="keyword">byte</span>)</span> *<span class="title">Block</span></span> &#123;</div><div class="line">  block := &amp;Block&#123;time.Now().Unix(), []<span class="keyword">byte</span>(data), prevBlockHash, []<span class="keyword">byte</span>&#123;&#125;&#125;</div><div class="line">  block.SetHash()</div><div class="line">  <span class="keyword">return</span> block</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewBlock</span><span class="params">(data <span class="keyword">string</span>, prevBlockHash []<span class="keyword">byte</span>)</span> *<span class="title">Block</span></span> &#123;</span><br><span class="line">  block := &amp;Block&#123;time.Now().Unix(), []<span class="keyword">byte</span>(data), prevBlockHash, []<span class="keyword">byte</span>&#123;&#125;&#125;</span><br><span class="line">  block.SetHash()</span><br><span class="line">  <span class="keyword">return</span> block</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>就这么简单。</p>
 <h2 id="区块链（Blockchain）"><a href="#区块链（Blockchain）" class="headerlink" title="区块链（Blockchain）"></a>区块链（Blockchain）</h2><p>现在，让我们来实现区块链。本质上来看，区块链只不过是一个特定结构的数据库，它是一个有序的，反向链接的列表（back-linked list）。这就意味着说，区块是按照插入的顺序排列的，每个区块都链接到上一个区块。这样的结构，使得使用者可以很快地在区块链中获得最新的区块，也可以很有效率地通过区块的哈希获得某个区块。</p>
 <p>在 Golang 中，这种结构可以用数组（Array）与数图（Map） 实现：数组用来维护有序哈希（在 Go 语言中，数组是有序的）；数图（Map） 用来维护 <code>hash → block</code> 对。不过，在我们的区块链原型中，我们只需要数组就可以了，因为我们暂时不需要通过哈希获取区块。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Blockchain <span class="keyword">struct</span> &#123;</div><div class="line">  blocks []*Block</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Blockchain <span class="keyword">struct</span> &#123;</span><br><span class="line">  blocks []*Block</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这就是我们的第一个区块链！我从来没想到竟然会这么简单！</p>
 <p>现在，我们要想办法往区块链里添加区块了：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(bc *Blockchain)</span> <span class="title">AddBlock</span><span class="params">(data <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">  prevBlock := bc.blocks[<span class="built_in">len</span>(bc.blocks)<span class="number">-1</span>]</div><div class="line">  newBlock := NewBlock(data, prevBlock.Hash)</div><div class="line">  bc.blocks = <span class="built_in">append</span>(bc.blocks, newBlock)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(bc *Blockchain)</span> <span class="title">AddBlock</span><span class="params">(data <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">  prevBlock := bc.blocks[<span class="built_in">len</span>(bc.blocks)<span class="number">-1</span>]</span><br><span class="line">  newBlock := NewBlock(data, prevBlock.Hash)</span><br><span class="line">  bc.blocks = <span class="built_in">append</span>(bc.blocks, newBlock)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这就完事儿了？或者……？</p>
 <p>为了添加新的区块，我们需要一个已经存在的区块，可现在我们的区块链里面没有任何区块！于是，在任何区块链中，应该至少有一个区块，这第一个区块，被称为“创始块”（Genesis Block）。来，让我们实现一个方法去创建这个“创始块”：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewGenesisBlock</span><span class="params">()</span> *<span class="title">Block</span></span> &#123;</div><div class="line">  <span class="keyword">return</span> NewBlock(<span class="string">"Genesis Block"</span>, []<span class="keyword">byte</span>&#123;&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewGenesisBlock</span><span class="params">()</span> *<span class="title">Block</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> NewBlock(<span class="string">"Genesis Block"</span>, []<span class="keyword">byte</span>&#123;&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>现在我们就可以创建一个函数，用来创建一个已含有“创始块”的区块链了：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewBlockchain</span><span class="params">()</span> *<span class="title">Blockchain</span></span> &#123;</div><div class="line">  <span class="keyword">return</span> &amp;Blockchain&#123;[]*Block&#123;NewGenesisBlock()&#125;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewBlockchain</span><span class="params">()</span> *<span class="title">Blockchain</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &amp;Blockchain&#123;[]*Block&#123;NewGenesisBlock()&#125;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>让我们来看看这区块链是否能用？</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">  bc := NewBlockchain()</div><div class="line"></div><div class="line">  bc.AddBlock(<span class="string">"Send 1 BTC to Ivan"</span>)</div><div class="line">  bc.AddBlock(<span class="string">"Send 2 more BTC to Ivan"</span>)</div><div class="line"></div><div class="line">  <span class="keyword">for</span> _, block := <span class="keyword">range</span> bc.blocks &#123;</div><div class="line">    fmt.Printf(<span class="string">"Prev. hash: %x\n"</span>, block.PrevBlockHash)</div><div class="line">    fmt.Printf(<span class="string">"Data: %s\n"</span>, block.Data)</div><div class="line">    fmt.Printf(<span class="string">"Hash: %x\n"</span>, block.Hash)</div><div class="line">    fmt.Println()</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  bc := NewBlockchain()</span><br><span class="line"></span><br><span class="line">  bc.AddBlock(<span class="string">"Send 1 BTC to Ivan"</span>)</span><br><span class="line">  bc.AddBlock(<span class="string">"Send 2 more BTC to Ivan"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> _, block := <span class="keyword">range</span> bc.blocks &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"Prev. hash: %x\n"</span>, block.PrevBlockHash)</span><br><span class="line">    fmt.Printf(<span class="string">"Data: %s\n"</span>, block.Data)</span><br><span class="line">    fmt.Printf(<span class="string">"Hash: %x\n"</span>, block.Hash)</span><br><span class="line">    fmt.Println()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出结果是：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Prev. hash:</div><div class="line">Data: Genesis Block</div><div class="line">Hash: aff955a50dc6cd2abfe81b8849eab15f99ed1dc333d38487024223b5fe0f1168</div><div class="line"></div><div class="line">Prev. hash: aff955a50dc6cd2abfe81b8849eab15f99ed1dc333d38487024223b5fe0f1168</div><div class="line">Data: Send <span class="number">1</span> BTC to Ivan</div><div class="line">Hash: d75ce22a840abb9b4e8fc3b60767c4ba3f46a0432d3ea15b71aef9fde6a314e1</div><div class="line"></div><div class="line">Prev. hash: d75ce22a840abb9b4e8fc3b60767c4ba3f46a0432d3ea15b71aef9fde6a314e1</div><div class="line">Data: Send <span class="number">2</span> more BTC to Ivan</div><div class="line">Hash: <span class="number">561237522</span>bb7fcfbccbc6fe0e98bbbde7427ffe01c6fb223f7562288ca2295d1</div></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Prev. hash:</span><br><span class="line">Data: Genesis Block</span><br><span class="line">Hash: aff955a50dc6cd2abfe81b8849eab15f99ed1dc333d38487024223b5fe0f1168</span><br><span class="line"></span><br><span class="line">Prev. hash: aff955a50dc6cd2abfe81b8849eab15f99ed1dc333d38487024223b5fe0f1168</span><br><span class="line">Data: Send <span class="number">1</span> BTC to Ivan</span><br><span class="line">Hash: d75ce22a840abb9b4e8fc3b60767c4ba3f46a0432d3ea15b71aef9fde6a314e1</span><br><span class="line"></span><br><span class="line">Prev. hash: d75ce22a840abb9b4e8fc3b60767c4ba3f46a0432d3ea15b71aef9fde6a314e1</span><br><span class="line">Data: Send <span class="number">2</span> more BTC to Ivan</span><br><span class="line">Hash: <span class="number">561237522</span>bb7fcfbccbc6fe0e98bbbde7427ffe01c6fb223f7562288ca2295d1</span><br></pre></td></tr></table></figure>
 <p>（竟然）完工！</p>
 <h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>我们创建了一个极简的区块链原型：它只不过是一个由区块构成的数组，每个区快链接指向上一个区块。当然，真正的区块链远比这个复杂的多。在我们的区块链里，添加一个新区块非常快，非常容易；但是在真正的区块链中添加一个新的区块需要更多的工作：在获得添加区块的允许之前要做很繁重的计算才行（这个过程被称为工“作证明机制”，即，“Proof-of-Work”，POW）。并且，区块链是一个没有主权的分布式的数据库。因此，任何一个新的区块在被加入之前，必须经过网络中其它参与者的确认与允许（这个机制被称为“共识机制”，“Consensus”）…… 还有，我们的区块链里，还没有任何交易记录呢！</p>
 <p>未来的文章里，我们将进一步实现这些特性。</p>
@@ -337,8 +320,8 @@
 <p>链接：</p>
 <blockquote>
 <ol>
-<li>Full source codes: <a href="https://github.com/Jeiwan/blockchain_go/tree/part_1" target="_blank" rel="external">https://github.com/Jeiwan/blockchain_go/tree/part_1</a> </li>
-<li>Block hashing algorithm: <a href="https://en.bitcoin.it/wiki/Block_hashing_algorithm" target="_blank" rel="external">https://en.bitcoin.it/wiki/Block_hashing_algorithm</a></li>
+<li>Full source codes: <a href="https://github.com/Jeiwan/blockchain_go/tree/part_1" target="_blank" rel="noopener">https://github.com/Jeiwan/blockchain_go/tree/part_1</a> </li>
+<li>Block hashing algorithm: <a href="https://en.bitcoin.it/wiki/Block_hashing_algorithm" target="_blank" rel="noopener">https://en.bitcoin.it/wiki/Block_hashing_algorithm</a></li>
 </ol>
 </blockquote>
 
@@ -372,6 +355,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/05/when-life-turns-out-to-be-what-wasnt-expected/" rel="prev" title="当生活变成你并没想过要的……">
+                当生活变成你并没想过要的…… <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -446,7 +433,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -517,7 +504,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

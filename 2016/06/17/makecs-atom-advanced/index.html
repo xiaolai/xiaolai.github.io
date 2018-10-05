@@ -84,58 +84,17 @@
 
 
 
-<meta name="description" content="1. 两个共同的目标以下的内容，假定你已经读完 Atom 官方教程 Atom Flight Manual 的第一章：
-
-
-Chapter 1: Getting Started
-
-
-否则不要看下去了，回去先把那一章读完再说……
-工程师们使用的编辑器，有两个最基本的设计目标：
-
-
-尽量少敲键盘、少出错、多做事
-一定要可扩展、可定制、可积累
-
-
-Mac 上的编辑器，工程师们最喜欢用的曾经是 TextMa">
+<meta name="description" content="1. 两个共同的目标以下的内容，假定你已经读完 Atom 官方教程 Atom Flight Manual 的第一章：   Chapter 1: Getting Started   否则不要看下去了，回去先把那一章读完再说…… 工程师们使用的编辑器，有两个最基本的设计目标：   尽量少敲键盘、少出错、多做事 一定要可扩展、可定制、可积累   Mac 上的编辑器，工程师们最喜欢用的曾经是 TextMa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Atom 编辑器进阶">
 <meta property="og:url" content="http://lixiaolai.com/2016/06/17/makecs-atom-advanced/index.html">
 <meta property="og:site_name" content="{am}xiaolai">
-<meta property="og:description" content="1. 两个共同的目标以下的内容，假定你已经读完 Atom 官方教程 Atom Flight Manual 的第一章：
-
-
-Chapter 1: Getting Started
-
-
-否则不要看下去了，回去先把那一章读完再说……
-工程师们使用的编辑器，有两个最基本的设计目标：
-
-
-尽量少敲键盘、少出错、多做事
-一定要可扩展、可定制、可积累
-
-
-Mac 上的编辑器，工程师们最喜欢用的曾经是 TextMa">
+<meta property="og:description" content="1. 两个共同的目标以下的内容，假定你已经读完 Atom 官方教程 Atom Flight Manual 的第一章：   Chapter 1: Getting Started   否则不要看下去了，回去先把那一章读完再说…… 工程师们使用的编辑器，有两个最基本的设计目标：   尽量少敲键盘、少出错、多做事 一定要可扩展、可定制、可积累   Mac 上的编辑器，工程师们最喜欢用的曾经是 TextMa">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-03-02T13:56:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Atom 编辑器进阶">
-<meta name="twitter:description" content="1. 两个共同的目标以下的内容，假定你已经读完 Atom 官方教程 Atom Flight Manual 的第一章：
-
-
-Chapter 1: Getting Started
-
-
-否则不要看下去了，回去先把那一章读完再说……
-工程师们使用的编辑器，有两个最基本的设计目标：
-
-
-尽量少敲键盘、少出错、多做事
-一定要可扩展、可定制、可积累
-
-
-Mac 上的编辑器，工程师们最喜欢用的曾经是 TextMa">
+<meta name="twitter:description" content="1. 两个共同的目标以下的内容，假定你已经读完 Atom 官方教程 Atom Flight Manual 的第一章：   Chapter 1: Getting Started   否则不要看下去了，回去先把那一章读完再说…… 工程师们使用的编辑器，有两个最基本的设计目标：   尽量少敲键盘、少出错、多做事 一定要可扩展、可定制、可积累   Mac 上的编辑器，工程师们最喜欢用的曾经是 TextMa">
 
 
 
@@ -320,7 +279,7 @@ Mac 上的编辑器，工程师们最喜欢用的曾经是 TextMa">
       
 
       
-        <h2 id="1-两个共同的目标"><a href="#1-两个共同的目标" class="headerlink" title="1. 两个共同的目标"></a>1. 两个共同的目标</h2><p>以下的内容，假定你已经读完 Atom 官方教程 <a href="http://flight-manual.atom.io/" target="_blank" rel="external">Atom Flight Manual</a> 的第一章：</p>
+        <h2 id="1-两个共同的目标"><a href="#1-两个共同的目标" class="headerlink" title="1. 两个共同的目标"></a>1. 两个共同的目标</h2><p>以下的内容，假定你已经读完 Atom 官方教程 <a href="http://flight-manual.atom.io/" target="_blank" rel="noopener">Atom Flight Manual</a> 的第一章：</p>
 <blockquote>
 <ul>
 <li>Chapter 1: Getting Started</li>
@@ -338,9 +297,9 @@ Mac 上的编辑器，工程师们最喜欢用的曾经是 TextMa">
 <p>新手在 Atom 里敲键盘的时候，可能会“惊讶”地发现，括号、引号等等，都是成对出现的…… 比如，你按一下单引号，‘，实际出现的是一对单引号，而光标则闪烁在两个引号之间： <code>&#39;|&#39;</code> …… 圆括号、方括号、尖括号、大括号，等等，也都是这样的 —— 这就是工程师们不断给自己提高效率的一种方式，他们会想尽一切办法让自己可以少敲键盘、少出错，当然，为的是做更多的事。</p>
 <p>现在问题来了，按一下引号 ‘，出来的是两个引号，然后光标在中间，于是你就可以在两个引号之间输入了…… 引号之间的内容输入完毕之后，你还得按一下右方向键→，右手移动的距离很大，因为右方向键在最右下角…… 很烦人是吧？</p>
 <p>在 Atom 编辑器中，用 <code>⇧⌘P</code> 呼出 <code>Command Palette</code>，在里面输入 <code>init script</code>，由于这个输入框里使用的是 <code>Fuzy matching</code>, 你输入到 <code>s</code> 的时候，估计 <code>Application: Open Your Init Script</code> 已经排在第一位了，当它是第一位的时候，直接回车键 <code>⏎</code> 就可以了…… 在 <code>init script</code> 文件里拷贝粘贴以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># move cursor across the ending symbols...</div><div class="line">EndingSymbolRegex = /\s*[)&#125;&gt;\]/&apos;&quot;;:=-]/</div><div class="line">atom.commands.add &apos;atom-text-editor&apos;, &apos;custom:jump-over-symbol&apos;: (event) -&gt;</div><div class="line">  editor = atom.workspace.getActiveTextEditor()</div><div class="line">  cursorMoved = false</div><div class="line">  for cursor in editor.getCursors()</div><div class="line">    range = cursor.getCurrentWordBufferRange(wordRegex: EndingSymbolRegex)</div><div class="line">    unless range.isEmpty()</div><div class="line">      cursor.setBufferPosition(range.end)</div><div class="line">      cursorMoved = true</div><div class="line">  event.abortKeyBinding() unless cursorMoved</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># move cursor across the ending symbols...</span><br><span class="line">EndingSymbolRegex = /\s*[)&#125;&gt;\]/&apos;&quot;;:=-]/</span><br><span class="line">atom.commands.add &apos;atom-text-editor&apos;, &apos;custom:jump-over-symbol&apos;: (event) -&gt;</span><br><span class="line">  editor = atom.workspace.getActiveTextEditor()</span><br><span class="line">  cursorMoved = false</span><br><span class="line">  for cursor in editor.getCursors()</span><br><span class="line">    range = cursor.getCurrentWordBufferRange(wordRegex: EndingSymbolRegex)</span><br><span class="line">    unless range.isEmpty()</span><br><span class="line">      cursor.setBufferPosition(range.end)</span><br><span class="line">      cursorMoved = true</span><br><span class="line">  event.abortKeyBinding() unless cursorMoved</span><br></pre></td></tr></table></figure>
 <p>然后用 <code>⇧⌘P</code> 呼出 <code>Command Palette</code>，在里面输入 <code>keymap</code>，你应该能看到 <code>Application: Open Your keymap</code> 已经排在第一位了，当它是第一位的时候，直接回车键 <code>⏎</code>…… 在 Keymap 文件里拷贝粘贴以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&quot;atom-text-editor:not([mini])&quot;:</div><div class="line">  &quot;enter&quot;: &quot;custom:jump-over-symbol&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;atom-text-editor:not([mini])&quot;:</span><br><span class="line">  &quot;enter&quot;: &quot;custom:jump-over-symbol&quot;</span><br></pre></td></tr></table></figure>
 <p>其中这个 <code>enter</code>，你可以换成你自己喜欢的、习惯的，比如 <code>tab</code>，或者 <code>shift-enter</code>。</p>
 <p>现在，用 <code>⇧⌘P</code> 呼出 <code>Command Palette</code>，在里面输入 <code>reload</code>，你应该能看到 <code>Window: Reload</code> 已经排在第一位了，当它是第一位的时候，直接回车键 <code>⏎</code> 就可以了…… 你也能看到这个命令其实有个快捷键： <code>⌃⌥⌘L</code>，但 <code>Command Palette</code> 太好用了，以后你就知道了，记忆过多的快捷键实在是负担，虽然一些基础快捷键（比如命令行工具里的一系列与 <code>control</code> 键 <code>⌃</code> 组合的快捷键）必须通过大量使用变成脊髓记忆……</p>
 <p><code>Window: Reload</code> 完成之后，你刚刚设定的快捷键就生效了。</p>
@@ -363,21 +322,21 @@ Mac 上的编辑器，工程师们最喜欢用的曾经是 TextMa">
 <blockquote>
 <p>只关注最重要的定制，不要在无关紧要的细节上浪费生命。</p>
 </blockquote>
-<p>最重要的定制，是接下来要讲的 Snippets，无关紧要的细节指的是皮肤啊、配色啊之类的东西 —— 这种无关紧要的东西，快速做出选择，而后就再也不碰了，比如，Theme 我直个人就接选了一个 <a href="https://atom.io/themes/spacegray-dark-neue-ui" target="_blank" rel="external">spacegray-dark-neue-ui</a>，而 Syntax Highlight Color，我也选了同门的 <a href="https://atom.io/themes/spacegray-dark-neue-syntax" target="_blank" rel="external">spacegray-dark-neue-syntax</a>，就完事儿了，在这上面多一秒时间都不要浪费……</p>
+<p>最重要的定制，是接下来要讲的 Snippets，无关紧要的细节指的是皮肤啊、配色啊之类的东西 —— 这种无关紧要的东西，快速做出选择，而后就再也不碰了，比如，Theme 我直个人就接选了一个 <a href="https://atom.io/themes/spacegray-dark-neue-ui" target="_blank" rel="noopener">spacegray-dark-neue-ui</a>，而 Syntax Highlight Color，我也选了同门的 <a href="https://atom.io/themes/spacegray-dark-neue-syntax" target="_blank" rel="noopener">spacegray-dark-neue-syntax</a>，就完事儿了，在这上面多一秒时间都不要浪费……</p>
 <h2 id="2-Atom-Snippets"><a href="#2-Atom-Snippets" class="headerlink" title="2. Atom Snippets"></a>2. Atom Snippets</h2><p>先创建一个尾缀为 <code>.html</code> 的新文件，比如名称为 <code>test.html</code>，随便保存在那里，比如保存在桌面上（以便一会儿想删除的时候可以很快找到哈）…… 尾缀很重要，不要搞错。</p>
 <p>然后在这个文件里按顺序敲以下键盘，其中最后一个 <code>⇥</code> 是神奇的 <code>TAB</code> 键：</p>
 <blockquote>
 <p>html⇥</p>
 </blockquote>
 <p>在按 <code>⇥</code> 之前，你可以看到一个列表，先别管它，直接按 <code>⇥</code> …… 你会看到编辑器里突然多了一大堆东西：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">    &lt;title&gt;|&lt;/title&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line"></div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;|&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>随便再输入点什么，比如，test html title，而后再按一下 ⇥，光标就挪到 <code>&lt;body&gt;</code> 之后、<code>&lt;/body&gt;</code> 之前了。</p>
 <p>能这么做，归功于 Atom 内建了 Html Language 的插件，其中设定了所有 HTML5 的标签“自动展开代码”（即，Snippets），该插件的项目代码托管在 Github 上：</p>
 <blockquote>
-<p><a href="https://github.com/atom/language-html" target="_blank" rel="external">https://github.com/atom/language-html</a></p>
+<p><a href="https://github.com/atom/language-html" target="_blank" rel="noopener">https://github.com/atom/language-html</a></p>
 </blockquote>
-<p>上面提到的这个 Snippets，<a href="https://github.com/atom/language-html/blob/master/snippets/language-html.cson" target="_blank" rel="external">代码</a>如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&apos;HTML&apos;:</div><div class="line">    &apos;prefix&apos;: &apos;html&apos;</div><div class="line">    &apos;body&apos;: &apos;&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n\t&lt;head&gt;\n\t\t&lt;meta charset=&quot;utf-8&quot;&gt;\n\t\t&lt;title&gt;$1&lt;/title&gt;\n\t&lt;/head&gt;\n\t&lt;body&gt;\n\t\t$2\n\t&lt;/body&gt;\n&lt;/html&gt;&apos;</div></pre></td></tr></table></figure>
+<p>上面提到的这个 Snippets，<a href="https://github.com/atom/language-html/blob/master/snippets/language-html.cson" target="_blank" rel="noopener">代码</a>如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&apos;HTML&apos;:</span><br><span class="line">    &apos;prefix&apos;: &apos;html&apos;</span><br><span class="line">    &apos;body&apos;: &apos;&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n\t&lt;head&gt;\n\t\t&lt;meta charset=&quot;utf-8&quot;&gt;\n\t\t&lt;title&gt;$1&lt;/title&gt;\n\t&lt;/head&gt;\n\t&lt;body&gt;\n\t\t$2\n\t&lt;/body&gt;\n&lt;/html&gt;&apos;</span><br></pre></td></tr></table></figure>
 <p>你可以大概理解一下，其中：</p>
 <blockquote>
 <ul>
@@ -389,16 +348,18 @@ Mac 上的编辑器，工程师们最喜欢用的曾经是 TextMa">
 </blockquote>
 <p>你看，工程师们想了多少办法让自己少敲多少键盘…… 他们做事、干活，累的不是手啊，用的是脑！有脑子不用就等于没有脑子…… 不是吗？</p>
 <p>在 Atom 编辑器中，用 ⇧⌘P 呼出 Command Palette，在里面输入 Open Your Snippets，你会看到里面有这样一段被注释掉（即，不被执行）的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"># Your snippets</div><div class="line">#</div><div class="line"># Atom snippets allow you to enter a simple prefix in the editor and hit tab to</div><div class="line"># expand the prefix into a larger code block with templated values.</div><div class="line">#</div><div class="line"># You can create a new snippet in this file by typing &quot;snip&quot; and then hitting</div><div class="line"># tab.</div><div class="line">#</div><div class="line"># An example CoffeeScript snippet to expand log to console.log:</div><div class="line">#</div><div class="line"># &apos;.source.coffee&apos;:</div><div class="line">#   &apos;Console log&apos;:</div><div class="line">#     &apos;prefix&apos;: &apos;log&apos;</div><div class="line">#     &apos;body&apos;: &apos;console.log $1&apos;</div><div class="line">#</div><div class="line"># Each scope (e.g. &apos;.source.coffee&apos; above) can only be declared once.</div><div class="line">#</div><div class="line"># This file uses CoffeeScript Object Notation (CSON).</div><div class="line"># If you are unfamiliar with CSON, you can read more about it in the</div><div class="line"># Atom Flight Manual:</div><div class="line"># https://atom.io/docs/latest/using-atom-basic-customization#cson</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># Your snippets</span><br><span class="line">#</span><br><span class="line"># Atom snippets allow you to enter a simple prefix in the editor and hit tab to</span><br><span class="line"># expand the prefix into a larger code block with templated values.</span><br><span class="line">#</span><br><span class="line"># You can create a new snippet in this file by typing &quot;snip&quot; and then hitting</span><br><span class="line"># tab.</span><br><span class="line">#</span><br><span class="line"># An example CoffeeScript snippet to expand log to console.log:</span><br><span class="line">#</span><br><span class="line"># &apos;.source.coffee&apos;:</span><br><span class="line">#   &apos;Console log&apos;:</span><br><span class="line">#     &apos;prefix&apos;: &apos;log&apos;</span><br><span class="line">#     &apos;body&apos;: &apos;console.log $1&apos;</span><br><span class="line">#</span><br><span class="line"># Each scope (e.g. &apos;.source.coffee&apos; above) can only be declared once.</span><br><span class="line">#</span><br><span class="line"># This file uses CoffeeScript Object Notation (CSON).</span><br><span class="line"># If you are unfamiliar with CSON, you can read more about it in the</span><br><span class="line"># Atom Flight Manual:</span><br><span class="line"># https://atom.io/docs/latest/using-atom-basic-customization#cson</span><br></pre></td></tr></table></figure>
 <p>以后你就可以把自己写的 Snippets 放在这里（当然以后还有更高级的方法）……</p>
 <p>在 Comman Palette 里，输入 <code>Available</code>，可以找到 <code>Snippets: Available</code>，不妨逐个玩一玩…… 给自己定个 Timer，玩上半小时之后一定要停下来。</p>
-<p>现在可以回去再仔细看看 Atom 官方教程 <a href="http://flight-manual.atom.io/" target="_blank" rel="external">Atom Flight Manual</a> 的第二章了，尤其是 <a href="http://flight-manual.atom.io/using-atom/sections/snippets/" target="_blank" rel="external">Snippets 那一节</a>。</p>
+<p>现在可以回去再仔细看看 Atom 官方教程 <a href="http://flight-manual.atom.io/" target="_blank" rel="noopener">Atom Flight Manual</a> 的第二章了，尤其是 <a href="http://flight-manual.atom.io/using-atom/sections/snippets/" target="_blank" rel="noopener">Snippets 那一节</a>。</p>
 <p>读完之后再回来。</p>
 <p>Atom 的 Snippets 有个概念，叫 <code>Scope</code>，也就是说，根据文件类型确定究竟有哪些“自动展开”可以使用的。所以，你若是在一个 .md 的文件里敲击 html⇥，就不可能被展开成上面那个例子那样。</p>
 <p>写 Snippets 的时候，如何确定 <code>Scope</code> 呢？请认真阅读这段话：</p>
 <blockquote>
 <p>If it’s difficult to determine the package handling the file type in question (for example, for .md-documents), you can also proceed as following. Put your cursor in a file in which you want the snippet to be available, open the Command Palette (cmd+shift+p), and run the Editor: Log Cursor Scope command. This will trigger a notification which will contain a list of scopes. The first scope that’s listed is the scope for that language. Here are some examples: source.coffee, text.plain, text.html.basic.</p>
-<p>摘自于：<a href="https://atom.io/packages/snippets" target="_blank" rel="external">https://atom.io/packages/snippets</a></p>
+</blockquote>
+<blockquote>
+<p>摘自于：<a href="https://atom.io/packages/snippets" target="_blank" rel="noopener">https://atom.io/packages/snippets</a></p>
 </blockquote>
 <p>你现在看不懂无所谓，大致留个印象就好，反正以后都是通过反复用，反复研究产生真正理解的。</p>
 <p>这里有个重要的建议：</p>
@@ -407,16 +368,19 @@ Mac 上的编辑器，工程师们最喜欢用的曾经是 TextMa">
 </blockquote>
 <p>无论你学什么语言（或者框架），就一定要在学习的过程中不断添加积累自己关于那个语言（或者框架）的 Snippets，这是一个自己给自己“添麻烦”的过程，但这种所谓的“麻烦”，其实是一种刻意训练，不做其实是偷懒，偷懒这东西，真心不划算的。</p>
 <p>我在参考别人写好的 Snippets 的时候，有个习惯，把那些他们定义的“缩写”全部换成自然语言。比如，人家原来写的是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&quot;if/else statement&quot;:</div><div class="line">  prefix: &quot;ies&quot;</div><div class="line">  body: &quot;&quot;&quot;</div><div class="line">  if ($&#123;1:condition&#125;) &#123;</div><div class="line">  \t$&#123;2://statements here&#125;;</div><div class="line">  &#125; else &#123;</div><div class="line">  \t$&#123;3://statements here&#125;;</div><div class="line">  &#125;;$&#123;4&#125;</div><div class="line">  &quot;&quot;&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;if/else statement&quot;:</span><br><span class="line">  prefix: &quot;ies&quot;</span><br><span class="line">  body: &quot;&quot;&quot;</span><br><span class="line">  if ($&#123;1:condition&#125;) &#123;</span><br><span class="line">  \t$&#123;2://statements here&#125;;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">  \t$&#123;3://statements here&#125;;</span><br><span class="line">  &#125;;$&#123;4&#125;</span><br><span class="line">  &quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
 <p>我会改成这样（注意 prefix 那一行）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&quot;if/else statement&quot;:</div><div class="line">  prefix: &quot;if/else statement&quot;</div><div class="line">  body: &quot;&quot;&quot;</div><div class="line">  if ($&#123;1:condition&#125;) &#123;</div><div class="line">  \t$&#123;2://statements here&#125;;</div><div class="line">  &#125; else &#123;</div><div class="line">  \t$&#123;3://statements here&#125;;</div><div class="line">  &#125;;$&#123;4&#125;</div><div class="line">  &quot;&quot;&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;if/else statement&quot;:</span><br><span class="line">  prefix: &quot;if/else statement&quot;</span><br><span class="line">  body: &quot;&quot;&quot;</span><br><span class="line">  if ($&#123;1:condition&#125;) &#123;</span><br><span class="line">  \t$&#123;2://statements here&#125;;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">  \t$&#123;3://statements here&#125;;</span><br><span class="line">  &#125;;$&#123;4&#125;</span><br><span class="line">  &quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
 <p>这是因为我觉得花时间记忆那么多缩写没必要，尽管他们编制的缩写也有一定的规律…… 因为在 Atom 编辑器里，无所不在的有一个叫 Fuzy Matching 的东西（也是工程师们设计好用来提升自己效率的东西）—— 它会不分字母前后顺序地帮你寻找你可能要输入的内容…… 在 <code>Fuzy Matching</code> 无所不在的情况下，缩写的意义其实并不大。</p>
 <p>哪怕是把别人写好的 Snippets 如此修改一下的过程中（其实本质上好像完全没干什么），也有机会读一遍，也有机会留个印象，甚至因为在修改中可能出现错误而不得不反复读了很多遍 —— 那更好，因为那就加深了印象……</p>
 <p>学会了 Snippets 的使用与编写，感觉上已经很工程师了，哈！早晚有一天你会为 Atom 写 Package 的 —— 到时候你就觉得没多难了。</p>
 <h2 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h2><blockquote>
 <ul>
-<li><p>去 Google 这些词组：</p>
-</li>
+<li>去 Google 这些词组：</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
 <li><ul>
 <li>favorite atom packages</li>
 <li>most popular atom packages</li>
@@ -535,7 +499,7 @@ Mac 上的编辑器，工程师们最喜欢用的曾经是 TextMa">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -606,7 +570,7 @@ Mac 上的编辑器，工程师们最喜欢用的曾经是 TextMa">
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
