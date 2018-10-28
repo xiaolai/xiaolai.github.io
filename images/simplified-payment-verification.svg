@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   width="1016.9732"
+   height="401.3046"
+   id="svg11628">
+  <defs
+     id="defs11630">
+    <linearGradient
+       id="linearGradient5358">
+      <stop
+         id="stop5360"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop5370"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.5" />
+      <stop
+         id="stop5362"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5358-7">
+      <stop
+         id="stop5360-5"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop5370-5"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.5" />
+      <stop
+         id="stop5362-8"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5358-5">
+      <stop
+         id="stop5360-6"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop5370-2"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.5" />
+      <stop
+         id="stop5362-6"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5358-7-2">
+      <stop
+         id="stop5360-5-9"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop5370-5-1"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.5" />
+      <stop
+         id="stop5362-8-6"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5358-7-3">
+      <stop
+         id="stop5360-5-5"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop5370-5-0"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.5" />
+      <stop
+         id="stop5362-8-7"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5358-7-3-4">
+      <stop
+         id="stop5360-5-5-1"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop5370-5-0-7"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.5" />
+      <stop
+         id="stop5362-8-7-5"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5358-7-3-4-2">
+      <stop
+         id="stop5360-5-5-1-4"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop5370-5-0-7-7"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.5" />
+      <stop
+         id="stop5362-8-7-5-9"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5358-7-3-7">
+      <stop
+         id="stop5360-5-5-2"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop5370-5-0-6"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.5" />
+      <stop
+         id="stop5362-8-7-55"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="558.55988"
+       y1="112.41524"
+       x2="618.26788"
+       y2="112.41524"
+       id="linearGradient7748-5"
+       xlink:href="#linearGradient5358-7-3-4-2-0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.81346207,0,0,0.10434411,118.31432,542.3863)"
+       spreadMethod="pad" />
+    <linearGradient
+       id="linearGradient5358-7-3-4-2-0">
+      <stop
+         id="stop5360-5-5-1-4-1"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop5370-5-0-7-7-4"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.5" />
+      <stop
+         id="stop5362-8-7-5-9-7"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="558.55988"
+       y1="112.41524"
+       x2="618.26788"
+       y2="112.41524"
+       id="linearGradient7693-3"
+       xlink:href="#linearGradient5358-7-3-7-9"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.65798432,0,0,0.10434411,-453.25052,542.42615)"
+       spreadMethod="pad" />
+    <linearGradient
+       id="linearGradient5358-7-3-7-9">
+      <stop
+         id="stop5360-5-5-2-3"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="0" />
+      <stop
+         id="stop5370-5-0-6-1"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0.5" />
+      <stop
+         id="stop5362-8-7-55-2"
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+  </defs>
+  <metadata
+     id="metadata11633">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(719.05719,-161.35384)"
+     id="layer1">
+    <rect
+       width="1016.9732"
+       height="401.3046"
+       ry="0.90704846"
+       x="-719.05719"
+       y="161.35384"
+       id="rect11224"
+       style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <g
+       transform="matrix(1.6972819,0,0,1.6972819,-774.38575,-702.93306)"
+       id="g9498">
+      <path
+         d="m 531.40427,554.04915 67.2519,0"
+         id="path3814-6-7-1-92-8-8-6-1"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <g
+         transform="translate(183.34269,46.467014)"
+         id="g9005-3">
+        <rect
+           width="131.30583"
+           height="71.201752"
+           ry="0.090644322"
+           x="247.24182"
+           y="477.08313"
+           id="rect7686-3-2-0"
+           style="color:#000000;fill:#dfedff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.01399815;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           x="280.56985"
+           y="489.17764"
+           id="text7688-2-5-1"
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+             x="280.56985"
+             y="489.17764"
+             id="tspan7690-6-2-8"
+             style="font-size:8px;font-weight:bold;-inkscape-font-specification:Helvetica Bold">区块头</tspan></text>
+        <rect
+           width="60.698437"
+           height="19.02964"
+           ry="0.47835836"
+           x="258.48984"
+           y="498.87598"
+           id="rect3777-9-15-5-4-6-3-6-0"
+           style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           x="288.94431"
+           y="512.05267"
+           id="text3779-6-2-6-7-5-4-2-44"
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+             x="288.94431"
+             y="512.05267"
+             id="tspan3783-2-5-5-92-6-5-8-7"
+             style="text-align:center;text-anchor:middle">前哈希</tspan></text>
+        <rect
+           width="36.596325"
+           height="19.17119"
+           ry="0.48191661"
+           x="323.63229"
+           y="498.80524"
+           id="rect3777-9-15-5-7-3-47-7-8-5"
+           style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           x="341.53064"
+           y="512.05267"
+           id="text3779-6-2-6-0-8-3-2-8-7"
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+             x="341.53064"
+             y="512.05267"
+             id="tspan3783-2-5-5-1-5-2-5-8-3"
+             style="text-align:center;text-anchor:middle">随机数</tspan></text>
+        <rect
+           width="63.716778"
+           height="19.017523"
+           ry="0.47805375"
+           x="278.69894"
+           y="523.12567"
+           id="rect3777-9-15-5-4-6-1-5-6-2"
+           style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           x="310.6626"
+           y="536.29633"
+           id="text3779-6-2-6-7-5-0-1-7-5"
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+             x="310.6626"
+             y="536.29633"
+             id="tspan3783-2-5-5-92-6-4-7-3-2"
+             style="text-align:center;text-anchor:middle">Merkle 树根</tspan></text>
+      </g>
+      <g
+         transform="translate(171.73022,197.17832)"
+         id="g6848-0-7-0-2">
+        <path
+           d="m 199.67405,356.87083 67.2519,0"
+           id="path3814-6-7-1-92-8-8-6"
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           d="m 189.15106,31.855574 -1.53093,-2.651651 -1.53093,-2.65165 3.06186,0 3.06186,0 -1.53093,2.65165 z"
+           transform="matrix(0,-1,1,0,238.50018,546.14817)"
+           id="path3816-0-5-6-90-18-0-4"
+           style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      </g>
+      <g
+         transform="translate(27.779195,46.467017)"
+         id="g9005">
+        <rect
+           width="131.30583"
+           height="71.201752"
+           ry="0.090644322"
+           x="247.24182"
+           y="477.08313"
+           id="rect7686-3-2"
+           style="color:#000000;fill:#dfedff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.01399815;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           x="280.56985"
+           y="489.17764"
+           id="text7688-2-5"
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+             x="280.56985"
+             y="489.17764"
+             id="tspan7690-6-2"
+             style="font-size:8px;font-weight:bold;-inkscape-font-specification:Helvetica Bold">区块头</tspan></text>
+        <rect
+           width="60.698437"
+           height="19.02964"
+           ry="0.47835836"
+           x="258.48984"
+           y="498.87598"
+           id="rect3777-9-15-5-4-6-3-6"
+           style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           x="288.94431"
+           y="512.05267"
+           id="text3779-6-2-6-7-5-4-2"
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+             x="288.94431"
+             y="512.05267"
+             id="tspan3783-2-5-5-92-6-5-8"
+             style="text-align:center;text-anchor:middle">前哈希</tspan></text>
+        <rect
+           width="36.596325"
+           height="19.17119"
+           ry="0.48191661"
+           x="323.63229"
+           y="498.80524"
+           id="rect3777-9-15-5-7-3-47-7-8"
+           style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           x="341.53064"
+           y="512.05267"
+           id="text3779-6-2-6-0-8-3-2-8"
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+             x="341.53064"
+             y="512.05267"
+             id="tspan3783-2-5-5-1-5-2-5-8"
+             style="text-align:center;text-anchor:middle">随机数</tspan></text>
+        <rect
+           width="63.716778"
+           height="19.017523"
+           ry="0.47805375"
+           x="278.69894"
+           y="523.12567"
+           id="rect3777-9-15-5-4-6-1-5-6"
+           style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           x="310.6626"
+           y="536.29633"
+           id="text3779-6-2-6-7-5-0-1-7"
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+             x="310.6626"
+             y="536.29633"
+             id="tspan3783-2-5-5-92-6-4-7-3"
+             style="text-align:center;text-anchor:middle">Merkle 树根</tspan></text>
+      </g>
+      <g
+         transform="matrix(0.73926349,-0.67341628,0.67341628,0.73926349,-117.63623,506.79653)"
+         id="g6848-0-9-8-8-5-4">
+        <path
+           d="m 214.83215,358.55385 52.0938,-1.68302"
+           id="path3814-6-7-1-92-1-1-3-9-0"
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           d="m 189.15106,31.855574 -1.53093,-2.651651 -1.53093,-2.65165 3.06186,0 3.06186,0 -1.53093,2.65165 z"
+           transform="matrix(0,-1,1,0,238.50018,546.14817)"
+           id="path3816-0-5-6-90-1-2-1-2-1"
+           style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      </g>
+      <rect
+         width="42.116283"
+         height="19.135307"
+         ry="0.48101461"
+         x="258.72763"
+         y="623.57697"
+         id="rect3777-9-15-5-7-3-47-8-7-1"
+         style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <g
+         transform="matrix(-0.51241776,-0.8587363,-0.8587363,0.51241776,790.54401,637.16612)"
+         id="g6848-0-9-8-8-7-6-4">
+        <path
+           d="m 214.83215,358.55385 52.0938,-1.68302"
+           id="path3814-6-7-1-92-1-1-3-0-2-2"
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           d="m 189.15106,31.855574 -1.53093,-2.651651 -1.53093,-2.65165 3.06186,0 3.06186,0 -1.53093,2.65165 z"
+           transform="matrix(0,-1,1,0,238.50018,546.14817)"
+           id="path3816-0-5-6-90-1-2-1-4-3-4"
+           style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      </g>
+      <text
+         x="280.14355"
+         y="636.80646"
+         id="text3779-6-2-6-0-8-3-0-0-6"
+         xml:space="preserve"
+         style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+           x="280.14355"
+           y="636.80646"
+           id="tspan3783-2-5-5-1-5-2-7-6-1"
+           style="text-align:center;text-anchor:middle">哈希01</tspan></text>
+      <rect
+         width="42.116283"
+         height="19.135307"
+         ry="0.48101461"
+         x="348.14642"
+         y="623.57697"
+         id="rect3777-9-15-5-7-3-47-8-3-77-0"
+         style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1.8, 1.8;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         x="369.56235"
+         y="636.80646"
+         id="text3779-6-2-6-0-8-3-0-9-0-3"
+         xml:space="preserve"
+         style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+           x="369.56235"
+           y="636.80646"
+           id="tspan3783-2-5-5-1-5-2-7-4-8-2"
+           style="text-align:center;text-anchor:middle">哈希23</tspan></text>
+      <g
+         transform="matrix(0.42807511,-0.90374316,0.90374316,0.42807511,-78.201945,734.17828)"
+         id="g6848-0-9-8-7-3-8">
+        <path
+           d="m 239.07,356.87083 27.85595,0"
+           id="path3814-6-7-1-92-1-1-18-5-0"
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           d="m 189.15106,31.855574 -1.53093,-2.651651 -1.53093,-2.65165 3.06186,0 3.06186,0 -1.53093,2.65165 z"
+           transform="matrix(0,-1,1,0,238.50018,546.14817)"
+           id="path3816-0-5-6-90-1-2-88-7-0"
+           style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      </g>
+      <g
+         transform="matrix(-0.42807511,-0.90374316,-0.90374316,0.42807511,815.02073,734.17828)"
+         id="g6848-0-9-8-0-6-7-0">
+        <path
+           d="m 239.07,356.87083 27.85595,0"
+           id="path3814-6-7-1-92-1-1-1-1-3-0"
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           d="m 189.15106,31.855574 -1.53093,-2.651651 -1.53093,-2.65165 3.06186,0 3.06186,0 -1.53093,2.65165 z"
+           transform="matrix(0,-1,1,0,238.50018,546.14817)"
+           id="path3816-0-5-6-90-1-2-8-0-4-8"
+           style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      </g>
+      <rect
+         width="35.347366"
+         height="19.184921"
+         ry="0.48226181"
+         x="328.67618"
+         y="669.5141"
+         id="rect3777-9-15-5-7-3-47-8-3-7-6-6-4-8"
+         style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.55038565;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         x="346.83395"
+         y="682.76837"
+         id="text3779-6-2-6-0-8-3-0-9-6-5-7-97-3"
+         xml:space="preserve"
+         style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+           x="346.83395"
+           y="682.76837"
+           id="tspan3783-2-5-5-1-5-2-7-4-0-2-0-6-4"
+           style="text-align:center;text-anchor:middle">哈希2</tspan></text>
+      <rect
+         width="35.347366"
+         height="19.184921"
+         ry="0.48226181"
+         x="372.36526"
+         y="669.5141"
+         id="rect3777-9-15-5-7-3-47-8-3-7-6-6-2-4-2"
+         style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.55038565;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1.65115682, 1.65115682;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         x="390.52304"
+         y="682.76837"
+         id="text3779-6-2-6-0-8-3-0-9-6-5-7-8-7-1"
+         xml:space="preserve"
+         style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+           x="390.52304"
+           y="682.76837"
+           id="tspan3783-2-5-5-1-5-2-7-4-0-2-0-0-2-8"
+           style="text-align:center;text-anchor:middle">哈希3</tspan></text>
+      <g
+         transform="matrix(0,-1,1,0,32.591802,959.07585)"
+         id="g6848-0-9-9-3-5-3-1">
+        <path
+           d="m 239.07,356.87083 27.85595,0"
+           id="path3814-6-7-1-92-1-5-2-0-1-0"
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           d="m 189.15106,31.855574 -1.53093,-2.651651 -1.53093,-2.65165 3.06186,0 3.06186,0 -1.53093,2.65165 z"
+           transform="matrix(0,-1,1,0,238.50018,546.14817)"
+           id="path3816-0-5-6-90-1-1-9-4-3-8"
+           style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      </g>
+      <rect
+         width="35.347366"
+         height="19.184921"
+         ry="0.48226181"
+         x="372.36526"
+         y="713.5141"
+         id="rect3777-9-15-5-7-3-47-8-3-7-6-6-2-8-6-9"
+         style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.55038565;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <text
+         x="390.52304"
+         y="726.76837"
+         id="text3779-6-2-6-0-8-3-0-9-6-5-7-8-1-5-8"
+         xml:space="preserve"
+         style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+           x="390.52304"
+           y="726.76837"
+           id="tspan3783-2-5-5-1-5-2-7-4-0-2-0-0-9-9-5"
+           style="text-align:center;text-anchor:middle">Tx3</tspan></text>
+      <text
+         x="454.60931"
+         y="658.52478"
+         id="text3779-6-2-6-7-5-2-6-5"
+         xml:space="preserve"
+         style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+           x="454.60931"
+           y="658.52478"
+           id="tspan3783-2-5-5-92-6-44-7-4"
+           style="text-align:center;text-anchor:middle">Tx3 的 Merkle 树枝</tspan></text>
+      <rect
+         width="48.570206"
+         height="19.721823"
+         ry="0.086161181"
+         x="572.68164"
+         y="544.25531"
+         id="rect5356-5-5-8-8-0"
+         style="color:#000000;fill:url(#linearGradient7748-5);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <g
+         transform="translate(15.73022,197.17832)"
+         id="g6848-0-7-0">
+        <path
+           d="m 199.67405,356.87083 67.2519,0"
+           id="path3814-6-7-1-92-8-8"
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           d="m 189.15106,31.855574 -1.53093,-2.651651 -1.53093,-2.65165 3.06186,0 3.06186,0 -1.53093,2.65165 z"
+           transform="matrix(0,-1,1,0,238.50018,546.14817)"
+           id="path3816-0-5-6-90-18-0"
+           style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      </g>
+      <g
+         transform="translate(-130.30968,46.467014)"
+         id="g9005-8">
+        <rect
+           width="131.30583"
+           height="71.201752"
+           ry="0.090644322"
+           x="247.24182"
+           y="477.08313"
+           id="rect7686-3-2-2"
+           style="color:#000000;fill:#dfedff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.01399815;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           x="280.56985"
+           y="489.17764"
+           id="text7688-2-5-8"
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+             x="280.56985"
+             y="489.17764"
+             id="tspan7690-6-2-3"
+             style="font-size:8px;font-weight:bold;-inkscape-font-specification:Helvetica Bold">区块头</tspan></text>
+        <rect
+           width="60.698437"
+           height="19.02964"
+           ry="0.47835836"
+           x="258.48984"
+           y="498.87598"
+           id="rect3777-9-15-5-4-6-3-6-8"
+           style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           x="288.94431"
+           y="512.05267"
+           id="text3779-6-2-6-7-5-4-2-4"
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+             x="288.94431"
+             y="512.05267"
+             id="tspan3783-2-5-5-92-6-5-8-9"
+             style="text-align:center;text-anchor:middle">前哈希</tspan></text>
+        <rect
+           width="36.596325"
+           height="19.17119"
+           ry="0.48191661"
+           x="323.63229"
+           y="498.80524"
+           id="rect3777-9-15-5-7-3-47-7-8-7"
+           style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           x="341.53064"
+           y="512.05267"
+           id="text3779-6-2-6-0-8-3-2-8-3"
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+             x="341.53064"
+             y="512.05267"
+             id="tspan3783-2-5-5-1-5-2-5-8-8"
+             style="text-align:center;text-anchor:middle">随机数</tspan></text>
+        <rect
+           width="63.716778"
+           height="19.017523"
+           ry="0.47805375"
+           x="278.69894"
+           y="523.12567"
+           id="rect3777-9-15-5-4-6-1-5-6-9"
+           style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <text
+           x="310.6626"
+           y="536.29633"
+           id="text3779-6-2-6-7-5-0-1-7-6"
+           xml:space="preserve"
+           style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Helvetica"><tspan
+             x="310.6626"
+             y="536.29633"
+             id="tspan3783-2-5-5-92-6-4-7-3-9"
+             style="text-align:center;text-anchor:middle">Merkle 树根</tspan></text>
+      </g>
+      <g
+         transform="translate(-142.26978,197.17832)"
+         id="g6848-0-7">
+        <path
+           d="m 199.67405,356.87083 67.2519,0"
+           id="path3814-6-7-1-92-8"
+           style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+        <path
+           d="m 189.15106,31.855574 -1.53093,-2.651651 -1.53093,-2.65165 3.06186,0 3.06186,0 -1.53093,2.65165 z"
+           transform="matrix(0,-1,1,0,238.50018,546.14817)"
+           id="path3816-0-5-6-90-18"
+           style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      </g>
+      <rect
+         width="39.286938"
+         height="19.721823"
+         ry="0.086161181"
+         x="-85.726822"
+         y="544.2951"
+         transform="scale(-1,1)"
+         id="rect5356-5-5-7-2"
+         style="color:#000000;fill:url(#linearGradient7693-3);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </g>
+  </g>
+</svg>
