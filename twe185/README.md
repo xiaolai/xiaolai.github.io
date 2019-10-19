@@ -38,7 +38,7 @@
 
 > 注：音频文件打包下载链接：
 
-> [twe-185-mp3.zip](http://zhibimo.com/read/xiaolai/twe185/twe-185-mp3.zip)，文件大小为 87 M。
+> [twe-185-mp3.zip](https://github.com/xiaolai/xiaolai.github.io/blob/master/twe185/twe-185-mp3.zip)，文件大小为 87 M。
 
 **李笑来**
 
