@@ -1,0 +1,1 @@
+![](/the-self-cultivation-of-leeks/images/green3.jpg)
