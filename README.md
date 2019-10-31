@@ -20,6 +20,8 @@
 > * [挤挤都会有的 —— 写给女生的性高潮指南](/ji/)
 > * INBlockchain 开源投资原则 ([中文](/INB-principles/cn/) · [English](/INB-principles/en/))
 > * [Bitcoin 白皮书（中英对照）](/bitcoin-whitepaper-cn-en-translation/Bitcoin-Whitepaper-EN-CN.html)
+> * [定投改变命运（第三版）](https://onregularinvesting.com)
+> * [区块链小白书](https://blockchainlittlebook.com)
 
 ## 言论
 
