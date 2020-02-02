@@ -23,6 +23,7 @@
 > * [Bitcoin 白皮书（中英对照）](/bitcoin-whitepaper-cn-en-translation/Bitcoin-Whitepaper-EN-CN.html)
 > * [定投改变命运（第三版）](https://onregularinvesting.com)
 > * [区块链小白书](https://blockchainlittlebook.com)
+> * [如何自助 —— 助人即助己 —— 重大病毒性疫情中如何应对创伤应激障碍](https://github.com/xiaolai/help-to-be-helped)
 
 ## 言论
 
