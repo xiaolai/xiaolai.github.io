@@ -8,7 +8,7 @@
 > * TOEFL 核心词汇 21 天突破
 > * [TOEFL 高分作文](/twe185/)
 > * [把时间当作朋友](/befriending-time/)
-> * 通往财富自由之路
+> * [通往财富自由之路](https://xue.cn/hub/app/books/56)
 > * 韭菜的自我修养（[中文](/the-self-cultivation-of-leeks/cn/) · [English](/the-self-cultivation-of-leeks/en/)）
 > * [自学是门手艺](/the-craft-of-selfteaching/)
 > * 定投改变命运
@@ -37,3 +37,5 @@
 > * [Mixin Network](https://mixin.one/)
 > * [FoxOne](https://fox.one)
 > * [b.watch](https://b.watch)
+> * [xue.cn](https://xue.cn)
+
