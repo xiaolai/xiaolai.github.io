@@ -27,7 +27,7 @@
 
 ## 投资项目
 
-> * [Inblockchain](https://inblockchain.com)（投资机构）
+> * [Inblockchain](https://inblockchain.com)
 > * [龙门基金](https://longmen.fund)
 > * [BigOne](https://big.one)
 > * [BTCmex](https://www.btcmex.com)
