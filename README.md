@@ -25,14 +25,15 @@
 > * [区块链小白书](https://blockchainlittlebook.com)
 > * [如何自助 —— 助人即助己 —— 重大病毒性疫情中如何应对创伤应激障碍](https://github.com/xiaolai/help-to-be-helped)
 
-## 言论
+## 投资项目
 
-> > 男人要凶悍，女人要彪悍……
-
-> > 偷懒的唯一正确方法就是不偷懒 —— 出来混的，早晚要还！
-
-> > 用正确的方式去做正确的事情。
-
-> > 坐井观天独立思考的永远还是青蛙……
-
-> > 何以解忧？唯有定投！
+> * [Inblockchain](https://inblockchain.com)（投资机构）
+> * [龙门基金](https://longmen.fund)
+> * [BigOne](https://big.one)
+> * [BTCmex](https://www.btcmex.com)
+> * [币印](https://poolin.com)
+> * [SIA](https://sia.tech/)
+> * [MOB](https://www.mobilecoin.com/)
+> * [Mixin Network](https://mixin.one/)
+> * [FoxOne](https://fox.one)
+> * [b.watch](https://b.watch)
