@@ -13,7 +13,7 @@
 > * [自学是门手艺](/the-craft-of-selfteaching/)
 > * 定投改变命运
 
-## 其它
+## 开源书籍
 
 > * [我也有话要说](/i-have-a-say/)
 > * [人人都能用英语](/everyone-can-use-english/)
