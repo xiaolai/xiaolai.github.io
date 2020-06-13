@@ -17,6 +17,7 @@
 
 > * [我也有话要说](/i-have-a-say/)
 > * [人人都能用英语](/everyone-can-use-english/)
+> * [如何写好英文书面比较句](https://xue.cn/hub/app/books/53)
 > * [挤挤都会有的 —— 写给女生的性高潮指南](/ji/)
 > * [坐享其成](https://github.com/xiaolai/zuoxiangqicheng)
 > * INBlockchain 开源投资原则 ([中文](/inb-principles/cn/) · [English](/inb-principles/en/))
