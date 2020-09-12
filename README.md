@@ -12,7 +12,7 @@
 > * [通往财富自由之路](https://xue.cn/hub/app/books/56)
 > * 韭菜的自我修养（[中文](/the-self-cultivation-of-leeks/cn/) · [English](/the-self-cultivation-of-leeks/en/)）
 > * [自学是门手艺](/the-craft-of-selfteaching/)
-> * 定投改变命运
+> * [让时间陪你慢慢变富 —— 定投改变命运](https://item.jd.com/12605781.html)
 
 ### 开源书籍及其他文章
 
@@ -26,6 +26,7 @@
 > * [定投改变命运（第三版）](https://onregularinvesting.com)
 > * [区块链小白书](https://blockchainlittlebook.com)
 > * [如何自助 —— 助人即助己 —— 重大病毒性疫情中如何应对创伤应激障碍](https://github.com/xiaolai/help-to-be-helped)
+> * [微信互联网平民创业](https://github.com/xiaolai/everyones-guide-for-starting-up-on-wechat-network)
 
 ## 投资项目
 
