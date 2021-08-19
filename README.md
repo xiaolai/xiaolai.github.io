@@ -31,23 +31,12 @@
 ## 投资项目
 
 > * [Inblockchain](https://inblockchain.com)
-> * [龙门基金](https://longmen.fund)
+> * [Loangmen Fund](https://longmen.fund)
 > * [BigOne](https://big.one)
-> * [BTCmex](https://www.btcmex.com)
-> * [币印](https://poolin.com)
+> * [Poolin](https://poolin.com)
 > * [SIA](https://sia.tech/)
 > * [MOB](https://www.mobilecoin.com/)
 > * [Mixin Network](https://mixin.one/)
 > * [FoxOne](https://fox.one)
 > * [b.watch](https://b.watch)
 > * [xue.cn](https://xue.cn)
-
-## 微信视频号“笑来”中的往期内容
-
-请在微信中搜索并关注微信视频号：“笑来”，或直接微信识别以下二维码关注……
-
-
-**识别以下二维码查看往期视频号内容精选……**
-
-![](vqqchannel.png)
-
