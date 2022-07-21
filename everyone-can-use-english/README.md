@@ -1142,7 +1142,7 @@ AudioEdit Deluxe v4.10 截图
 
 今天这世界，好的英语学习资源几乎随处可见，我经常推荐学生以下两个资源：
 
-学习英式发音及其音标，可以用牛津大学出版社香港中文站的 Flash 教程《Guide to English Phonetc Symbols》
+学习英式发音及其音标，可以用牛津大学出版社香港中文站的 Flash 教程《Guide to English Phonetic Symbols》
 学习美式发音及其音标，可以使用爱荷华大学的美国音标在线学习程序《 Phonetics: The Sound of American English》
 
 ### 11. 音节的划分
