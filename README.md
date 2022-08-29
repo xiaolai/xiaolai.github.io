@@ -29,6 +29,11 @@
 > * [如何自助 —— 助人即助己 —— 重大病毒性疫情中如何应对创伤应激障碍](https://github.com/xiaolai/help-to-be-helped)
 > * [微信互联网平民创业](https://github.com/xiaolai/everyones-guide-for-starting-up-on-wechat-network)
 
+## 非开源社群课程
+
+> * 人生最重要一课
+> * 好的家庭教育
+
 ## 投资项目
 
 > * [Inblockchain](https://inblockchain.com)
@@ -42,3 +47,4 @@
 > * [b.watch](https://b.watch)
 > * [xue.cn](https://xue.cn)
 > * [Pando](https://pando.im)
+> * [Replit](https://repl.it)
