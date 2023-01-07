@@ -1,13 +1,14 @@
 # 李笑来作品集
 
-—— 人生的尴尬在于之前决策的时候并不可能有之后那么丰富的经验……
+—— 人生的尴尬在于，之前决策的时候并不可能有之后那么丰富的经验……
 
 ## 文字作品
 
 ### 出版书籍
 
-> * TOEFL 核心词汇 21 天突破
+> * [TOEFL 核心词汇 21 天突破](https://search.jd.com/Search?keyword=TOEFL%20%E6%A0%B8%E5%BF%83%E8%AF%8D%E6%B1%87%2021%20%E5%A4%A9%E7%AA%81%E7%A0%B4&enc=utf-8&wq=TOEFL%20%E6%A0%B8%E5%BF%83%E8%AF%8D%E6%B1%87%2021%20%E5%A4%A9%E7%AA%81%E7%A0%B4&pvid=20a58eb8accf4c2c8817ba3ac3db212e)
 > * [TOEFL 高分作文](/twe185/)
+> * [新托福 iBT 词汇分类突破](https://search.jd.com/Search?keyword=%E6%96%B0%E6%89%98%E7%A6%8F%20iBT%20%E8%AF%8D%E6%B1%87%E5%88%86%E7%B1%BB%E7%AA%81%E7%A0%B4&enc=utf-8&wq=%E6%96%B0%E6%89%98%E7%A6%8F%20iBT%20%E8%AF%8D%E6%B1%87%E5%88%86%E7%B1%BB%E7%AA%81%E7%A0%B4&pvid=ad393ae77b8c4bfe86949c0aea5476ff) [mp3 文件下载](https://pan.baidu.com/s/1T5Te0b95l2DWViH_qGprzQ?pwd=wbmk)
 > * [把时间当作朋友](/befriending-time/)
 > * [通往财富自由之路](https://xue.cn/hub/app/books/56)
 > * 韭菜的自我修养（[中文](/the-self-cultivation-of-leeks/cn/) · [English](/the-self-cultivation-of-leeks/en/)）
@@ -33,6 +34,7 @@
 
 > * 人生最重要一课
 > * 好的家庭教育
+>   * 学习的真相
 
 ## 投资项目
 
@@ -48,3 +50,4 @@
 > * [xue.cn](https://xue.cn)
 > * [Pando](https://pando.im)
 > * [Replit](https://repl.it)
+> * [Pando Finance HK](https://www.pandofinance.com.hk/)
