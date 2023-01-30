@@ -33,15 +33,15 @@
 ## 非开源社群课程
 
 > * 人生最重要一课
-> * 好的家庭教育
+> * 好的家庭教育（相当于 “教育的真相”）
 >   * 学习的真相
+>   * 教练的真相
 
 ## 投资项目
 
 > * [Inblockchain](https://inblockchain.com)
 > * [Loangmen Fund](https://longmen.fund)
 > * [BigOne](https://big.one)
-> * [Poolin](https://poolin.com)
 > * [SIA](https://sia.tech/)
 > * [MOB](https://www.mobilecoin.com/)
 > * [Mixin Network](https://mixin.one/)
