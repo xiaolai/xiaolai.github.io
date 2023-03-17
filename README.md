@@ -40,7 +40,7 @@
 ## 投资项目
 
 > * [Inblockchain](https://inblockchain.com)
-> * [Loangmen Fund](https://longmen.fund)
+> * [Longmen Fund](https://longmen.fund)
 > * [BigOne](https://big.one)
 > * [SIA](https://sia.tech/)
 > * [MOB](https://www.mobilecoin.com/)
