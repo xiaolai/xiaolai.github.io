@@ -44,6 +44,10 @@
 > * 李笑来的写作课
 > * 李笑来的演讲课（尚未开讲）
 
+请移步微信服务号 “笑来” 查找 “富足人生社群” 入口，或者扫描下方二维码加入：
+
+![](wechat-channel.png)
+
 ## 投资项目
 
 > * [Inblockchain](https://inblockchain.com)
