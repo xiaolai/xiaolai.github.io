@@ -51,14 +51,14 @@
 ## 投资项目
 
 > * [Inblockchain](https://inblockchain.com)
-> * [Longmen Fund](https://longmen.fund)
+> * Longmen Fund(closed)
 > * [BigOne](https://big.one)
 > * [SIA](https://sia.tech/)
 > * [MOB](https://www.mobilecoin.com/)
 > * [Mixin Network](https://mixin.one/)
 > * [FoxOne](https://fox.one)
 > * [b.watch](https://b.watch)
-> * [xue.cn](https://xue.cn)
+> * xue.cn(blocked)
 > * [Pando](https://pando.im)
 > * [Replit](https://repl.it)
 > * [Pando Finance HK](https://www.pandofinance.com.hk/)
