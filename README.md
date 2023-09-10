@@ -38,11 +38,14 @@
 >   * 学习的真相
 >   * 教练的真相
 >   * 思考的真相
->   * 财富的真相（正在出版过程中）
+>   * 财富的真相（出版过程中）
 >   * 判断的真相（尚未开讲）
 >   * 多语的真相（尚未开讲）
+>   * 注意的真相（近期开讲）
 > * 李笑来的写作课
 > * 李笑来的演讲课（尚未开讲）
+
+2019 年后，我更多在 “讲课”，而不是在 “写作”……
 
 请移步微信服务号 “笑来” 查找 “富足人生社群” 入口，或者扫描下方二维码加入：
 
@@ -51,14 +54,19 @@
 ## 投资项目
 
 > * [Inblockchain](https://inblockchain.com)
-> * Longmen Fund(closed)
+> * Longmen Fund (closed)
 > * [BigOne](https://big.one)
 > * [SIA](https://sia.tech/)
 > * [MOB](https://www.mobilecoin.com/)
 > * [Mixin Network](https://mixin.one/)
 > * [FoxOne](https://fox.one)
 > * [b.watch](https://b.watch)
-> * xue.cn(blocked)
+> * xue.cn (blocked)
 > * [Pando](https://pando.im)
 > * [Replit](https://repl.it)
 > * [Pando Finance HK](https://www.pandofinance.com.hk/)
+
+### 投资范围
+> * 2018 年之后，不再参与早期项目投资；
+> * 2019 年之后，不再管理新的基金；
+> * 2022 年之后，不再做二级市场外的投资……
