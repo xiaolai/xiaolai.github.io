@@ -31,8 +31,29 @@
                 <input type="number" id="yearsProjection" value="30" min="1" max="50">
             </div>
             <div class="control-group">
+                <label>Withdrawal Method</label>
+                <div style="display: flex; gap: 20px; margin-top: 5px;">
+                    <label style="display: flex; align-items: center; font-weight: normal;">
+                        <input type="radio" name="withdrawalMethod" value="percentage" checked style="margin-right: 5px;">
+                        Percentage of Portfolio
+                    </label>
+                    <label style="display: flex; align-items: center; font-weight: normal;">
+                        <input type="radio" name="withdrawalMethod" value="fixed" style="margin-right: 5px;">
+                        Fixed Amount with Inflation
+                    </label>
+                </div>
+            </div>
+            <div class="control-group" id="withdrawalRateGroup">
                 <label for="withdrawalRate">Annual Withdrawal Rate (%)</label>
                 <input type="number" id="withdrawalRate" value="3" step="0.1" min="0" max="100">
+            </div>
+            <div class="control-group" id="fixedWithdrawalGroup" style="display: none;">
+                <label for="fixedWithdrawalAmount">Starting Annual Withdrawal ($)</label>
+                <input type="text" id="fixedWithdrawalAmount" value="40,000">
+            </div>
+            <div class="control-group" id="inflationRateGroup" style="display: none;">
+                <label for="inflationRate">Annual Inflation Rate (%)</label>
+                <input type="number" id="inflationRate" value="2.5" step="0.1" min="0" max="20">
             </div>
             <div class="control-group">
                 <label for="withdrawalStartYear">Withdraw from the end of __ years</label>
@@ -75,7 +96,7 @@
                     <div class="stat-value" id="min">-</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Annual Withdrawal Rate</div>
+                    <div class="stat-label">Withdrawal Strategy</div>
                     <div class="stat-value" id="annualWithdrawalRate">-</div>
                 </div>
                 <div class="stat-card">
@@ -111,6 +132,7 @@
                             <th>Year</th>
                             <th>Value</th>
                             <th>Withdrawal Amount</th>
+                            <th>Actual Withdrawal Rate</th>
                             <th>Total Withdrawn</th>
                         </tr>
                     </thead>
