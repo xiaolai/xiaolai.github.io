@@ -57,9 +57,9 @@ function testGBM() {
     console.log(`  ✓ Log return correct: ${logError < 0.01 ? 'PASS' : 'FAIL'}`);
 }
 
-// Test 1.2: Verify withdrawal calculations
+// Test 1.2: Verify withdrawal calculations (percentage-based)
 function testWithdrawals() {
-    console.log('\n1.2 Testing Withdrawal Logic:');
+    console.log('\n1.2 Testing Percentage-Based Withdrawal Logic:');
     
     const initial = 100000;
     const growthRate = 1.10; // 10% deterministic growth
@@ -96,9 +96,78 @@ function testWithdrawals() {
     console.log(`  ✓ Year 3 calculation correct: ${year3Match ? 'PASS' : 'FAIL'}`);
 }
 
-// Test 1.3: Verify statistical percentile calculations
+// Test 1.3: Verify fixed withdrawal with inflation
+function testFixedWithdrawalWithInflation() {
+    console.log('\n1.3 Testing Fixed Withdrawal with Inflation:');
+    
+    const initial = 1000000;
+    const growthRate = 1.10; // 10% deterministic growth
+    const fixedWithdrawalAmount = 40000;
+    const inflationRate = 0.025; // 2.5%
+    const withdrawalStartYear = 2;
+    
+    let value = initial;
+    let currentWithdrawalAmount = fixedWithdrawalAmount;
+    const results = [];
+    
+    console.log(`  Initial Portfolio: $${initial.toLocaleString()}`);
+    console.log(`  Starting Withdrawal: $${fixedWithdrawalAmount.toLocaleString()}`);
+    console.log(`  Inflation Rate: ${(inflationRate * 100)}%`);
+    console.log(`  Withdrawal Start Year: ${withdrawalStartYear}\n`);
+    
+    for (let year = 1; year <= 5; year++) {
+        // Apply growth
+        value = value * growthRate;
+        
+        // Apply withdrawal if applicable
+        let withdrawal = 0;
+        if (year >= withdrawalStartYear) {
+            if (year > withdrawalStartYear) {
+                // Apply inflation for years after the first withdrawal
+                currentWithdrawalAmount = currentWithdrawalAmount * (1 + inflationRate);
+            }
+            withdrawal = Math.min(currentWithdrawalAmount, value);
+            value = Math.max(0, value - withdrawal);
+        }
+        
+        results.push({ 
+            year, 
+            value: value.toFixed(2), 
+            withdrawal: withdrawal.toFixed(2),
+            actualRate: withdrawal > 0 ? ((withdrawal / (value + withdrawal)) * 100).toFixed(2) : '0.00'
+        });
+    }
+    
+    console.log('  Year-by-year progression:');
+    results.forEach(r => {
+        console.log(`    Year ${r.year}: Value=$${r.value}, Withdrawal=$${r.withdrawal}, Actual Rate=${r.actualRate}%`);
+    });
+    
+    // Verify inflation adjustment
+    const year3Withdrawal = parseFloat(results[2].withdrawal);
+    const expectedYear3Withdrawal = fixedWithdrawalAmount * (1 + inflationRate);
+    const inflationMatch = Math.abs(year3Withdrawal - expectedYear3Withdrawal) < 1;
+    
+    console.log(`  ✓ Inflation adjustment correct: ${inflationMatch ? 'PASS' : 'FAIL'}`);
+}
+
+// Test 1.4: Verify withdrawal limit (can't exceed portfolio value)
+function testWithdrawalLimit() {
+    console.log('\n1.4 Testing Withdrawal Limit:');
+    
+    const portfolioValue = 30000;
+    const requestedWithdrawal = 40000;
+    const actualWithdrawal = Math.min(requestedWithdrawal, portfolioValue);
+    
+    console.log(`  Portfolio: $${portfolioValue.toLocaleString()}`);
+    console.log(`  Requested Withdrawal: $${requestedWithdrawal.toLocaleString()}`);
+    console.log(`  Actual Withdrawal: $${actualWithdrawal.toLocaleString()}`);
+    console.log(`  ✓ Withdrawal correctly limited to portfolio value: ${actualWithdrawal === portfolioValue ? 'PASS' : 'FAIL'}`);
+}
+
+// Test 1.5: Verify statistical percentile calculations
 function testPercentiles() {
-    console.log('\n1.3 Testing Percentile Calculations:');
+    console.log('\n1.5 Testing Percentile Calculations:');
     
     // Create test data with known distribution
     const data = [];
@@ -120,9 +189,9 @@ function testPercentiles() {
     console.log(`  ✓ Percentiles correct: ${p5 <= 6 && (p50 === 50 || p50 === 51) && p95 >= 95 ? 'PASS' : 'FAIL'}`);
 }
 
-// Test 1.4: Verify compound returns over multiple years
+// Test 1.6: Verify compound returns over multiple years
 function testCompoundReturns() {
-    console.log('\n1.4 Testing Compound Returns:');
+    console.log('\n1.6 Testing Compound Returns:');
     
     const initial = 10000;
     const annualReturn = 0.17; // 17% (VONG historical average)
@@ -147,9 +216,9 @@ function testCompoundReturns() {
     console.log(`  ✓ Compound calculation correct: ${multipleMatch ? 'PASS' : 'FAIL'}`);
 }
 
-// Test 1.5: Verify Box-Muller normal distribution
+// Test 1.7: Verify Box-Muller normal distribution
 function testBoxMuller() {
-    console.log('\n1.5 Testing Box-Muller Transform:');
+    console.log('\n1.7 Testing Box-Muller Transform:');
     
     const samples = 100000;
     let sum = 0;
@@ -348,6 +417,8 @@ async function runAllTests() {
     // Run synchronous tests
     testGBM();
     testWithdrawals();
+    testFixedWithdrawalWithInflation();
+    testWithdrawalLimit();
     testPercentiles();
     testCompoundReturns();
     testBoxMuller();

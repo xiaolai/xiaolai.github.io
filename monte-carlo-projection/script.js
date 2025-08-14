@@ -93,23 +93,10 @@ function calculateHistoricalStats() {
     };
 }
 
-// Set default values based on historical data
-window.onload = async function() {
-    // Try to fetch latest data first
-    await fetchLatestReturns();
-    
-    // Calculate stats based on most recent 15 years
-    const stats = calculateHistoricalStats();
-    document.getElementById('expectedReturn').value = stats.mean.toFixed(1);
-    document.getElementById('volatility').value = stats.stdDev.toFixed(1);
-    
-    console.log(`Using S&P 500 recent data (${returnsForCalculation.length} years): Mean=${stats.mean.toFixed(1)}%, StdDev=${stats.stdDev.toFixed(1)}%`);
-    
-    // Format initial investment field
-    const initialInvestmentInput = document.getElementById('initialInvestment');
-    
-    // Handle input formatting
-    initialInvestmentInput.addEventListener('input', function(e) {
+// Helper function to format number inputs with commas
+function setupNumberFormatting(inputId) {
+    const input = document.getElementById(inputId);
+    input.addEventListener('input', function(e) {
         // Save cursor position
         let cursorPos = e.target.selectionStart;
         let val = e.target.value;
@@ -137,6 +124,43 @@ window.onload = async function() {
         
         e.target.setSelectionRange(newPos, newPos);
     });
+}
+
+// Set default values based on historical data
+window.onload = async function() {
+    // Try to fetch latest data first
+    await fetchLatestReturns();
+    
+    // Calculate stats based on most recent 15 years
+    const stats = calculateHistoricalStats();
+    document.getElementById('expectedReturn').value = stats.mean.toFixed(1);
+    document.getElementById('volatility').value = stats.stdDev.toFixed(1);
+    
+    console.log(`Using S&P 500 recent data (${returnsForCalculation.length} years): Mean=${stats.mean.toFixed(1)}%, StdDev=${stats.stdDev.toFixed(1)}%`);
+    
+    // Format number inputs with commas
+    setupNumberFormatting('initialInvestment');
+    setupNumberFormatting('fixedWithdrawalAmount');
+    
+    // Handle withdrawal method radio buttons
+    const withdrawalMethodRadios = document.getElementsByName('withdrawalMethod');
+    const withdrawalRateGroup = document.getElementById('withdrawalRateGroup');
+    const fixedWithdrawalGroup = document.getElementById('fixedWithdrawalGroup');
+    const inflationRateGroup = document.getElementById('inflationRateGroup');
+    
+    for (const radio of withdrawalMethodRadios) {
+        radio.addEventListener('change', function() {
+            if (this.value === 'percentage') {
+                withdrawalRateGroup.style.display = 'block';
+                fixedWithdrawalGroup.style.display = 'none';
+                inflationRateGroup.style.display = 'none';
+            } else if (this.value === 'fixed') {
+                withdrawalRateGroup.style.display = 'none';
+                fixedWithdrawalGroup.style.display = 'block';
+                inflationRateGroup.style.display = 'block';
+            }
+        });
+    }
     
     // Set up dynamic validation for withdrawal start year
     const yearsProjectionInput = document.getElementById('yearsProjection');
@@ -175,8 +199,20 @@ function runSimulation() {
     const expectedReturn = parseFloat(document.getElementById('expectedReturn').value) / 100;
     const volatility = parseFloat(document.getElementById('volatility').value) / 100;
     const years = parseInt(document.getElementById('yearsProjection').value);
-    const withdrawalRate = parseFloat(document.getElementById('withdrawalRate').value) / 100;
     let withdrawalStartYear = parseInt(document.getElementById('withdrawalStartYear').value);
+    
+    // Get withdrawal method and related parameters
+    const withdrawalMethod = document.querySelector('input[name="withdrawalMethod"]:checked').value;
+    let withdrawalRate = 0;
+    let fixedWithdrawalAmount = 0;
+    let inflationRate = 0;
+    
+    if (withdrawalMethod === 'percentage') {
+        withdrawalRate = parseFloat(document.getElementById('withdrawalRate').value) / 100;
+    } else if (withdrawalMethod === 'fixed') {
+        fixedWithdrawalAmount = parseFloat(document.getElementById('fixedWithdrawalAmount').value.replace(/,/g, ''));
+        inflationRate = parseFloat(document.getElementById('inflationRate').value) / 100;
+    }
     
     // Ensure withdrawal start year is at least 1
     if (withdrawalStartYear < 1) {
@@ -191,14 +227,25 @@ function runSimulation() {
     
     // Use setTimeout to allow UI to update
     setTimeout(() => {
-        const results = monteCarloSimulation(initialInvestment, expectedReturn, volatility, years, withdrawalRate, withdrawalStartYear, numSimulations);
+        const results = monteCarloSimulation(
+            initialInvestment, 
+            expectedReturn, 
+            volatility, 
+            years, 
+            withdrawalMethod,
+            withdrawalRate, 
+            fixedWithdrawalAmount,
+            inflationRate,
+            withdrawalStartYear, 
+            numSimulations
+        );
         displayResults(results, initialInvestment);
         document.getElementById('loading').style.display = 'none';
         document.getElementById('results').style.display = 'block';
     }, 100);
 }
 
-function monteCarloSimulation(initial, mu, sigma, years, withdrawalRate, withdrawalStartYear, simulations) {
+function monteCarloSimulation(initial, mu, sigma, years, withdrawalMethod, withdrawalRate, fixedAmount, inflationRate, withdrawalStartYear, simulations) {
     const finalValues = [];
     const totalWithdrawals = [];
     const samplePaths = [];
@@ -212,6 +259,7 @@ function monteCarloSimulation(initial, mu, sigma, years, withdrawalRate, withdra
         let depletedYear = null;
         let totalWithdrawn = 0;
         const yearlyData = [];
+        let currentWithdrawalAmount = fixedAmount; // For fixed withdrawal method
         
         for (let year = 1; year <= years; year++) {
             // Generate random normal distribution using Box-Muller transform
@@ -230,7 +278,17 @@ function monteCarloSimulation(initial, mu, sigma, years, withdrawalRate, withdra
             // Then apply withdrawal at end of year (only if we've reached the withdrawal start year)
             let withdrawal = 0;
             if (year >= withdrawalStartYear) {
-                withdrawal = value * withdrawalRate;
+                if (withdrawalMethod === 'percentage') {
+                    // Percentage-based withdrawal
+                    withdrawal = value * withdrawalRate;
+                } else if (withdrawalMethod === 'fixed') {
+                    // Fixed amount withdrawal with inflation adjustment
+                    if (year > withdrawalStartYear) {
+                        // Apply inflation for years after the first withdrawal
+                        currentWithdrawalAmount = currentWithdrawalAmount * (1 + inflationRate);
+                    }
+                    withdrawal = Math.min(currentWithdrawalAmount, value); // Can't withdraw more than available
+                }
                 totalWithdrawn += withdrawal;
                 value = Math.max(0, value - withdrawal);
             }
@@ -283,7 +341,11 @@ function monteCarloSimulation(initial, mu, sigma, years, withdrawalRate, withdra
         depletedYears: depleted,
         medianPath: medianPath,
         stats: calculateStatistics(finalValues),
-        withdrawalStats: calculateStatistics(totalWithdrawals)
+        withdrawalStats: calculateStatistics(totalWithdrawals),
+        withdrawalMethod: withdrawalMethod,
+        withdrawalRate: withdrawalRate,
+        fixedAmount: fixedAmount,
+        inflationRate: inflationRate
     };
 }
 
@@ -328,7 +390,6 @@ function formatCurrency(value) {
 
 function displayResults(results, initialInvestment) {
     const stats = results.stats;
-    const withdrawalRate = parseFloat(document.getElementById('withdrawalRate').value) / 100;
     const withdrawalStartYear = parseInt(document.getElementById('withdrawalStartYear').value);
     
     // Update statistics
@@ -339,10 +400,17 @@ function displayResults(results, initialInvestment) {
     document.getElementById('max').textContent = formatCurrency(stats.max);
     document.getElementById('min').textContent = formatCurrency(stats.min);
     
-    // Display annual withdrawal rate
-    document.getElementById('annualWithdrawalRate').textContent = (withdrawalRate * 100).toFixed(1) + '%';
-    document.getElementById('annualWithdrawalRate').style.color = withdrawalRate > 0.05 ? '#e74c3c' : 
-                                                                 withdrawalRate > 0.02 ? '#f39c12' : '#27ae60';
+    // Display withdrawal information based on method
+    if (results.withdrawalMethod === 'percentage') {
+        document.getElementById('annualWithdrawalRate').textContent = (results.withdrawalRate * 100).toFixed(1) + '%';
+        document.getElementById('annualWithdrawalRate').style.color = results.withdrawalRate > 0.05 ? '#e74c3c' : 
+                                                                     results.withdrawalRate > 0.02 ? '#f39c12' : '#27ae60';
+    } else if (results.withdrawalMethod === 'fixed') {
+        // For fixed withdrawal, show the starting amount and inflation rate
+        document.getElementById('annualWithdrawalRate').textContent = 
+            formatCurrency(results.fixedAmount) + ' + ' + (results.inflationRate * 100).toFixed(1) + '% inflation';
+        document.getElementById('annualWithdrawalRate').style.color = '#3498db';
+    }
     
     // Display withdrawal start year
     document.getElementById('withdrawalStartYearDisplay').textContent = withdrawalStartYear;
@@ -354,7 +422,7 @@ function displayResults(results, initialInvestment) {
                                                              depletionRate > 5 ? '#f39c12' : '#27ae60';
     
     // Display median total withdrawn from actual simulations
-    if (withdrawalRate > 0 && results.withdrawalStats) {
+    if ((results.withdrawalRate > 0 || results.fixedAmount > 0) && results.withdrawalStats) {
         document.getElementById('totalWithdrawn').textContent = formatCurrency(results.withdrawalStats.median);
     } else {
         document.getElementById('totalWithdrawn').textContent = '$0';
@@ -520,7 +588,17 @@ function createMedianTable(medianPath) {
         row.insertCell(0).textContent = yearData.year;
         row.insertCell(1).textContent = formatCurrency(yearData.value);
         row.insertCell(2).textContent = formatCurrency(yearData.withdrawal);
-        row.insertCell(3).textContent = formatCurrency(yearData.totalWithdrawn);
+        
+        // Calculate actual withdrawal rate
+        // Need to add the withdrawal back to get the pre-withdrawal value
+        const preWithdrawalValue = yearData.value + yearData.withdrawal;
+        let actualRate = 0;
+        if (preWithdrawalValue > 0 && yearData.withdrawal > 0) {
+            actualRate = (yearData.withdrawal / preWithdrawalValue) * 100;
+        }
+        row.insertCell(3).textContent = actualRate > 0 ? actualRate.toFixed(2) + '%' : '-';
+        
+        row.insertCell(4).textContent = formatCurrency(yearData.totalWithdrawn);
     }
 }
 
