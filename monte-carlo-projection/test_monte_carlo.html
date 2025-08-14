@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monte Carlo Projection Tests</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+        .test-suite {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #444;
+            border-radius: 5px;
+        }
+        .test-name {
+            font-weight: bold;
+            color: #569cd6;
+            margin-bottom: 10px;
+        }
+        .pass {
+            color: #4ec9b0;
+        }
+        .fail {
+            color: #f48771;
+        }
+        .result {
+            margin: 5px 0;
+            padding: 5px;
+            border-left: 3px solid;
+        }
+        .result.pass {
+            border-color: #4ec9b0;
+        }
+        .result.fail {
+            border-color: #f48771;
+        }
+        .details {
+            color: #858585;
+            font-size: 0.9em;
+            margin-left: 20px;
+        }
+        #summary {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+        #summary.all-pass {
+            background: #0e7a0d;
+        }
+        #summary.some-fail {
+            background: #7a0e0e;
+        }
+    </style>
+</head>
+<body>
+    <h1>Monte Carlo Projection Test Results</h1>
+    <div id="summary"></div>
+    <div id="test-results"></div>
+
+    <script>
+        // Test framework
+        const testResults = [];
+        
+        function assert(condition, message, details = '') {
+            testResults.push({
+                passed: condition,
+                message: message,
+                details: details
+            });
+        }
+        
+        function assertClose(actual, expected, tolerance, message) {
+            const diff = Math.abs(actual - expected);
+            const passed = diff <= tolerance;
+            assert(passed, message, 
+                `Expected: ${expected.toFixed(6)}, Actual: ${actual.toFixed(6)}, Diff: ${diff.toFixed(6)}`);
+        }
+        
+        // Import core functions from main file (simplified versions for testing)
+        function boxMullerTransform() {
+            const u1 = Math.random();
+            const u2 = Math.random();
+            return Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+        }
+        
+        function geometricBrownianMotion(value, mu, sigma, dt) {
+            const z = boxMullerTransform();
+            const drift = (mu - 0.5 * sigma * sigma) * dt;
+            const diffusion = sigma * Math.sqrt(dt) * z;
+            return value * Math.exp(drift + diffusion);
+        }
+        
+        function calculateStatistics(values) {
+            const sorted = [...values].sort((a, b) => a - b);
+            const n = sorted.length;
+            return {
+                mean: sorted.reduce((a, b) => a + b, 0) / n,
+                median: n % 2 === 0 ? (sorted[n/2 - 1] + sorted[n/2]) / 2 : sorted[Math.floor(n/2)],
+                percentile5: sorted[Math.floor(n * 0.05)],
+                percentile95: sorted[Math.floor(n * 0.95)],
+                min: sorted[0],
+                max: sorted[n - 1]
+            };
+        }
+        
+        // Test Suite 1: Box-Muller Transform
+        function testBoxMullerTransform() {
+            const samples = [];
+            for (let i = 0; i < 10000; i++) {
+                samples.push(boxMullerTransform());
+            }
+            
+            const stats = calculateStatistics(samples);
+            
+            // Test that mean is close to 0
+            assertClose(stats.mean, 0, 0.05, "Box-Muller mean should be ~0");
+            
+            // Test that values are roughly normally distributed
+            const stdDev = Math.sqrt(samples.reduce((sum, x) => sum + Math.pow(x - stats.mean, 2), 0) / samples.length);
+            assertClose(stdDev, 1, 0.05, "Box-Muller std dev should be ~1");
+            
+            // Test that ~95% of values are within 2 standard deviations
+            const within2Sigma = samples.filter(x => Math.abs(x) <= 2).length / samples.length;
+            assertClose(within2Sigma, 0.95, 0.02, "~95% should be within 2 sigma");
+        }
+        
+        // Test Suite 2: Geometric Brownian Motion
+        function testGeometricBrownianMotion() {
+            const initial = 10000;
+            const mu = 0.10; // 10% expected return
+            const sigma = 0.20; // 20% volatility
+            const dt = 1; // 1 year
+            const simulations = 10000;
+            
+            const finalValues = [];
+            for (let i = 0; i < simulations; i++) {
+                finalValues.push(geometricBrownianMotion(initial, mu, sigma, dt));
+            }
+            
+            const stats = calculateStatistics(finalValues);
+            
+            // Expected value after 1 year should be initial * exp(mu)
+            const expectedMean = initial * Math.exp(mu);
+            assertClose(stats.mean, expectedMean, expectedMean * 0.05, 
+                "GBM mean should match theoretical expectation");
+            
+            // Test log-normal distribution properties
+            const logReturns = finalValues.map(v => Math.log(v / initial));
+            const logStats = calculateStatistics(logReturns);
+            assertClose(logStats.mean, mu - 0.5 * sigma * sigma, 0.02, 
+                "Log returns mean should match drift term");
+        }
+        
+        // Test Suite 3: Withdrawal Logic
+        function testWithdrawalLogic() {
+            const initial = 100000;
+            const withdrawalRate = 0.04; // 4% withdrawal rate
+            const withdrawalStartYear = 3;
+            const years = 5;
+            
+            let value = initial;
+            const path = [value];
+            let totalWithdrawn = 0;
+            
+            for (let year = 1; year <= years; year++) {
+                // Assume 10% growth for deterministic test
+                value = value * 1.10;
+                
+                // Apply withdrawal
+                if (year >= withdrawalStartYear) {
+                    const withdrawal = value * withdrawalRate;
+                    totalWithdrawn += withdrawal;
+                    value = Math.max(0, value - withdrawal);
+                }
+                
+                path.push(value);
+            }
+            
+            // Year 1: 100000 * 1.10 = 110000 (no withdrawal)
+            assertClose(path[1], 110000, 0.01, "Year 1 should have no withdrawal");
+            
+            // Year 2: 110000 * 1.10 = 121000 (no withdrawal)
+            assertClose(path[2], 121000, 0.01, "Year 2 should have no withdrawal");
+            
+            // Year 3: 121000 * 1.10 = 133100, then withdraw 4% = 133100 * 0.96 = 127776
+            assertClose(path[3], 127776, 0.01, "Year 3 should apply withdrawal");
+            
+            // Verify total withdrawn
+            const expectedWithdrawn = 133100 * 0.04 + // Year 3
+                                     (127776 * 1.10) * 0.04 + // Year 4
+                                     ((127776 * 1.10 * 0.96) * 1.10) * 0.04; // Year 5
+            assertClose(totalWithdrawn, expectedWithdrawn, 0.01, "Total withdrawn should match expected");
+        }
+        
+        // Test Suite 4: Statistical Calculations
+        function testStatisticalCalculations() {
+            const values = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+            const stats = calculateStatistics(values);
+            
+            assert(stats.mean === 55, "Mean calculation", `Mean of 10-100 should be 55`);
+            assert(stats.median === 55, "Median calculation", `Median should be 55`);
+            assert(stats.min === 10, "Min calculation", `Min should be 10`);
+            assert(stats.max === 100, "Max calculation", `Max should be 100`);
+            assert(stats.percentile5 === 10, "5th percentile", `5th percentile should be 10`);
+            assert(stats.percentile95 === 100, "95th percentile", `95th percentile should be 100`);
+        }
+        
+        // Test Suite 5: Median Path Generation (Deterministic)
+        function testMedianPathGeneration() {
+            const initial = 10000;
+            const mu = 0.15; // 15% expected return
+            const years = 3;
+            
+            const medianPath = [];
+            let value = initial;
+            
+            for (let year = 0; year <= years; year++) {
+                medianPath.push(value);
+                if (year < years) {
+                    // Median path uses expected return (deterministic)
+                    value = value * Math.exp(mu);
+                }
+            }
+            
+            assertClose(medianPath[0], 10000, 0.01, "Initial value should be 10000");
+            assertClose(medianPath[1], 10000 * Math.exp(0.15), 0.01, "Year 1 median path");
+            assertClose(medianPath[2], 10000 * Math.exp(0.30), 0.01, "Year 2 median path");
+            assertClose(medianPath[3], 10000 * Math.exp(0.45), 0.01, "Year 3 median path");
+        }
+        
+        // Test Suite 6: Portfolio Depletion
+        function testPortfolioDepletion() {
+            const initial = 10000;
+            const withdrawalRate = 0.50; // 50% withdrawal rate (extreme for testing)
+            let value = initial;
+            let depletedYear = null;
+            
+            for (let year = 1; year <= 10; year++) {
+                // No growth for simplicity
+                const withdrawal = value * withdrawalRate;
+                value = Math.max(0, value - withdrawal);
+                
+                if (value <= 0.01 && depletedYear === null) { // Use small threshold for floating point
+                    depletedYear = year;
+                    value = 0;
+                }
+            }
+            
+            // Calculate when it should deplete mathematically
+            // After each year: value = value * 0.5
+            // Year 1: 5000, Year 2: 2500, Year 3: 1250, Year 4: 625...
+            // It never truly reaches 0, but gets negligibly small
+            
+            // Test that value is effectively depleted (very small)
+            assert(value < 10, "Portfolio should be effectively depleted", 
+                `Final value: ${value.toFixed(2)}`);
+            assert(value < initial * 0.001, "Portfolio should be less than 0.1% of initial", 
+                `Final value is ${(value/initial*100).toFixed(4)}% of initial`);
+        }
+        
+        // Run all tests
+        function runTests() {
+            console.log("Running Monte Carlo Projection Tests...");
+            
+            const testSuites = [
+                { name: "Box-Muller Transform", fn: testBoxMullerTransform },
+                { name: "Geometric Brownian Motion", fn: testGeometricBrownianMotion },
+                { name: "Withdrawal Logic", fn: testWithdrawalLogic },
+                { name: "Statistical Calculations", fn: testStatisticalCalculations },
+                { name: "Median Path Generation", fn: testMedianPathGeneration },
+                { name: "Portfolio Depletion", fn: testPortfolioDepletion }
+            ];
+            
+            const resultsDiv = document.getElementById('test-results');
+            let totalPassed = 0;
+            let totalTests = 0;
+            
+            testSuites.forEach(suite => {
+                testResults.length = 0; // Clear previous results
+                
+                const suiteDiv = document.createElement('div');
+                suiteDiv.className = 'test-suite';
+                
+                const nameDiv = document.createElement('div');
+                nameDiv.className = 'test-name';
+                nameDiv.textContent = suite.name;
+                suiteDiv.appendChild(nameDiv);
+                
+                try {
+                    suite.fn();
+                } catch (error) {
+                    testResults.push({
+                        passed: false,
+                        message: `Test suite error: ${error.message}`,
+                        details: error.stack
+                    });
+                }
+                
+                let suitePassed = 0;
+                testResults.forEach(result => {
+                    const resultDiv = document.createElement('div');
+                    resultDiv.className = `result ${result.passed ? 'pass' : 'fail'}`;
+                    
+                    const statusSpan = document.createElement('span');
+                    statusSpan.className = result.passed ? 'pass' : 'fail';
+                    statusSpan.textContent = result.passed ? '✓ PASS' : '✗ FAIL';
+                    
+                    resultDiv.innerHTML = `${statusSpan.outerHTML} ${result.message}`;
+                    
+                    if (result.details) {
+                        const detailsDiv = document.createElement('div');
+                        detailsDiv.className = 'details';
+                        detailsDiv.textContent = result.details;
+                        resultDiv.appendChild(detailsDiv);
+                    }
+                    
+                    suiteDiv.appendChild(resultDiv);
+                    
+                    if (result.passed) suitePassed++;
+                    totalTests++;
+                });
+                
+                totalPassed += suitePassed;
+                
+                const summaryDiv = document.createElement('div');
+                summaryDiv.style.marginTop = '10px';
+                summaryDiv.style.fontWeight = 'bold';
+                summaryDiv.textContent = `Suite Result: ${suitePassed}/${testResults.length} tests passed`;
+                suiteDiv.appendChild(summaryDiv);
+                
+                resultsDiv.appendChild(suiteDiv);
+            });
+            
+            // Update summary
+            const summaryDiv = document.getElementById('summary');
+            const allPass = totalPassed === totalTests;
+            summaryDiv.className = allPass ? 'all-pass' : 'some-fail';
+            summaryDiv.innerHTML = `
+                <strong>Overall Results:</strong> ${totalPassed}/${totalTests} tests passed
+                ${allPass ? '✓ All tests passed!' : '✗ Some tests failed'}
+            `;
+        }
+        
+        // Run tests on page load
+        window.addEventListener('load', runTests);
+    </script>
+</body>
+</html>

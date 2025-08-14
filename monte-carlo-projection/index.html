@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monte Carlo Projection</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Monte Carlo Projection</h1>
+        <div class="subtitle">Investment Projection with 100,000 Simulations</div>
+        <div class="subtitle" style="font-size: 0.9em; margin-bottom: 20px;">Start Withdrawals After __ Years (e.g., Year 1 = end of first year)</div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="initialInvestment">Initial Investment ($)</label>
+                <input type="text" id="initialInvestment" value="1,000,000">
+            </div>
+            <div class="control-group">
+                <label for="expectedReturn">Expected Annual Return (%)</label>
+                <input type="number" id="expectedReturn" value="17" step="0.1" min="0">
+            </div>
+            <div class="control-group">
+                <label for="volatility">Annual Volatility (σ) (%)</label>
+                <input type="number" id="volatility" value="20" step="0.1" min="0">
+            </div>
+            <div class="control-group">
+                <label for="yearsProjection">Years to Project</label>
+                <input type="number" id="yearsProjection" value="30" min="1" max="50">
+            </div>
+            <div class="control-group">
+                <label for="withdrawalRate">Annual Withdrawal Rate (%)</label>
+                <input type="number" id="withdrawalRate" value="3" step="0.1" min="0" max="100">
+            </div>
+            <div class="control-group">
+                <label for="withdrawalStartYear">Withdraw from the end of __ years</label>
+                <input type="number" id="withdrawalStartYear" value="6" min="1" max="50" title="Enter the year when withdrawals should start. Year 1 means withdrawals start at the end of the first year.">
+                <small style="color: #636e72; font-size: 0.8em; margin-top: 2px;">Year 1 = end of first year</small>
+            </div>
+            <div class="control-group">
+                <button onclick="runSimulation()">Run Simulation</button>
+            </div>
+        </div>
+        
+        <div id="loading" class="loading" style="display: none;">
+            Running 100,000 simulations... Please wait...
+        </div>
+        
+        <div id="results" style="display: none;">
+            <div class="results">
+                <div class="stat-card">
+                    <div class="stat-label">Median Outcome (50th percentile)</div>
+                    <div class="stat-value" id="median">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Mean Outcome</div>
+                    <div class="stat-value" id="mean">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Best Case (95th percentile)</div>
+                    <div class="stat-value" id="best">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Worst Case (5th percentile)</div>
+                    <div class="stat-value" id="worst">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Maximum Value</div>
+                    <div class="stat-value" id="max">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Minimum Value</div>
+                    <div class="stat-value" id="min">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Annual Withdrawal Rate</div>
+                    <div class="stat-value" id="annualWithdrawalRate">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Withdrawal Start Year</div>
+                    <div class="stat-value" id="withdrawalStartYearDisplay">-</div>
+                </div>
+                <div class="stat-card" style="grid-column: span 2;">
+                    <div class="stat-label">Portfolio Depletion Rate</div>
+                    <div class="stat-value" id="depletionRate">-</div>
+                </div>
+                <div class="stat-card" style="grid-column: span 2;">
+                    <div class="stat-label">Total Withdrawn (Median Case)</div>
+                    <div class="stat-value" id="totalWithdrawn">-</div>
+                </div>
+            </div>
+            
+            <div class="charts-container">
+                <div class="chart-wrapper">
+                    <div class="chart-title">Distribution of Final Values</div>
+                    <canvas id="histogramChart"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <div class="chart-title">Sample Simulation Paths (100 paths)</div>
+                    <canvas id="pathsChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="probability-table">
+                <div class="chart-title">Median Outcome Details</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Value</th>
+                            <th>Withdrawal Amount</th>
+                            <th>Total Withdrawn</th>
+                        </tr>
+                    </thead>
+                    <tbody id="medianTableBody">
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="probability-table">
+                <div class="chart-title">Probability Analysis</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Target Value</th>
+                            <th>Probability of Exceeding</th>
+                            <th>Multiple of Initial Investment</th>
+                        </tr>
+                    </thead>
+                    <tbody id="probabilityTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+node_modules/
+.ipynb_checkpoints/
+__pycache__/
+build/
+dist/
+.log
+.env
+package-lock.json
+yarn.lock
+.DS_Store
