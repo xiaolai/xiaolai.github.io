@@ -151,13 +151,13 @@ window.onload = async function() {
     for (const radio of withdrawalMethodRadios) {
         radio.addEventListener('change', function() {
             if (this.value === 'percentage') {
-                withdrawalRateGroup.style.display = 'block';
+                withdrawalRateGroup.style.display = '';
                 fixedWithdrawalGroup.style.display = 'none';
                 inflationRateGroup.style.display = 'none';
             } else if (this.value === 'fixed') {
                 withdrawalRateGroup.style.display = 'none';
-                fixedWithdrawalGroup.style.display = 'block';
-                inflationRateGroup.style.display = 'block';
+                fixedWithdrawalGroup.style.display = '';
+                inflationRateGroup.style.display = '';
             }
         });
     }
