@@ -1,11 +1,11 @@
 # Monte Carlo Investment Projection
 
-A sophisticated web-based investment projection tool that uses Monte Carlo simulation to model potential portfolio outcomes over time. The application runs 100,000 simulations using Geometric Brownian Motion to provide probabilistic insights into investment growth and withdrawal scenarios.
+A sophisticated web-based investment projection tool that uses Monte Carlo simulation to model potential portfolio outcomes over time. The application runs 100,000 simulations using a stochastic annual return model to provide probabilistic insights into investment growth and withdrawal scenarios.
 
 ## Features
 
 - **100,000 Monte Carlo Simulations**: Provides statistically significant results for investment projections
-- **Geometric Brownian Motion (GBM)**: Models realistic stock market behavior with proper mathematical foundations
+- **Stochastic Annual Return Model**: Models realistic yearly portfolio returns with normally distributed variations
 - **Flexible Withdrawal Planning**: Configure when withdrawals begin and at what rate
 - **S&P 500 Historical Data**: Uses real market data (1926-2024) with automatic calculation of statistics from the most recent 15 years
 - **Interactive Visualizations**: Distribution histograms and sample path charts using Chart.js
@@ -34,14 +34,16 @@ Open `monte_carlo_projection.html` in any modern web browser. No installation re
 ## Technical Implementation
 
 ### Mathematical Model
-The simulation uses Geometric Brownian Motion (GBM):
+The simulation uses a stochastic annual return model:
 ```
-S(t) = S₀ × exp((μ - σ²/2)t + σ√t × Z)
+R = μ + σ × Z
+V(t+1) = V(t) × (1 + R)
 ```
 Where:
-- S(t) = Portfolio value at time t
-- μ = Expected annual return (drift)
-- σ = Annual volatility
+- R = Annual return for the year
+- V(t) = Portfolio value at year t
+- μ = Expected annual return
+- σ = Annual volatility (standard deviation)
 - Z = Standard normal random variable (via Box-Muller transform)
 
 ### Withdrawal Logic
@@ -83,7 +85,7 @@ node all_tests.js
 ```
 
 Tests verify:
-- Geometric Brownian Motion implementation
+- Annual return model implementation
 - Box-Muller transform for normal distribution
 - Withdrawal calculations and timing
 - Statistical percentile calculations
@@ -101,7 +103,7 @@ Works on all modern browsers that support:
 
 The simulation has been validated to ensure:
 - Normal distribution generation is statistically correct (μ=0, σ=1)
-- GBM formula properly implements drift and diffusion terms
+- Annual return model properly applies expected returns with volatility
 - Percentile calculations accurately represent distribution
 - Withdrawal sequencing follows proper order of operations
 
@@ -116,8 +118,8 @@ The simulation has been validated to ensure:
 ## Limitations
 
 - Assumes constant annual return and volatility parameters
-- Does not account for inflation (use real returns for inflation-adjusted projections)
-- Withdrawals are percentage-based, not fixed dollar amounts
+- Does not account for inflation in the base model (use real returns for inflation-adjusted projections)
+- Supports both percentage-based and fixed dollar withdrawals with inflation adjustment
 - Does not model taxes, fees, or transaction costs
 - Market returns are assumed to follow log-normal distribution
 
@@ -133,4 +135,4 @@ Contributions are welcome! Please feel free to submit pull requests or open issu
 
 - Historical S&P 500 data compiled from public sources
 - Uses Chart.js for data visualization
-- Mathematical foundations based on Black-Scholes-Merton framework
+- Mathematical foundations based on modern portfolio theory and stochastic modeling

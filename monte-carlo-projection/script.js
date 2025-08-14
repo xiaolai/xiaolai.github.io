@@ -251,7 +251,6 @@ function monteCarloSimulation(initial, mu, sigma, years, withdrawalMethod, withd
     const samplePaths = [];
     const depleted = [];
     const allPaths = []; // Store all paths to find the true median path
-    const dt = 1; // Annual time step
     
     for (let sim = 0; sim < simulations; sim++) {
         let value = initial;
@@ -267,13 +266,12 @@ function monteCarloSimulation(initial, mu, sigma, years, withdrawalMethod, withd
             const u2 = Math.random();
             const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
             
-            // Geometric Brownian Motion
-            const drift = (mu - 0.5 * sigma * sigma) * dt;
-            const diffusion = sigma * Math.sqrt(dt) * z;
-            const returnRate = Math.exp(drift + diffusion);
+            // Simple annual return model: return = mu + sigma * z
+            // This gives us the annual return as a percentage
+            const annualReturn = mu + sigma * z;
             
             // Apply returns first
-            value = value * returnRate;
+            value = value * (1 + annualReturn);
             
             // Then apply withdrawal at end of year (only if we've reached the withdrawal start year)
             let withdrawal = 0;
@@ -297,6 +295,7 @@ function monteCarloSimulation(initial, mu, sigma, years, withdrawalMethod, withd
             yearlyData.push({
                 year: year,
                 value: value,
+                returnRate: annualReturn,
                 withdrawal: withdrawal,
                 totalWithdrawn: totalWithdrawn
             });
@@ -587,7 +586,12 @@ function createMedianTable(medianPath) {
         const row = tbody.insertRow();
         row.insertCell(0).textContent = yearData.year;
         row.insertCell(1).textContent = formatCurrency(yearData.value);
-        row.insertCell(2).textContent = formatCurrency(yearData.withdrawal);
+        
+        // Display the return rate for this year
+        const returnRatePercent = yearData.returnRate * 100;
+        row.insertCell(2).textContent = returnRatePercent.toFixed(2) + '%';
+        
+        row.insertCell(3).textContent = formatCurrency(yearData.withdrawal);
         
         // Calculate actual withdrawal rate
         // Need to add the withdrawal back to get the pre-withdrawal value
@@ -596,9 +600,9 @@ function createMedianTable(medianPath) {
         if (preWithdrawalValue > 0 && yearData.withdrawal > 0) {
             actualRate = (yearData.withdrawal / preWithdrawalValue) * 100;
         }
-        row.insertCell(3).textContent = actualRate > 0 ? actualRate.toFixed(2) + '%' : '-';
+        row.insertCell(4).textContent = actualRate > 0 ? actualRate.toFixed(2) + '%' : '-';
         
-        row.insertCell(4).textContent = formatCurrency(yearData.totalWithdrawn);
+        row.insertCell(5).textContent = formatCurrency(yearData.totalWithdrawn);
     }
 }
 
