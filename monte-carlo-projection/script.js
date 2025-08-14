@@ -268,7 +268,15 @@ function monteCarloSimulation(initial, mu, sigma, years, withdrawalMethod, withd
             
             // Simple annual return model: return = mu + sigma * z
             // This gives us the annual return as a percentage
-            const annualReturn = mu + sigma * z;
+            let annualReturn = mu + sigma * z;
+            
+            // Apply symmetric caps to maintain distribution balance
+            // Cap losses at -99.99% (can't lose more than 100% without leverage)
+            // Cap gains symmetrically to avoid skewing the distribution
+            // The upper cap is calculated as: mu + |(-1 - mu)/sigma| * sigma
+            const zScore = Math.abs((-1 - mu) / sigma);
+            const upperBound = mu + zScore * sigma;
+            annualReturn = Math.max(-0.9999, Math.min(upperBound, annualReturn));
             
             // Apply returns first
             value = value * (1 + annualReturn);

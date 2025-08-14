@@ -342,6 +342,167 @@ function testReturnRateRange() {
     console.log(`    ✓ Overall Return Rate Range Test: ${allTestsPass ? 'PASS' : 'FAIL'}`);
 }
 
+// Test 1.9: Symmetric Distribution Capping Test
+function testSymmetricCapping() {
+    console.log('\n1.9 Testing Symmetric Distribution Capping:');
+    
+    const mu = 0.3493; // 34.93% expected return
+    const sigma = 0.6146; // 61.46% volatility
+    const simulations = 100000;
+    
+    let countBelowLower = 0;
+    let countAboveUpper = 0;
+    let sumReturns = 0;
+    let sumCappedReturns = 0;
+    let minReturn = Infinity;
+    let maxReturn = -Infinity;
+    
+    // Calculate symmetric bounds
+    const zScore = Math.abs((-1 - mu) / sigma);
+    const upperBound = mu + zScore * sigma;
+    
+    for (let i = 0; i < simulations; i++) {
+        const u1 = Math.random();
+        const u2 = Math.random();
+        const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+        let annualReturn = mu + sigma * z;
+        
+        sumReturns += annualReturn;
+        
+        // Track extremes before capping
+        if (annualReturn <= -1.0) countBelowLower++;
+        if (annualReturn >= upperBound) countAboveUpper++;
+        
+        minReturn = Math.min(minReturn, annualReturn);
+        maxReturn = Math.max(maxReturn, annualReturn);
+        
+        // Apply symmetric capping
+        annualReturn = Math.max(-0.9999, Math.min(upperBound, annualReturn));
+        sumCappedReturns += annualReturn;
+    }
+    
+    const meanOriginal = sumReturns / simulations;
+    const meanCapped = sumCappedReturns / simulations;
+    const bias = Math.abs(meanCapped - meanOriginal);
+    
+    console.log(`  Lower bound: -99.99% (${Math.abs((-1 - mu) / sigma).toFixed(3)} σ below mean)`);
+    console.log(`  Upper bound: ${(upperBound * 100).toFixed(2)}% (${zScore.toFixed(3)} σ above mean)`);
+    console.log(`  Returns hitting lower cap: ${countBelowLower} (${(countBelowLower/simulations*100).toFixed(3)}%)`);
+    console.log(`  Returns hitting upper cap: ${countAboveUpper} (${(countAboveUpper/simulations*100).toFixed(3)}%)`);
+    console.log(`  Min return generated: ${(minReturn * 100).toFixed(2)}%`);
+    console.log(`  Max return generated: ${(maxReturn * 100).toFixed(2)}%`);
+    console.log(`  Original mean: ${(meanOriginal * 100).toFixed(3)}%`);
+    console.log(`  Capped mean: ${(meanCapped * 100).toFixed(3)}%`);
+    console.log(`  Bias introduced: ${(bias * 100).toFixed(4)}%`);
+    
+    // Check if distribution is reasonably symmetric
+    const capRatio = countAboveUpper > 0 ? countBelowLower / countAboveUpper : 1;
+    const isSymmetric = capRatio > 0.8 && capRatio < 1.25; // Within 25% of each other
+    const lowBias = bias < 0.001; // Less than 0.1% bias
+    
+    console.log(`  Result: ${isSymmetric && lowBias ? 'PASS ✓' : 'FAIL ✗'} (symmetric capping with minimal bias)`);
+}
+
+// Test 1.10: Zero Withdrawal Depletion Test
+function testZeroWithdrawalDepletion() {
+    console.log('\n1.10 Testing Zero Withdrawal Depletion:');
+    
+    const initial = 10000;
+    const mu = 0.3493; // 34.93% expected return
+    const sigma = 0.6146; // 61.46% volatility
+    const years = 30;
+    const withdrawalRate = 0; // 0% withdrawal
+    const simulations = 10000;
+    
+    let depletedCount = 0;
+    let returnsBelow100Count = 0;
+    let minReturnSeen = 0;
+    
+    for (let sim = 0; sim < simulations; sim++) {
+        let value = initial;
+        
+        for (let year = 1; year <= years; year++) {
+            // Box-Muller transform
+            const u1 = Math.random();
+            const u2 = Math.random();
+            const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+            
+            // Annual return
+            let annualReturn = mu + sigma * z;
+            
+            // Track if algorithm generates impossible returns
+            if (annualReturn < -1.0) {
+                returnsBelow100Count++;
+                minReturnSeen = Math.min(minReturnSeen, annualReturn);
+            }
+            
+            // Apply symmetric capping (same as main code)
+            const zScore = Math.abs((-1 - mu) / sigma);
+            const upperBound = mu + zScore * sigma;
+            annualReturn = Math.max(-0.9999, Math.min(upperBound, annualReturn));
+            
+            // Apply returns
+            value = value * (1 + annualReturn);
+            
+            // Apply withdrawal (should be 0)
+            const withdrawal = value * withdrawalRate;
+            value = Math.max(0, value - withdrawal);
+            
+            // Check if depleted
+            if (value === 0) {
+                depletedCount++;
+                break;
+            }
+        }
+    }
+    
+    const depletionRate = (depletedCount / simulations) * 100;
+    
+    console.log(`  Parameters: μ=${(mu*100).toFixed(2)}%, σ=${(sigma*100).toFixed(2)}%, withdrawal=${(withdrawalRate*100).toFixed(1)}%`);
+    console.log(`  Algorithm generated ${returnsBelow100Count} returns worse than -100%`);
+    if (returnsBelow100Count > 0) {
+        console.log(`  Worst return generated: ${(minReturnSeen*100).toFixed(2)}% (impossible without leverage!)`);
+    }
+    console.log(`  Depletion rate: ${depletionRate.toFixed(2)}%`);
+    console.log(`  Result: ${depletionRate === 0 ? 'PASS ✓' : 'FAIL ✗'} (should be 0% with 0% withdrawal)`);
+    
+    // Additional test with extreme volatility
+    console.log('\n  Testing with extreme volatility (σ=100%):');
+    let extremeDepletedCount = 0;
+    let extremeReturnsBelow100 = 0;
+    const extremeSigma = 1.0; // 100% volatility
+    
+    for (let sim = 0; sim < simulations; sim++) {
+        let value = initial;
+        
+        for (let year = 1; year <= years; year++) {
+            const u1 = Math.random();
+            const u2 = Math.random();
+            const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+            
+            let annualReturn = mu + extremeSigma * z;
+            if (annualReturn < -1.0) {
+                extremeReturnsBelow100++;
+            }
+            // Apply symmetric capping with extreme volatility
+            const zScore = Math.abs((-1 - mu) / extremeSigma);
+            const upperBound = mu + zScore * extremeSigma;
+            annualReturn = Math.max(-0.9999, Math.min(upperBound, annualReturn));
+            value = value * (1 + annualReturn);
+            
+            if (value === 0) {
+                extremeDepletedCount++;
+                break;
+            }
+        }
+    }
+    
+    const extremeDepletionRate = (extremeDepletedCount / simulations) * 100;
+    console.log(`  Algorithm generated ${extremeReturnsBelow100} returns worse than -100% with σ=100%`);
+    console.log(`  Depletion rate with σ=100%: ${extremeDepletionRate.toFixed(2)}%`);
+    console.log(`  Result: ${extremeDepletionRate === 0 ? 'PASS ✓' : 'FAIL ✗'} (should be 0% even with extreme volatility)`);
+}
+
 // ============================================================================
 // TEST 2: HISTORICAL DATA STATISTICS
 // ============================================================================
@@ -506,6 +667,8 @@ async function runAllTests() {
     testCompoundReturns();
     testBoxMuller();
     testReturnRateRange();
+    testSymmetricCapping();
+    testZeroWithdrawalDepletion();
     
     testHistoricalStats();
     test15YearStats();

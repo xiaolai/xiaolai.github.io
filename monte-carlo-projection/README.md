@@ -34,10 +34,11 @@ Open `monte_carlo_projection.html` in any modern web browser. No installation re
 ## Technical Implementation
 
 ### Mathematical Model
-The simulation uses a stochastic annual return model:
+The simulation uses a stochastic annual return model with symmetric bounds:
 ```
 R = μ + σ × Z
-V(t+1) = V(t) × (1 + R)
+R_capped = max(-99.99%, min(R, R_upper))
+V(t+1) = V(t) × (1 + R_capped)
 ```
 Where:
 - R = Annual return for the year
@@ -45,6 +46,14 @@ Where:
 - μ = Expected annual return
 - σ = Annual volatility (standard deviation)
 - Z = Standard normal random variable (via Box-Muller transform)
+- R_upper = μ + |(-1 - μ)/σ| × σ (symmetric upper bound)
+
+#### Symmetric Return Capping
+To prevent mathematically impossible returns (worse than -100% loss) while maintaining distribution symmetry:
+- **Lower bound**: -99.99% (prevents complete depletion from market returns alone)
+- **Upper bound**: Calculated dynamically to be equidistant from the mean as -100%
+- This ensures equal probability mass is trimmed from both tails
+- Preserves the expected value with minimal bias (typically < 0.1%)
 
 ### Withdrawal Logic
 - Withdrawals begin at the end of the specified start year
@@ -87,6 +96,8 @@ node all_tests.js
 Tests verify:
 - Annual return model implementation
 - Box-Muller transform for normal distribution
+- Symmetric return capping with distribution balance
+- Zero withdrawal guarantees no depletion
 - Withdrawal calculations and timing
 - Statistical percentile calculations
 - Historical data statistics
@@ -104,6 +115,8 @@ Works on all modern browsers that support:
 The simulation has been validated to ensure:
 - Normal distribution generation is statistically correct (μ=0, σ=1)
 - Annual return model properly applies expected returns with volatility
+- Symmetric return capping prevents impossible returns while maintaining distribution balance
+- Zero withdrawal rate guarantees zero portfolio depletion
 - Percentile calculations accurately represent distribution
 - Withdrawal sequencing follows proper order of operations
 
