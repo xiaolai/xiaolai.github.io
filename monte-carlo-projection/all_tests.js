@@ -446,9 +446,88 @@ function testSymmetricCapping() {
     console.log(`  Result: ${isSymmetric && lowBias ? 'PASS ✓' : 'FAIL ✗'} (symmetric capping with minimal bias)`);
 }
 
-// Test 1.11: Zero Withdrawal Depletion Test
+// Test 1.11: Test Dynamic Depletion Threshold
+function testDynamicDepletionThreshold() {
+    console.log('\n1.11 Testing Dynamic Depletion Threshold:');
+    
+    // Test that depletion threshold is based on withdrawal amount
+    const initial = 1000000;
+    const mu = 0.137;
+    const sigma = 0.40;
+    const years = 50;
+    const simulations = 10000;
+    
+    // Helper function for simulation
+    function simulateWithThreshold(withdrawalRate) {
+        let depletedCount = 0;
+        let nearThresholdCount = 0;
+        const threshold = initial * withdrawalRate;
+        
+        for (let i = 0; i < simulations; i++) {
+            let value = initial;
+            let depleted = false;
+            
+            for (let year = 1; year <= years; year++) {
+                // Check if below threshold (one year's withdrawal)
+                if (value < threshold) {
+                    depleted = true;
+                    value = 0;
+                    break;
+                }
+                
+                // Generate return
+                const u1 = Math.random();
+                const u2 = Math.random();
+                const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+                let annualReturn = mu + sigma * z;
+                const zScore = Math.abs((-1 - mu) / sigma);
+                const upperBound = mu + zScore * sigma;
+                annualReturn = Math.max(-0.9999, Math.min(upperBound, annualReturn));
+                
+                // Apply return and withdrawal
+                value *= (1 + annualReturn);
+                if (value > 0) {
+                    const withdrawal = value * withdrawalRate;
+                    value -= withdrawal;
+                }
+            }
+            
+            if (depleted) depletedCount++;
+            if (value < threshold * 2) nearThresholdCount++;
+        }
+        
+        return {
+            depletionRate: (depletedCount / simulations) * 100,
+            nearThresholdRate: (nearThresholdCount / simulations) * 100
+        };
+    }
+    
+    // Test different withdrawal rates
+    console.log('  Testing with different withdrawal rates:');
+    
+    const result5pct = simulateWithThreshold(0.05);
+    console.log(`    5% withdrawal: ${result5pct.depletionRate.toFixed(2)}% depleted`);
+    
+    const result10pct = simulateWithThreshold(0.10);
+    console.log(`    10% withdrawal: ${result10pct.depletionRate.toFixed(2)}% depleted`);
+    
+    const result15pct = simulateWithThreshold(0.15);
+    console.log(`    15% withdrawal: ${result15pct.depletionRate.toFixed(2)}% depleted`);
+    
+    // Check that higher withdrawal rates have higher depletion
+    const increasing = result15pct.depletionRate > result10pct.depletionRate && 
+                      result10pct.depletionRate > result5pct.depletionRate;
+    
+    console.log(`  ✓ Depletion increases with withdrawal rate: ${increasing ? 'PASS' : 'FAIL'}`);
+    
+    // Check that 10% withdrawal with 40% volatility has meaningful depletion
+    const meaningful = result10pct.depletionRate > 10;
+    console.log(`  ✓ 10% withdrawal has >10% depletion rate: ${meaningful ? 'PASS' : 'FAIL'}`);
+}
+
+// Test 1.12: Zero Withdrawal Depletion Test  
 function testZeroWithdrawalDepletion() {
-    console.log('\n1.11 Testing Zero Withdrawal Depletion:');
+    console.log('\n1.12 Testing Zero Withdrawal Depletion:');
     
     const initial = 10000;
     const mu = 0.3493; // 34.93% expected return
@@ -712,6 +791,7 @@ async function runAllTests() {
     testBoxMuller();
     testReturnRateRange();
     testSymmetricCapping();
+    testDynamicDepletionThreshold();
     testZeroWithdrawalDepletion();
     
     testHistoricalStats();

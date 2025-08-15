@@ -264,6 +264,54 @@
                 `Final value is ${(value/initial*100).toFixed(4)}% of initial`);
         }
         
+        // Test Suite 7: Dynamic Depletion Threshold
+        function testDynamicDepletionThreshold() {
+            // Test that depletion threshold is based on withdrawal amount
+            const initial = 100000;
+            const mu = 0.08; // 8% expected return
+            const sigma = 0.30; // 30% volatility
+            const years = 30;
+            const simulations = 1000;
+            
+            // Test different withdrawal rates
+            const testCases = [
+                { withdrawalRate: 0.05, expectedMinDepletion: 0 },
+                { withdrawalRate: 0.10, expectedMinDepletion: 10 },
+                { withdrawalRate: 0.15, expectedMinDepletion: 30 }
+            ];
+            
+            for (const testCase of testCases) {
+                let depletedCount = 0;
+                
+                for (let sim = 0; sim < simulations; sim++) {
+                    let value = initial;
+                    const depletionThreshold = initial * testCase.withdrawalRate;
+                    
+                    for (let year = 1; year <= years; year++) {
+                        // Check if portfolio can't cover one year's withdrawal
+                        if (value < depletionThreshold) {
+                            depletedCount++;
+                            break;
+                        }
+                        
+                        // Apply returns (simplified)
+                        const z = boxMullerTransform();
+                        const annualReturn = mu + sigma * z;
+                        value *= (1 + annualReturn);
+                        
+                        // Apply withdrawal
+                        const withdrawal = value * testCase.withdrawalRate;
+                        value = value - withdrawal;
+                    }
+                }
+                
+                const depletionRate = (depletedCount / simulations) * 100;
+                assert(depletionRate >= testCase.expectedMinDepletion, 
+                    `Dynamic threshold test for ${testCase.withdrawalRate * 100}% withdrawal`,
+                    `Depletion rate: ${depletionRate.toFixed(2)}%, Expected min: ${testCase.expectedMinDepletion}%`);
+            }
+        }
+        
         // Run all tests
         function runTests() {
             console.log("Running Monte Carlo Projection Tests...");
@@ -274,7 +322,8 @@
                 { name: "Withdrawal Logic", fn: testWithdrawalLogic },
                 { name: "Statistical Calculations", fn: testStatisticalCalculations },
                 { name: "Median Path Generation", fn: testMedianPathGeneration },
-                { name: "Portfolio Depletion", fn: testPortfolioDepletion }
+                { name: "Portfolio Depletion", fn: testPortfolioDepletion },
+                { name: "Dynamic Depletion Threshold", fn: testDynamicDepletionThreshold }
             ];
             
             const resultsDiv = document.getElementById('test-results');

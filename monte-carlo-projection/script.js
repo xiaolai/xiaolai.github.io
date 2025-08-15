@@ -246,6 +246,15 @@ function monteCarloSimulation(initial, mu, sigma, years, withdrawalMethod, withd
     const depleted = [];
     let medianPath = null;
     
+    // Calculate depletion threshold based on one year's withdrawal amount
+    // If withdrawal rate is 0, use 1% of initial as threshold
+    let baseDepletionThreshold;
+    if (withdrawalMethod === 'percentage') {
+        baseDepletionThreshold = withdrawalRate > 0 ? initial * withdrawalRate : initial * 0.01;
+    } else {
+        baseDepletionThreshold = fixedAmount > 0 ? fixedAmount : initial * 0.01;
+    }
+    
     // Pre-calculate inflation multipliers
     const inflationMultipliers = new Float64Array(years + 1);
     inflationMultipliers[0] = 1;
@@ -263,9 +272,45 @@ function monteCarloSimulation(initial, mu, sigma, years, withdrawalMethod, withd
         const yearlyData = [];
         
         for (let year = 1; year <= years; year++) {
+            // Calculate current year's depletion threshold
+            let currentThreshold;
+            if (withdrawalMethod === 'percentage') {
+                // For percentage, threshold is based on current portfolio value
+                currentThreshold = value * withdrawalRate;
+                // But use base threshold as minimum
+                if (currentThreshold < baseDepletionThreshold || withdrawalRate === 0) {
+                    currentThreshold = baseDepletionThreshold;
+                }
+            } else {
+                // For fixed, threshold is inflation-adjusted withdrawal amount
+                if (year >= withdrawalStartYear) {
+                    currentThreshold = fixedAmount * inflationMultipliers[year - withdrawalStartYear];
+                } else {
+                    currentThreshold = baseDepletionThreshold;
+                }
+            }
+            
+            // Skip if portfolio is already depleted (can't cover one year's withdrawal)
+            if (value < currentThreshold) {
+                yearlyData.push({
+                    year,
+                    value: 0,
+                    returnRate: 0,
+                    withdrawal: 0,
+                    totalWithdrawn
+                });
+                if (depletedYear === null) {
+                    depletedYear = year;
+                }
+                value = 0; // Ensure it stays at 0
+                continue;
+            }
+            
+            // Apply returns
             const annualReturn = generateNormalRandom(mu, sigma);
             value *= (1 + annualReturn);
             
+            // Apply withdrawal
             let withdrawal = 0;
             if (year >= withdrawalStartYear && value > 0) {
                 if (withdrawalMethod === 'percentage') {
@@ -275,7 +320,15 @@ function monteCarloSimulation(initial, mu, sigma, years, withdrawalMethod, withd
                     withdrawal = Math.min(inflationAdjusted, value);
                 }
                 totalWithdrawn += withdrawal;
-                value = Math.max(0, value - withdrawal);
+                value = value - withdrawal;
+                
+                // Check for depletion after withdrawal
+                if (value < currentThreshold) {
+                    value = 0;
+                    if (depletedYear === null) {
+                        depletedYear = year;
+                    }
+                }
             }
             
             yearlyData.push({
@@ -285,10 +338,6 @@ function monteCarloSimulation(initial, mu, sigma, years, withdrawalMethod, withd
                 withdrawal,
                 totalWithdrawn
             });
-            
-            if (value === 0 && depletedYear === null) {
-                depletedYear = year;
-            }
         }
         
         finalValues[sim] = value;
