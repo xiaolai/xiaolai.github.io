@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walter White's Hypothetical Retirement Strategy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #7f8c8d;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .tab:hover {
+            color: #667eea;
+        }
+        
+        .tab.active {
+            color: #667eea;
+        }
+        
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 12px;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 8px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+        
+        th:first-child {
+            text-align: left;
+        }
+        
+        td {
+            padding: 8px;
+            text-align: right;
+            border-bottom: 1px solid #ecf0f1;
+            font-size: 11px;
+        }
+        
+        td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .positive {
+            color: #27ae60;
+        }
+        
+        .negative {
+            color: #e74c3c;
+        }
+        
+        .summary {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+        }
+        
+        .summary h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+        
+        .summary-item {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .summary-label {
+            font-size: 11px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        
+        .summary-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .notes {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fef9e7;
+            border-left: 4px solid #f39c12;
+            border-radius: 5px;
+            font-size: 11px;
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+        
+        .comparison-summary {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e8f0 100%);
+            border-radius: 10px;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .comparison-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .etf-label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .vgt-label { color: #667eea; }
+        .voo-label { color: #e74c3c; }
+        .vong-label { color: #27ae60; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Walter White's Hypothetical Retirement Strategy</h1>
+        <div class="subtitle">$480,000 Initial Investment | 4% Annual Withdrawal Rate | Actual Historical Returns 2009-2024</div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('vgt')">VGT (Technology)</button>
+            <button class="tab" onclick="showTab('voo')">VOO (S&P 500)</button>
+            <button class="tab" onclick="showTab('vong')">VONG (Growth)</button>
+        </div>
+        
+        <!-- VGT Tab -->
+        <div id="vgt" class="tab-content active">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year End</th>
+                        <th>Portfolio Value</th>
+                        <th>VGT Return</th>
+                        <th>Growth ($)</th>
+                        <th>Withdrawal (4%)</th>
+                        <th>Tax (15%)</th>
+                        <th>After-Tax Income</th>
+                        <th>Cumulative Income</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>2008</td><td>$480,000</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>2009</td><td>$752,112</td><td class="positive">61.89%</td><td class="positive">$297,072</td><td>$30,084</td><td>$4,513</td><td>$25,572</td><td style="font-weight: bold;">$25,572</td></tr>
+                    <tr><td>2010</td><td>$818,228</td><td class="positive">12.78%</td><td class="positive">$96,200</td><td>$32,729</td><td>$4,909</td><td>$27,820</td><td style="font-weight: bold;">$53,391</td></tr>
+                    <tr><td>2011</td><td>$790,815</td><td class="positive">0.56%</td><td class="positive">$4,316</td><td>$31,633</td><td>$4,745</td><td>$26,888</td><td style="font-weight: bold;">$80,279</td></tr>
+                    <tr><td>2012</td><td>$866,140</td><td class="positive">13.96%</td><td class="positive">$106,958</td><td>$34,646</td><td>$5,197</td><td>$29,449</td><td style="font-weight: bold;">$109,728</td></tr>
+                    <tr><td>2013</td><td>$1,095,736</td><td class="positive">30.96%</td><td class="positive">$264,242</td><td>$43,829</td><td>$6,574</td><td>$37,255</td><td style="font-weight: bold;">$146,983</td></tr>
+                    <tr><td>2014</td><td>$1,246,855</td><td class="positive">17.99%</td><td class="positive">$194,948</td><td>$49,874</td><td>$7,481</td><td>$42,393</td><td style="font-weight: bold;">$189,376</td></tr>
+                    <tr><td>2015</td><td>$1,267,717</td><td class="positive">5.04%</td><td class="positive">$60,736</td><td>$50,709</td><td>$7,606</td><td>$43,102</td><td style="font-weight: bold;">$232,479</td></tr>
+                    <tr><td>2016</td><td>$1,391,265</td><td class="positive">13.77%</td><td class="positive">$174,257</td><td>$55,651</td><td>$8,348</td><td>$47,303</td><td style="font-weight: bold;">$279,782</td></tr>
+                    <tr><td>2017</td><td>$1,855,950</td><td class="positive">37.07%</td><td class="positive">$515,836</td><td>$74,238</td><td>$11,136</td><td>$63,102</td><td style="font-weight: bold;">$342,884</td></tr>
+                    <tr><td>2018</td><td>$1,837,431</td><td class="positive">2.45%</td><td class="positive">$44,439</td><td>$73,497</td><td>$11,025</td><td>$62,473</td><td style="font-weight: bold;">$405,356</td></tr>
+                    <tr><td>2019</td><td>$2,657,548</td><td class="positive">48.61%</td><td class="positive">$893,615</td><td>$106,302</td><td>$15,945</td><td>$90,357</td><td style="font-weight: bold;">$495,713</td></tr>
+                    <tr><td>2020</td><td>$3,766,837</td><td class="positive">46.00%</td><td class="positive">$1,222,871</td><td>$150,673</td><td>$22,601</td><td>$128,072</td><td style="font-weight: bold;">$623,785</td></tr>
+                    <tr><td>2021</td><td>$4,752,890</td><td class="positive">30.45%</td><td class="positive">$1,146,728</td><td>$190,116</td><td>$28,517</td><td>$161,598</td><td style="font-weight: bold;">$785,384</td></tr>
+                    <tr><td>2022</td><td>$3,165,176</td><td class="negative">-29.70%</td><td class="negative">-$1,397,829</td><td>$126,607</td><td>$18,991</td><td>$107,616</td><td style="font-weight: bold;">$893,000</td></tr>
+                    <tr><td>2023</td><td>$4,685,265</td><td class="positive">52.65%</td><td class="positive">$1,666,345</td><td>$187,411</td><td>$28,112</td><td>$159,299</td><td style="font-weight: bold;">$1,052,299</td></tr>
+                    <tr><td>2024</td><td>$5,861,381</td><td class="positive">29.31%</td><td class="positive">$1,373,757</td><td>$234,455</td><td>$35,168</td><td>$199,287</td><td style="font-weight: bold; color: #27ae60;">$1,251,586</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="summary">
+                <h3>VGT Investment Summary</h3>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="summary-label">Initial Investment</div>
+                        <div class="summary-value">$480,000</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Final Portfolio Value</div>
+                        <div class="summary-value" style="color: #27ae60;">$5,861,381</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total Withdrawn</div>
+                        <div class="summary-value">$1,486,731</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total After-Tax Income</div>
+                        <div class="summary-value">$1,251,586</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total Return</div>
+                        <div class="summary-value" style="color: #27ae60;">1,121%</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Annualized Return</div>
+                        <div class="summary-value">16.7%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- VOO Tab -->
+        <div id="voo" class="tab-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year End</th>
+                        <th>Portfolio Value</th>
+                        <th>VOO Return</th>
+                        <th>Growth ($)</th>
+                        <th>Withdrawal (4%)</th>
+                        <th>Tax (15%)</th>
+                        <th>After-Tax Income</th>
+                        <th>Cumulative Income</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>2008</td><td>$480,000</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>2009*</td><td>$583,008</td><td class="positive">26.46%</td><td class="positive">$127,008</td><td>$23,320</td><td>$3,498</td><td>$19,822</td><td style="font-weight: bold;">$19,822</td></tr>
+                    <tr><td>2010</td><td>$614,807</td><td class="positive">11.97%</td><td class="positive">$69,759</td><td>$24,592</td><td>$3,689</td><td>$20,903</td><td style="font-weight: bold;">$40,726</td></tr>
+                    <tr><td>2011</td><td>$597,394</td><td class="positive">1.89%</td><td class="positive">$11,620</td><td>$23,896</td><td>$3,584</td><td>$20,311</td><td style="font-weight: bold;">$61,037</td></tr>
+                    <tr><td>2012</td><td>$667,929</td><td class="positive">16.00%</td><td class="positive">$95,583</td><td>$26,717</td><td>$4,008</td><td>$22,710</td><td style="font-weight: bold;">$83,747</td></tr>
+                    <tr><td>2013</td><td>$859,214</td><td class="positive">32.39%</td><td class="positive">$216,426</td><td>$34,369</td><td>$5,155</td><td>$29,213</td><td style="font-weight: bold;">$112,960</td></tr>
+                    <tr><td>2014</td><td>$948,588</td><td class="positive">13.55%</td><td class="positive">$116,381</td><td>$37,944</td><td>$5,692</td><td>$32,252</td><td style="font-weight: bold;">$145,212</td></tr>
+                    <tr><td>2015</td><td>$938,002</td><td class="positive">1.31%</td><td class="positive">$12,422</td><td>$37,520</td><td>$5,628</td><td>$31,892</td><td style="font-weight: bold;">$177,104</td></tr>
+                    <tr><td>2016</td><td>$1,016,094</td><td class="positive">12.17%</td><td class="positive">$114,085</td><td>$40,644</td><td>$6,097</td><td>$34,547</td><td style="font-weight: bold;">$211,651</td></tr>
+                    <tr><td>2017</td><td>$1,198,449</td><td class="positive">21.77%</td><td class="positive">$221,094</td><td>$47,938</td><td>$7,191</td><td>$40,747</td><td style="font-weight: bold;">$252,398</td></tr>
+                    <tr><td>2018</td><td>$1,099,530</td><td class="negative">-4.50%</td><td class="negative">-$53,875</td><td>$43,981</td><td>$6,597</td><td>$37,384</td><td style="font-weight: bold;">$289,782</td></tr>
+                    <tr><td>2019</td><td>$1,395,354</td><td class="positive">31.35%</td><td class="positive">$344,814</td><td>$55,814</td><td>$8,372</td><td>$47,442</td><td style="font-weight: bold;">$337,224</td></tr>
+                    <tr><td>2020</td><td>$1,601,548</td><td class="positive">18.29%</td><td class="positive">$255,188</td><td>$64,062</td><td>$9,609</td><td>$54,453</td><td style="font-weight: bold;">$391,677</td></tr>
+                    <tr><td>2021</td><td>$2,012,383</td><td class="positive">28.78%</td><td class="positive">$460,930</td><td>$80,495</td><td>$12,074</td><td>$68,421</td><td style="font-weight: bold;">$460,097</td></tr>
+                    <tr><td>2022</td><td>$1,577,268</td><td class="negative">-18.19%</td><td class="negative">-$366,035</td><td>$63,091</td><td>$9,464</td><td>$53,627</td><td style="font-weight: bold;">$513,724</td></tr>
+                    <tr><td>2023</td><td>$1,944,147</td><td class="positive">26.32%</td><td class="positive">$415,202</td><td>$77,766</td><td>$11,665</td><td>$66,101</td><td style="font-weight: bold;">$579,825</td></tr>
+                    <tr><td>2024</td><td>$2,363,959</td><td class="positive">24.98%</td><td class="positive">$485,577</td><td>$94,558</td><td>$14,184</td><td>$80,375</td><td style="font-weight: bold; color: #27ae60;">$660,200</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="summary">
+                <h3>VOO Investment Summary</h3>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="summary-label">Initial Investment</div>
+                        <div class="summary-value">$480,000</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Final Portfolio Value</div>
+                        <div class="summary-value" style="color: #27ae60;">$2,363,959</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total Withdrawn</div>
+                        <div class="summary-value">$776,470</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total After-Tax Income</div>
+                        <div class="summary-value">$660,200</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total Return</div>
+                        <div class="summary-value" style="color: #27ae60;">392%</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Annualized Return</div>
+                        <div class="summary-value">10.5%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- VONG Tab -->
+        <div id="vong" class="tab-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year End</th>
+                        <th>Portfolio Value</th>
+                        <th>VONG Return</th>
+                        <th>Growth ($)</th>
+                        <th>Withdrawal (4%)</th>
+                        <th>Tax (15%)</th>
+                        <th>After-Tax Income</th>
+                        <th>Cumulative Income</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>2008</td><td>$480,000</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>2009*</td><td>$632,112</td><td class="positive">36.69%</td><td class="positive">$176,112</td><td>$25,284</td><td>$3,793</td><td>$21,492</td><td style="font-weight: bold;">$21,492</td></tr>
+                    <tr><td>2010</td><td>$676,863</td><td class="positive">12.65%</td><td class="positive">$79,922</td><td>$27,075</td><td>$4,061</td><td>$23,013</td><td style="font-weight: bold;">$44,505</td></tr>
+                    <tr><td>2011</td><td>$665,389</td><td class="positive">2.30%</td><td class="positive">$15,562</td><td>$26,616</td><td>$3,992</td><td>$22,623</td><td style="font-weight: bold;">$67,128</td></tr>
+                    <tr><td>2012</td><td>$740,517</td><td class="positive">15.19%</td><td class="positive">$101,127</td><td>$29,621</td><td>$4,443</td><td>$25,178</td><td style="font-weight: bold;">$92,306</td></tr>
+                    <tr><td>2013</td><td>$957,590</td><td class="positive">33.23%</td><td class="positive">$246,094</td><td>$38,304</td><td>$5,746</td><td>$32,558</td><td style="font-weight: bold;">$124,864</td></tr>
+                    <tr><td>2014</td><td>$1,058,248</td><td class="positive">12.92%</td><td class="positive">$123,685</td><td>$42,330</td><td>$6,349</td><td>$35,980</td><td style="font-weight: bold;">$160,844</td></tr>
+                    <tr><td>2015</td><td>$1,078,090</td><td class="positive">5.56%</td><td class="positive">$58,855</td><td>$43,124</td><td>$6,469</td><td>$36,655</td><td style="font-weight: bold;">$197,499</td></tr>
+                    <tr><td>2016</td><td>$1,107,875</td><td class="positive">7.03%</td><td class="positive">$75,795</td><td>$44,315</td><td>$6,647</td><td>$37,668</td><td style="font-weight: bold;">$235,167</td></tr>
+                    <tr><td>2017</td><td>$1,396,767</td><td class="positive">30.04%</td><td class="positive">$332,812</td><td>$55,871</td><td>$8,381</td><td>$47,490</td><td style="font-weight: bold;">$282,657</td></tr>
+                    <tr><td>2018</td><td>$1,324,397</td><td class="negative">-1.53%</td><td class="negative">-$21,369</td><td>$52,976</td><td>$7,946</td><td>$45,029</td><td style="font-weight: bold;">$327,686</td></tr>
+                    <tr><td>2019</td><td>$1,737,993</td><td class="positive">36.05%</td><td class="positive">$477,603</td><td>$69,520</td><td>$10,428</td><td>$59,092</td><td style="font-weight: bold;">$386,778</td></tr>
+                    <tr><td>2020</td><td>$2,337,106</td><td class="positive">38.27%</td><td class="positive">$665,025</td><td>$93,484</td><td>$14,023</td><td>$79,462</td><td style="font-weight: bold;">$466,240</td></tr>
+                    <tr><td>2021</td><td>$2,901,508</td><td class="positive">27.60%</td><td class="positive">$644,880</td><td>$116,060</td><td>$17,409</td><td>$98,651</td><td style="font-weight: bold;">$564,891</td></tr>
+                    <tr><td>2022</td><td>$1,954,866</td><td class="negative">-29.18%</td><td class="negative">-$846,603</td><td>$78,195</td><td>$11,729</td><td>$66,465</td><td style="font-weight: bold;">$631,357</td></tr>
+                    <tr><td>2023</td><td>$2,741,057</td><td class="positive">42.67%</td><td class="positive">$833,915</td><td>$109,642</td><td>$16,446</td><td>$93,196</td><td style="font-weight: bold;">$724,553</td></tr>
+                    <tr><td>2024</td><td>$3,551,125</td><td class="positive">33.20%</td><td class="positive">$910,028</td><td>$142,045</td><td>$21,307</td><td>$120,738</td><td style="font-weight: bold; color: #27ae60;">$845,291</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="summary">
+                <h3>VONG Investment Summary</h3>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="summary-label">Initial Investment</div>
+                        <div class="summary-value">$480,000</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Final Portfolio Value</div>
+                        <div class="summary-value" style="color: #27ae60;">$3,551,125</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total Withdrawn</div>
+                        <div class="summary-value">$994,107</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total After-Tax Income</div>
+                        <div class="summary-value">$845,291</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total Return</div>
+                        <div class="summary-value" style="color: #27ae60;">640%</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Annualized Return</div>
+                        <div class="summary-value">13.3%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Comparison Summary -->
+        <div class="comparison-summary">
+            <h3>Portfolio Comparison Summary</h3>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="etf-label vgt-label">VGT (Technology)</div>
+                    <div class="summary-item">
+                        <div class="summary-label">Final Value</div>
+                        <div class="summary-value">$5,861,381</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total Income</div>
+                        <div class="summary-value">$1,251,586</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Annual Return</div>
+                        <div class="summary-value">16.7%</div>
+                    </div>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="etf-label voo-label">VOO (S&P 500)</div>
+                    <div class="summary-item">
+                        <div class="summary-label">Final Value</div>
+                        <div class="summary-value">$2,363,959</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total Income</div>
+                        <div class="summary-value">$660,200</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Annual Return</div>
+                        <div class="summary-value">10.5%</div>
+                    </div>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="etf-label vong-label">VONG (Growth)</div>
+                    <div class="summary-item">
+                        <div class="summary-label">Final Value</div>
+                        <div class="summary-value">$3,551,125</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Total Income</div>
+                        <div class="summary-value">$845,291</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Annual Return</div>
+                        <div class="summary-value">13.3%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="notes">
+            <strong>Important Notes:</strong><br>
+            • All calculations use actual historical total returns (including dividends) from 2009-2024<br>
+            • *2009 returns use proxy indices: S&P 500 (26.46%) for VOO, Russell 1000 Growth/IWF (36.69%) for VONG<br>
+            • VOO launched September 7, 2010; VONG launched September 20, 2010<br>
+            • Tax calculated at 15% long-term capital gains rate on all withdrawals<br>
+            • 4% withdrawal rate applied to portfolio value at end of each year<br>
+            • VGT significantly outperformed due to technology sector's exceptional growth during this period<br>
+            • All three strategies proved sustainable despite market downturns (2018, 2022)<br>
+            • Data sources: Yahoo Finance (VGT, VONG), FinanceCharts/Slickcharts (VOO), TotalRealReturns
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
