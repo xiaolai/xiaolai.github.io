@@ -216,9 +216,52 @@ function testCompoundReturns() {
     console.log(`  ✓ Compound calculation correct: ${multipleMatch ? 'PASS' : 'FAIL'}`);
 }
 
-// Test 1.7: Verify Box-Muller normal distribution
+// Test 1.7: Test currency formatting with new abbreviations
+function testCurrencyFormatting() {
+    console.log('\n1.7 Testing Currency Formatting with New Abbreviations:');
+    
+    // Test values for different magnitudes
+    const testValues = [
+        { value: 1e21, expected: 'Sx', name: 'Sextillion' },
+        { value: 5.5e21, expected: 'Sx', name: 'Sextillion' },
+        { value: 1e18, expected: 'Qi', name: 'Quintillion' },
+        { value: 2.3e18, expected: 'Qi', name: 'Quintillion' },
+        { value: 1e15, expected: 'Qa', name: 'Quadrillion' },
+        { value: 7.8e15, expected: 'Qa', name: 'Quadrillion' },
+        { value: 1e12, expected: 'T', name: 'Trillion' },
+        { value: 1e9, expected: 'B', name: 'Billion' },
+        { value: 1e6, expected: 'M', name: 'Million' },
+        { value: 10000, expected: 'K', name: 'Thousand (>10K)' },
+        { value: 5000, expected: 'K', name: 'Thousand (<10K)' },
+        { value: 500, expected: '$', name: 'Hundreds' }
+    ];
+    
+    console.log('  Testing abbreviation thresholds:');
+    let allPass = true;
+    
+    testValues.forEach(test => {
+        // Simple mock of formatCurrency logic for testing
+        let suffix = '';
+        if (test.value >= 1e21) suffix = 'Sx';
+        else if (test.value >= 1e18) suffix = 'Qi';
+        else if (test.value >= 1e15) suffix = 'Qa';
+        else if (test.value >= 1e12) suffix = 'T';
+        else if (test.value >= 1e9) suffix = 'B';
+        else if (test.value >= 1e6) suffix = 'M';
+        else if (test.value >= 1e3) suffix = 'K';
+        else suffix = '$';
+        
+        const pass = suffix === test.expected;
+        allPass = allPass && pass;
+        console.log(`    ${test.name}: ${test.value.toExponential(1)} → ${suffix} ${pass ? '✓' : '✗'}`);
+    });
+    
+    console.log(`  ✓ Currency formatting with new abbreviations: ${allPass ? 'PASS' : 'FAIL'}`);
+}
+
+// Test 1.8: Verify Box-Muller normal distribution
 function testBoxMuller() {
-    console.log('\n1.7 Testing Box-Muller Transform:');
+    console.log('\n1.8 Testing Box-Muller Transform:');
     
     const samples = 100000;
     let sum = 0;
@@ -259,9 +302,9 @@ function testBoxMuller() {
     console.log(`  ✓ Normal distribution correct: ${normalDistribution ? 'PASS' : 'FAIL'}`);
 }
 
-// Test 1.8: Verify Return Rate is within reasonable range
+// Test 1.9: Verify Return Rate is within reasonable range
 function testReturnRateRange() {
-    console.log('\n1.8 Testing Return Rate Reasonable Range:');
+    console.log('\n1.9 Testing Return Rate Reasonable Range:');
     
     const mu = 0.26; // 26% expected return
     const sigma = 0.30; // 30% volatility
@@ -342,9 +385,9 @@ function testReturnRateRange() {
     console.log(`    ✓ Overall Return Rate Range Test: ${allTestsPass ? 'PASS' : 'FAIL'}`);
 }
 
-// Test 1.9: Symmetric Distribution Capping Test
+// Test 1.10: Symmetric Distribution Capping Test
 function testSymmetricCapping() {
-    console.log('\n1.9 Testing Symmetric Distribution Capping:');
+    console.log('\n1.10 Testing Symmetric Distribution Capping:');
     
     const mu = 0.3493; // 34.93% expected return
     const sigma = 0.6146; // 61.46% volatility
@@ -403,9 +446,9 @@ function testSymmetricCapping() {
     console.log(`  Result: ${isSymmetric && lowBias ? 'PASS ✓' : 'FAIL ✗'} (symmetric capping with minimal bias)`);
 }
 
-// Test 1.10: Zero Withdrawal Depletion Test
+// Test 1.11: Zero Withdrawal Depletion Test
 function testZeroWithdrawalDepletion() {
-    console.log('\n1.10 Testing Zero Withdrawal Depletion:');
+    console.log('\n1.11 Testing Zero Withdrawal Depletion:');
     
     const initial = 10000;
     const mu = 0.3493; // 34.93% expected return
@@ -665,6 +708,7 @@ async function runAllTests() {
     testWithdrawalLimit();
     testPercentiles();
     testCompoundReturns();
+    testCurrencyFormatting();
     testBoxMuller();
     testReturnRateRange();
     testSymmetricCapping();

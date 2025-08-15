@@ -6,59 +6,98 @@
     <title>Monte Carlo Projection</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script>
+        function switchTab(method) {
+            // Update tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update tab panels
+            const percentageTab = document.getElementById('percentageTab');
+            const fixedTab = document.getElementById('fixedTab');
+            
+            if (method === 'percentage') {
+                percentageTab.style.display = 'block';
+                fixedTab.style.display = 'none';
+                document.getElementById('percentageRadio').checked = true;
+            } else {
+                percentageTab.style.display = 'none';
+                fixedTab.style.display = 'block';
+                document.getElementById('fixedRadio').checked = true;
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Monte Carlo Projection</h1>
         <div class="subtitle">Investment Projection with 100,000 Simulations</div>
-        <div class="subtitle" style="font-size: 0.9em; margin-bottom: 20px;">Start Withdrawals After __ Years (e.g., Year 1 = end of first year)</div>
         
         <div class="controls">
-            <div class="control-group">
-                <label for="initialInvestment">Initial Investment ($)</label>
-                <input type="text" id="initialInvestment" value="1,000,000">
-            </div>
-            <div class="control-group">
-                <label for="expectedReturn">Expected Annual Return (%)</label>
-                <input type="number" id="expectedReturn" value="17" step="0.1" min="0">
-            </div>
-            <div class="control-group">
-                <label for="volatility">Annual Volatility (σ) (%)</label>
-                <input type="number" id="volatility" value="20" step="0.1" min="0">
-            </div>
-            <div class="control-group">
-                <label for="yearsProjection">Years to Project</label>
-                <input type="number" id="yearsProjection" value="30" min="1" max="50">
-            </div>
-            <div class="control-group">
-                <label>Withdrawal Method</label>
-                <div style="display: flex; gap: 20px; margin-top: 5px;">
-                    <label style="display: flex; align-items: center; font-weight: normal;">
-                        <input type="radio" name="withdrawalMethod" value="percentage" checked style="margin-right: 5px;">
-                        Percentage of Portfolio
-                    </label>
-                    <label style="display: flex; align-items: center; font-weight: normal;">
-                        <input type="radio" name="withdrawalMethod" value="fixed" style="margin-right: 5px;">
-                        Fixed Amount with Inflation
-                    </label>
+            <!-- Investment Parameters Section -->
+            <h3>Investment Parameters</h3>
+            <div class="investment-params">
+                <div class="params-row">
+                    <div class="control-group">
+                        <label for="initialInvestment">Initial Investment ($)</label>
+                        <input type="text" id="initialInvestment" value="1,000,000">
+                    </div>
+                    <div class="control-group">
+                        <label for="expectedReturn">Expected Annual Return (%)</label>
+                        <input type="number" id="expectedReturn" value="17" step="0.1" min="0">
+                    </div>
+                    <div class="control-group">
+                        <label for="volatility">Annual Volatility (σ) (%)</label>
+                        <input type="number" id="volatility" value="20" step="0.1" min="0">
+                    </div>
+                </div>
+                <div class="params-row" style="margin-top: 20px;">
+                    <div class="control-group">
+                        <label for="yearsProjection">Years to Project</label>
+                        <input type="number" id="yearsProjection" value="30" min="1" max="50">
+                    </div>
+                    <div class="control-group">
+                        <label for="withdrawalStartYear">Withdraw from the end of __ years</label>
+                        <input type="number" id="withdrawalStartYear" value="6" min="1" max="50" title="Enter the year when withdrawals should start. Year 1 means withdrawals start at the end of the first year.">
+                        <small style="color: #636e72; font-size: 0.8em; margin-top: 2px;">Year 1 = end of first year</small>
+                    </div>
                 </div>
             </div>
-            <div class="control-group" id="withdrawalRateGroup">
-                <label for="withdrawalRate">Annual Withdrawal Rate (%)</label>
-                <input type="number" id="withdrawalRate" value="3" step="0.1" min="0" max="100">
-            </div>
-            <div class="control-group" id="fixedWithdrawalGroup" style="display: none;">
-                <label for="fixedWithdrawalAmount">Starting Annual Withdrawal ($)</label>
-                <input type="text" id="fixedWithdrawalAmount" value="40,000">
-            </div>
-            <div class="control-group" id="inflationRateGroup" style="display: none;">
-                <label for="inflationRate">Annual Inflation Rate (%)</label>
-                <input type="number" id="inflationRate" value="2.5" step="0.1" min="0" max="20">
-            </div>
-            <div class="control-group">
-                <label for="withdrawalStartYear">Withdraw from the end of __ years</label>
-                <input type="number" id="withdrawalStartYear" value="6" min="1" max="50" title="Enter the year when withdrawals should start. Year 1 means withdrawals start at the end of the first year.">
-                <small style="color: #636e72; font-size: 0.8em; margin-top: 2px;">Year 1 = end of first year</small>
+            
+            <!-- Withdrawal Method Tabs -->
+            <div class="withdrawal-section">
+                <h3>Withdrawal Method</h3>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="switchTab('percentage')">Percentage of Portfolio</button>
+                    <button class="tab-button" onclick="switchTab('fixed')">Fixed Amount with Inflation</button>
+                </div>
+                
+                <!-- Hidden radio buttons for maintaining compatibility -->
+                <div style="display: none;">
+                    <input type="radio" name="withdrawalMethod" value="percentage" id="percentageRadio" checked>
+                    <input type="radio" name="withdrawalMethod" value="fixed" id="fixedRadio">
+                </div>
+                
+                <div class="tab-content">
+                    <div id="percentageTab" class="tab-panel active">
+                        <div class="control-group">
+                            <label for="withdrawalRate">Annual Withdrawal Rate (%)</label>
+                            <input type="number" id="withdrawalRate" value="3" step="0.1" min="0" max="100">
+                        </div>
+                    </div>
+                    
+                    <div id="fixedTab" class="tab-panel" style="display: none;">
+                        <div class="control-group">
+                            <label for="fixedWithdrawalAmount">Starting Annual Withdrawal ($)</label>
+                            <input type="text" id="fixedWithdrawalAmount" value="40,000">
+                        </div>
+                        <div class="control-group">
+                            <label for="inflationRate">Annual Inflation Rate (%)</label>
+                            <input type="number" id="inflationRate" value="2.5" step="0.1" min="0" max="20">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -87,14 +126,6 @@
                 <div class="stat-card">
                     <div class="stat-label">Worst Case (5th percentile)</div>
                     <div class="stat-value" id="worst">-</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Maximum Value</div>
-                    <div class="stat-value" id="max">-</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Minimum Value</div>
-                    <div class="stat-value" id="min">-</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Withdrawal Strategy</div>

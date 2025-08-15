@@ -13,17 +13,12 @@ function initializeDOMCache() {
     DOM.withdrawalRate = document.getElementById('withdrawalRate');
     DOM.fixedWithdrawalAmount = document.getElementById('fixedWithdrawalAmount');
     DOM.inflationRate = document.getElementById('inflationRate');
-    DOM.withdrawalRateGroup = document.getElementById('withdrawalRateGroup');
-    DOM.fixedWithdrawalGroup = document.getElementById('fixedWithdrawalGroup');
-    DOM.inflationRateGroup = document.getElementById('inflationRateGroup');
     DOM.loading = document.getElementById('loading');
     DOM.results = document.getElementById('results');
     DOM.median = document.getElementById('median');
     DOM.mean = document.getElementById('mean');
     DOM.best = document.getElementById('best');
     DOM.worst = document.getElementById('worst');
-    DOM.max = document.getElementById('max');
-    DOM.min = document.getElementById('min');
     DOM.annualWithdrawalRate = document.getElementById('annualWithdrawalRate');
     DOM.withdrawalStartYearDisplay = document.getElementById('withdrawalStartYearDisplay');
     DOM.depletionRate = document.getElementById('depletionRate');
@@ -155,22 +150,6 @@ window.onload = async function() {
     
     setupNumberFormatting(DOM.initialInvestment);
     setupNumberFormatting(DOM.fixedWithdrawalAmount);
-    
-    // Withdrawal method handlers
-    const withdrawalMethodRadios = document.getElementsByName('withdrawalMethod');
-    for (const radio of withdrawalMethodRadios) {
-        radio.addEventListener('change', function() {
-            if (this.value === 'percentage') {
-                DOM.withdrawalRateGroup.style.display = '';
-                DOM.fixedWithdrawalGroup.style.display = 'none';
-                DOM.inflationRateGroup.style.display = 'none';
-            } else if (this.value === 'fixed') {
-                DOM.withdrawalRateGroup.style.display = 'none';
-                DOM.fixedWithdrawalGroup.style.display = '';
-                DOM.inflationRateGroup.style.display = '';
-            }
-        });
-    }
     
     // Withdrawal year validation with debouncing
     const validateWithdrawalYear = debounce(function() {
@@ -458,8 +437,6 @@ function displayResults(results, initialInvestment) {
     DOM.mean.textContent = formatCurrency(stats.mean);
     DOM.best.textContent = formatCurrency(stats.percentile95);
     DOM.worst.textContent = formatCurrency(stats.percentile5);
-    DOM.max.textContent = formatCurrency(stats.max);
-    DOM.min.textContent = formatCurrency(stats.min);
     
     // Display withdrawal information
     if (results.withdrawalMethod === 'percentage') {
